@@ -1,0 +1,13 @@
+import de.jcup.code2doc.core.Factory;
+import de.jcup.code2doc.core.define.Specification;
+
+// ...class definition
+
+	public static void main(String[] args){
+			
+		Specification spec = Factory.createFilledSpecification();
+		// ...more 
+	
+	}
+	
+}

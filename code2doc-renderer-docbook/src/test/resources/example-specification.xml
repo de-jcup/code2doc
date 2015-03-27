@@ -1,0 +1,175 @@
+<?xml version='1.0'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V5.0//EN" "http://docbook.org/xml/5.0/dtd/docbook.dtd">
+<book lang="de">
+	<title>Titel</title>
+
+	<info>
+
+		<author>
+			<personname>
+				<firstname>Albert</firstname>
+				<surname>Tregnaghi</surname>
+			</personname>
+		</author>
+		<legalnotice>
+			<para>Rechtliche Notiz</para>
+		</legalnotice>
+		<!-- 
+		 -->
+	</info>
+
+	<preface>
+		<title>Vorwort</title>
+		<para>
+			bla bla bla - vorwörter sind wichtig
+		</para>
+	</preface>
+	<article>
+		<title>Benutzeroberfläche</title>
+		<para>
+			Hier befinden sich die Usecases für die Oberfläche
+		</para>
+		<sect1>
+			<title>Users</title>
+			<para>
+				Main menu: User
+			</para>
+			<sect2>
+				<title>User</title>
+				<para>
+					Sub menu:Users->User
+				</para>
+				<sect3>
+					<title>USERS_USER__VISIBLE</title>
+					<para>Anzeige des Menüs</para>
+					<para>
+						<table>
+							<title>Technische Details für USERS_USER__VISIBLE</title>
+							<tgroup cols="2" align='left' colsep='1' rowsep='1'>
+								<colspec colname='c1' colwidth="1*" />
+								<colspec colname='c2' colwidth="1*" />
+								<thead>
+
+									<row>
+										<entry>Typ</entry>
+										<entry>Wert</entry>
+									</row>
+
+								</thead>
+								<tbody>
+									<row>
+										<entry>Permission</entry>
+										<entry>SHOW_USER</entry>
+									</row>
+									<row>
+										<entry>JSF-Handler</entry>
+										<entry>de.jcup.test.TestHandler.java</entry>
+									</row>
+									<row>
+										<entry>URL</entry>
+										<entry>
+											<link xlink:href="http://www.jcup.de/"></link>
+										</entry>
+									</row>
+								</tbody>
+							</tgroup>
+						</table>
+					</para>
+				</sect3>
+				<sect3>
+					<title>USERS_USER__SHOW_LIST</title>
+					<para>Anzeige einer Liste mit allen Benutzern</para>
+					<para>
+						<table>
+							<title>Technische Details für USERS_USER__SHOW_LIST</title>
+							<tgroup cols="2">
+								<thead>
+
+									<row>
+										<entry>Typ</entry>
+										<entry>Wert</entry>
+									</row>
+
+								</thead>
+								<tbody>
+									<row>
+										<entry>Query</entry>
+										<entry>de.jcup.test.TestQuery.java</entry>
+									</row>
+									<row>
+										<entry>JSF-Handler</entry>
+										<entry>de.jcup.test.TestHandler.java</entry>
+									</row>
+									<row>
+										<entry>Permission</entry>
+										<entry>de.jcup.test.permissions.SHOW_USER</entry>
+									</row>
+								</tbody>
+							</tgroup>
+						</table>
+						<para>
+							Administrators
+						</para>
+						<itemizedlist>
+							<listitem>
+								<para>ADMIN_1</para>
+							</listitem>
+							<listitem>
+								<para>ADMIN_2</para>
+							</listitem>
+						</itemizedlist>
+					</para>
+				</sect3>
+
+				<sect3>
+					<title>Overview</title>
+					<para>
+						Sub sub menu: Users --> User-->Overview
+					</para>
+
+					<sect4>
+						<title>USERS_USER_OVERVIEW__VISIBLE</title>
+						<para>
+							Sub sub menu: Users->User->Overview
+						</para>
+					</sect4>
+
+				</sect3>
+			</sect2>
+		</sect1>
+		<sect1>
+			<title>Organisations</title>
+			<para>
+				Erster paragraph zu diesem Kapitel
+			</para>
+		</sect1>
+	</article>
+	<!-- batch jobs -->
+	<article>
+		<title>Hintergrundprozesse bzw. Verarbeitung</title>
+		<para>
+			Hier befinden sich die Usecases für die Batch-Jobs.
+		</para>
+		<sect1>
+			<title>Batch Job: Cleanup removed users</title>
+			<sect2>
+				<title>JOB1_WEBSERVICE_OVERVIEW</title>
+				<para>
+					ui-pos
+				</para>
+			</sect2>
+		</sect1>
+		<sect1>
+			<title>Batch-Usecases</title>
+			<para>
+				Erster paragraph zu diesem Kapitel
+			</para>
+		</sect1>
+	</article>
+	<appendix>
+		<title>Appendix</title>
+		<para>
+			Appendixes sind optional.
+		</para>
+	</appendix>
+</book>

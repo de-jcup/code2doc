@@ -1,0 +1,10 @@
+<#include 'content.ftl'>
+<#include 'other.ftl'>
+<#include 'sectioning.ftl'>
+<#include 'techinfo.ftl'>
+<#include 'usecase.ftl'>
+<#include 'architecture.ftl'>
+<#include 'concept.ftl'>
+<#include 'group.ftl'/>
+<#include 'role.ftl'/>
+<#include 'constraint.ftl'/>

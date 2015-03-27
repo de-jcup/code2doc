@@ -1,0 +1,283 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<book>
+	<title></title>
+	<info>
+		<author>
+			<personname>
+				<firstname>Albert</firstname>
+				<surname>Tregnaghi</surname>
+			</personname>
+		</author>
+		<legalnotice>
+			<para></para>
+		</legalnotice>
+	</info>
+	<preface>
+		<title></title>
+		<para>
+			This a internal-demo for
+			<b>code2doc</b>
+			.
+			<br />
+			The demo project is a BLog application with different use cases.This
+			document represents a system specification.
+		</para>
+	</preface>
+	<article>
+		<title></title>
+		<sect1>
+			<title>User interface</title>
+			<sect2>
+				<title>Login</title>
+				<sect3>
+					<title>register</title>
+					<para>
+						<emphasis role='underline'>Use case identifier:</emphasis>
+					</para>
+					<para>UC_10_REGISTER</para>
+					<para>
+						<emphasis role='underline'>Description of use case:</emphasis>
+					</para>
+					<para>
+						<emphasis role='bold'>Exact url:</emphasis>
+						http://www.jcup.de/code2doc/demo/internal/register.html
+					</para>
+					<para></para>
+				</sect3>
+				<sect3>
+					<title>login</title>
+					<para>
+						<emphasis role='underline'>Use case identifier:</emphasis>
+					</para>
+					<para>UC_08_LOGIN</para>
+					<para>
+						<emphasis role='underline'>Description of use case:</emphasis>
+					</para>
+					<para>
+						<emphasis role='bold'>Exact url:</emphasis>
+						http://www.jcup.de/code2doc/demo/internal/login.html
+					</para>
+					<para></para>
+				</sect3>
+				<sect3>
+					<title>No login done</title>
+					<para>
+						<emphasis role='underline'>Use case identifier:</emphasis>
+					</para>
+					<para>UC_14_NO_LOGIN_DONE</para>
+					<para>
+						<emphasis role='underline'>Description of use case:</emphasis>
+					</para>
+					<para>The user has not done any login. So he keeps anonymous!</para>
+				</sect3>
+			</sect2>
+			<sect2>
+				<title>Search</title>
+				<sect3>
+					<title>show blog list</title>
+					<para>
+						<emphasis role='underline'>Use case identifier:</emphasis>
+					</para>
+					<para>UC_01_SHOW_BLOG_LIST</para>
+					<para>
+						<emphasis role='underline'>Description of use case:</emphasis>
+					</para>
+					<para>
+						<emphasis role='bold'>Exact url:</emphasis>
+						http://www.jcup.de/code2doc/demo/internal/showAllBlogs.html
+					</para>
+					<para>
+						A list with all currently created blogs inside this system is
+						shown to user. No matter if the user is logged in or not.
+					</para>
+				</sect3>
+				<sect3>
+					<title>select blog from list</title>
+					<para>
+						<emphasis role='underline'>Use case identifier:</emphasis>
+					</para>
+					<para>UC_13_SELECT_BLOG_LISTENTRY</para>
+					<para>
+						<emphasis role='underline'>Description of use case:</emphasis>
+					</para>
+					<para></para>
+				</sect3>
+				<sect3>
+					<title>create a blog</title>
+					<para>
+						<emphasis role='underline'>Use case identifier:</emphasis>
+					</para>
+					<para>UC_12_CREATE_BLOG</para>
+					<para>
+						<emphasis role='underline'>Description of use case:</emphasis>
+					</para>
+					<para></para>
+					<para>
+						<table>
+							<title>Technical information - create a blog</title>
+							<tgroup align='left' cols='2' rowsep='1'>
+								<colspec colname='c1' colwidth='1*' />
+								<colspec colname='c2' colwidth='1*' />
+								<thead>
+									<row>
+										<entry>Type</entry>
+										<entry>Value</entry>
+									</row>
+								</thead>
+								<tbody>
+									<row>
+										<entry>classes</entry>
+										<entry>de.jcup.code2doc.demo.internal.entity.User</entry>
+									</row>
+									<row>
+										<entry>methods</entry>
+										<entry>User#addOwnedBlog(...)</entry>
+									</row>
+								</tbody>
+							</tgroup>
+						</table>
+					</para>
+				</sect3>
+				<sect3>
+					<title>Blog selected</title>
+					<sect4>
+						<title>show entries in list</title>
+						<para>
+							<emphasis role='underline'>Use case identifier:</emphasis>
+						</para>
+						<para>UC_02_SHOW_ENTRY_LIST</para>
+						<para>
+							<emphasis role='underline'>Description of use case:</emphasis>
+						</para>
+						<para>
+							<emphasis role='bold'>Example url:</emphasis>
+							http://www.jcup.de/code2doc/demo/internal/showAllEntries.html?blog=alberts-test-blog
+						</para>
+						<para></para>
+					</sect4>
+					<sect4>
+						<title>create new entry</title>
+						<para>
+							<emphasis role='underline'>Use case identifier:</emphasis>
+						</para>
+						<para>UC_03_CREATE_NEW_ENTRY</para>
+						<para>
+							<emphasis role='underline'>Description of use case:</emphasis>
+						</para>
+						<para>
+							<emphasis role='bold'>Example url:</emphasis>
+							http://www.jcup.de/code2doc/demo/internal/showAllEntries.html?blog=alberts-test-blog
+						</para>
+						<para></para>
+						<para>
+							<table>
+								<title>Technical information - create new entry</title>
+								<tgroup align='left' cols='2' rowsep='1'>
+									<colspec colname='c1' colwidth='1*' />
+									<colspec colname='c2' colwidth='1*' />
+									<thead>
+										<row>
+											<entry>Type</entry>
+											<entry>Value</entry>
+										</row>
+									</thead>
+									<tbody>
+										<row>
+											<entry>classes</entry>
+											<entry>de.jcup.code2doc.demo.internal.entity.Blog</entry>
+										</row>
+										<row>
+											<entry>methods</entry>
+											<entry>Blog#add(...)</entry>
+										</row>
+									</tbody>
+								</tgroup>
+							</table>
+						</para>
+					</sect4>
+					<sect4>
+						<title>delete an entry</title>
+						<para>
+							<emphasis role='underline'>Use case identifier:</emphasis>
+						</para>
+						<para>UC_04_DELETE_ENTRY</para>
+						<para>
+							<emphasis role='underline'>Description of use case:</emphasis>
+						</para>
+						<para></para>
+					</sect4>
+					<sect4>
+						<title>edit an entry</title>
+						<para>
+							<emphasis role='underline'>Use case identifier:</emphasis>
+						</para>
+						<para>UC_05_EDIT_ENTRY</para>
+						<para>
+							<emphasis role='underline'>Description of use case:</emphasis>
+						</para>
+						<para></para>
+					</sect4>
+					<sect4>
+						<title>read an entry</title>
+						<para>
+							<emphasis role='underline'>Use case identifier:</emphasis>
+						</para>
+						<para>UC_06_READ_ENTRY</para>
+						<para>
+							<emphasis role='underline'>Description of use case:</emphasis>
+						</para>
+						<para></para>
+					</sect4>
+					<sect4>
+						<title>comment an entry</title>
+						<para>
+							<emphasis role='underline'>Use case identifier:</emphasis>
+						</para>
+						<para>UC_07_COMMENT_ENTRY</para>
+						<para>
+							<emphasis role='underline'>Description of use case:</emphasis>
+						</para>
+						<para></para>
+					</sect4>
+				</sect3>
+			</sect2>
+			<sect2>
+				<title>Last but not least</title>
+				<sect3>
+					<title>logout</title>
+					<para>
+						<emphasis role='underline'>Use case identifier:</emphasis>
+					</para>
+					<para>UC_09_LOGOUT</para>
+					<para>
+						<emphasis role='underline'>Description of use case:</emphasis>
+					</para>
+					<para>
+						<emphasis role='bold'>Exact url:</emphasis>
+						http://www.jcup.de/code2doc/demo/internal/logout.html
+					</para>
+					<para></para>
+				</sect3>
+				<sect3>
+					<title>unregister</title>
+					<para>
+						<emphasis role='underline'>Use case identifier:</emphasis>
+					</para>
+					<para>UC_11_UNREGISTER</para>
+					<para>
+						<emphasis role='underline'>Description of use case:</emphasis>
+					</para>
+					<para>
+						<emphasis role='bold'>Exact url:</emphasis>
+						http://www.jcup.de/code2doc/demo/internal/unregister.html
+					</para>
+					<para></para>
+				</sect3>
+			</sect2>
+		</sect1>
+	</article>
+	<appendix>
+		<title>Appendix</title>
+		<para>NOT implemented yet</para>
+	</appendix>
+</book>

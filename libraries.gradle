@@ -1,0 +1,11 @@
+ext {
+	
+	library = [
+		
+		junit:							"junit:junit:4.9",
+		slf4j_api:						"org.slf4j:slf4j-api:1.7.10",
+		mockito_all:						"org.mockito:mockito-all:1.8.5",
+			
+	]
+	
+}

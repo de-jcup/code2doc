@@ -1,0 +1,142 @@
+<!-- parts of the example came from https://vsr.informatik.tu-chemnitz.de/proseminare/xml04/doku/docbook/ -->
+<book>
+	<bookinfo>
+		<title>Your title here</title>
+
+		<author>
+			<firstname>Your first name</firstname>
+			<surname>Your surname</surname>
+			<affiliation>
+				<address>
+					<email>Your e-mail address</email>
+				</address>
+			</affiliation>
+		</author>
+
+		<copyright>
+			<year>1998</year>
+			<holder role='mailto:your e-mail address'>Your name</holder>
+		</copyright>
+
+		<pubdate role='rcs'>$Date: 2003/01/08 10:27:39 $</pubdate>
+
+		<releaseinfo>$Id: DocBookSys-Chapter7-SGML-Creating.xml,v 1.1.1.1
+			2003/01/08 10:27:39 ug55axm Exp $
+		</releaseinfo>
+
+		<abstract>
+			<para>Include an abstract of the book&apos;s contents here.</para>
+		</abstract>
+	</bookinfo>
+
+	<part>
+		<title>Part1</title>
+		<chapter>
+			<title>Part 1, Chapter 1</title>
+			<sect1>
+				<title>Part1, Chapter 1, Section1</title>
+				<para>
+					Hello there!
+				</para>
+			</sect1>
+			<sect1>
+			<title id="sec.title.link">Docbook Verweisarten</title>
+			<para id="par.link">
+				Dies ist ein Absatz auf den mit einem Link Tag verwiesen werden
+				wird.
+				Wenn Sie Neuigkeiten über die Welt erfahren wollen, lesen Sie doch
+				einfach
+				die
+				<ulink url="http://www.tagesschau.de">Nachrichten</ulink>
+				.
+
+				<anchor id="einstein.anchor" />
+				Einstein war da.
+			</para>
+			<para>
+				Der obige Absatz ist
+				<link linkend="par.link">hier</link>
+				referenziert.
+				<xref linkend="sec.link" />
+				(
+				<xref linkend="sec.link" endterm="sec.title.link" />
+				) ist eine Referenz auf eine Sektion.
+				Meine E-Mail Addresse ist
+				<email>damo@informatik.tu-chemnitz.de</email>
+			</para>
+			</sect1>
+		</chapter>
+
+		<chapter>
+			<title>Part 1, Chapter 2</title>
+			<sect1>
+				<title>Part1, Chapter 2, Section 1</title>
+				<para>
+					Hi there!
+				</para>
+			</sect1>
+		</chapter>
+	</part>
+
+	<part>
+		<title>Part2</title>
+		<chapter>
+			<title>Part 2, Chapter 1</title>
+			<sect1>
+				<title>Part 2, Chapter 1, Section1</title>
+				<para>
+					GoodDay there!
+				</para>
+			</sect1>
+
+			<sect1>
+				<title>Part2, Chapter1, Section2</title>
+				<para>
+					GoodNight there!
+
+
+					<table>
+						<title>Anzahl Besucher</title>
+						<tgroup cols="3">
+							<thead>
+
+								<row>
+									<entry>Monat</entry>
+									<entry>Woche</entry>
+									<entry>Visitors</entry>
+								</row>
+
+							</thead>
+							<tfoot>
+								<row>
+									<entry>Gesamt</entry>
+									<entry></entry>
+									<entry>1833</entry>
+								</row>
+							</tfoot>
+							<tbody>
+								<row>
+									<entry>März</entry>
+									<entry>1</entry>
+									<entry>634</entry>
+								</row>
+								<row>
+									<entry>März</entry>
+									<entry>2</entry>
+									<entry>657</entry>
+								</row>
+								<row>
+									<entry>März</entry>
+									<entry>3</entry>
+									<entry>542</entry>
+								</row>
+							</tbody>
+						</tgroup>
+					</table>
+
+				</para>
+			</sect1>
+		</chapter>
+	</part>
+
+</book>

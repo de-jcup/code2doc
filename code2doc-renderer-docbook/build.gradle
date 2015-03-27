@@ -1,0 +1,18 @@
+dependencies{
+	compile project(':code2doc-api')
+	compile project(':code2doc-core')
+	compile project(':code2doc-generator')
+	compile 'commons-httpclient:commons-httpclient:3.1'
+
+	compile "net.javaforge.docbook4j:docbook4j:1.0.1"
+	// http://docbook4j.googlecode.com/svn/m2-repo/releases/net/javaforge/docbook4j/docbook4j/1.0.1/
+	
+	/* xslthl - syntax highlighting support for docbook outputs*/
+	/* see http://xslthl.sourceforge.net/license.html */
+	/* see http://sourceforge.net/p/xslthl/wiki/Home/*/
+	/* see http://sourceforge.net/p/xslthl/wiki/Usage/#xalan-27 */
+	/* see http://www.sagehill.net/docbookxsl/SyntaxHighlighting.html */
+	//compile 'net.sf.xslthl:xslthl:jar:2.1.3'
+	compile 'net.sf.xslthl:xslthl:2.1.0'
+	
+}

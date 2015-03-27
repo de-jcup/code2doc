@@ -1,0 +1,8 @@
+		// spec already created...
+		
+		generator = new PDFFileGenerator();
+		generator.setOutputFileName("filename");
+		generator.setOutputFolder(new File("build"));
+
+		File file = generator.generate(spec);
+		System.out.println("generated to:" + file.getAbsolutePath());

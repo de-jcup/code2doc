@@ -1,0 +1,19 @@
+# logfiles
+*.log
+
+# java output
+*.class
+*.jar
+
+#eclipse parts
+.classpath
+.project
+.settings/
+
+#gradle parts
+build/
+bin/
+.gradle/
+
+# gradle customization parts
+custom_allprojects.gradle

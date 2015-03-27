@@ -1,0 +1,38 @@
+<article>
+  <articleinfo>
+    <title>Titel des Dokuments</title>
+        
+    <author>
+      <firstname>Vorname</firstname>
+      <surname>Nachname</surname>
+      <affiliation>
+        <address><email>E-Mail Addresse</email></address>
+      </affiliation>
+    </author>
+    
+    <copyright>
+      <year>1998</year>
+      <holder role="mailto:E-Mail Addresse">Voller Name</holder>
+    </copyright>
+  
+    <pubdate role="rcs">$Date: Vom RCS vergebenes Datum</pubdate>
+   
+    <releaseinfo>$Id: vom RCS vergebene eindeutige ID $</releaseinfo>
+    
+    <abstract>
+      <para>Kurzer Aufmacher oder eine Zusammenfassung.</para>
+    </abstract>
+  </articleinfo>
+
+  <sect1><title>Kapitel 1</title>
+    <para>
+      Der erste Absatz im ersten Kapitel.
+    </para>
+  </sect1>
+
+  <sect2><title>Section 2</title>
+    <para>
+      Der erste Absatz im zweiten Kapitel.
+    </para>
+  </sect2>  
+</article>

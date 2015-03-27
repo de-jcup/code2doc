@@ -1,0 +1,36 @@
+<book>
+	<title>Titel</title>
+	<titleabbrev>Titel-Abgekürzt</titleabbrev>
+	<bookinfo>
+		<legalnotice>
+			<para>Rechtliche Notiz</para>
+		</legalnotice>
+		<author>
+			<firstname>Albert</firstname>
+			<surname>Tregnaghi</surname>
+		</author>
+	</bookinfo>
+	<dedication>
+		<para>
+			Widmung
+		</para>
+	</dedication>
+	<preface>
+		<title>Vorwort</title>
+		<para>
+			bla bla bla - vorwörter sind wichtig
+		</para>
+	</preface>
+	<chapter>
+		<title>Kapitel</title>
+		<para>
+			Erster paragraph zu diesem Kapitel
+		</para>
+	</chapter>
+	<appendix>
+		<title>Appendix</title>
+		<para>
+			Appendixes sind optional.
+		</para>
+	</appendix>
+</book>

@@ -1,0 +1,3 @@
+This project is also the documentation of code2doc itself!
+
+Because we do not want to ship always Usecases of code2doc on delivery we are forced to do this in external variant...

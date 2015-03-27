@@ -1,0 +1,1 @@
+code2doc-documentation is also a use case for EXTERNAL usage of code2doc

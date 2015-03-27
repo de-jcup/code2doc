@@ -1,0 +1,8 @@
+//include 'code2doc-core','code2doc-poi', 'code2doc-pdf', 'code2doc-docbook'
+include 'code2doc-api',
+		'code2doc-core', 
+		'code2doc-generator', 
+		'code2doc-renderer-docbook', 
+		'code2doc-demo-outside-documentation', 
+		'code2doc-demo-inside', 
+		'code2doc-demo-inside-documentation'

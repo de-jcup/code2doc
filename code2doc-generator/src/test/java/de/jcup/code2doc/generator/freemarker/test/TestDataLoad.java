@@ -1,0 +1,62 @@
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+* 
+*   http://www.apache.org/licenses/LICENSE-2.0
+* 
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.*/
+package de.jcup.code2doc.generator.freemarker.test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class TestDataLoad {
+
+	private List<String> list = new ArrayList<String>();
+	private List<TestDataLoad> children = new ArrayList<TestDataLoad>();
+	private String name;
+
+	public TestDataLoad(String name){
+		this.name=name;
+	}
+	
+	public List<String> getNotNullStringList(){
+		return list;
+	}
+	
+	public List<String> getNullStringList(){
+		return null;
+	}
+	
+	public List<TestDataLoad> getChildren() {
+		return children;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	/**
+	 * Example for getter with parameter
+	 * @param data
+	 * @return
+	 */
+	public String getDecorated(String data){
+		return "decorated("+data+")";
+	}
+	
+	public String toString(){
+		return getClass().getSimpleName()+":"+name;
+	}
+	
+}
