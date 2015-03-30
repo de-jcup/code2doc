@@ -66,6 +66,45 @@ subprojects {
 		}
 				
 	}
+	
+	/* maven deployment tasks */
+	task writeNewPom << {
+		pom {
+			project {
+				inceptionYear '2008'
+				licenses {
+					license {
+						name 'Apache License, Version 2.0'
+						url 'http://www.apache.org/licenses/LICENSE-2.0'
+						distribution 'repo'
+					}
+				}
+			}
+		}.writeTo("$buildDir/newpom.xml")
+	}
+	
+	
+	task sourcesJar(type: Jar, dependsOn:classes) {
+		classifier = 'sources'
+		from sourceSets.main.allSource
+	}
+
+	task javadocJar(type: Jar, dependsOn:javadoc) {
+		classifier = 'javadoc'
+		from javadoc.destinationDir
+	}
+
+	artifacts {
+		archives sourcesJar
+		archives javadocJar
+	}
+
+	gradle.taskGraph.whenReady { taskGraph ->
+		if (!taskGraph.hasTask(':release')) {
+			version = version + '-SNAPSHOT'
+		}
+	}
+
 
 }
 
@@ -87,5 +126,4 @@ task testReportAll(type: TestReport) {
     reportOn subprojects*.test
 }
 
-	
 

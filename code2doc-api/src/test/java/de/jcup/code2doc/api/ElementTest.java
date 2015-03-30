@@ -25,26 +25,51 @@ import java.util.Locale;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.jcup.code2doc.api.Element.AbstractContentContainer;
+import de.jcup.code2doc.api.Element.CodeContentResource;
+import de.jcup.code2doc.api.Element.CodeType;
 import de.jcup.code2doc.api.Element.Content;
 import de.jcup.code2doc.api.Element.HeadlineContainer;
 import de.jcup.code2doc.api.Element.PictureContentResource;
 import de.jcup.code2doc.api.Element.TextContent;
+import de.jcup.code2doc.api.Element.TextContentResource;
 
 public class ElementTest {
 	
 	@Test
-	public void test_resourcpath_building__without_slash(){
+	public void test_prepareResourcePath_building__without_slash(){
 		String resourcePath = exampleElement.prepareResourcePath("test.png");
 		assertEquals("/de/jcup/code2doc/api/test.png", resourcePath);
 	}
 	
 	@Test
-	public void test_resourcpath_building__with_slash(){
+	public void test_prepareResourcePath_building__with_slash(){
 		String resourcePath = exampleElement.prepareResourcePath("/de/somewhere/test.png");
 		assertEquals("/de/somewhere/test.png", resourcePath);
 	}
 	
-
+	@Test
+	public void test_content_add_picture_resource__without_slash__uses_package_of_container_element(){
+		AbstractContentContainer container = (AbstractContentContainer) exampleElement.setup.content().addPictureResource("title", "resourcepath1/path2/path3");
+		PictureContentResource pic = (PictureContentResource) container.getChildren().iterator().next();
+		assertEquals("/de/jcup/code2doc/api/resourcepath1/path2/path3",pic.getResourcePath());
+	}
+	
+	@Test
+	public void test_content_add_text_resource__without_slash__uses_package_of_container_element(){
+		AbstractContentContainer container = (AbstractContentContainer) exampleElement.setup.content().addTextResource("resourcepath1/path2/path3");
+		TextContentResource pic = (TextContentResource) container.getChildren().iterator().next();
+		assertEquals("/de/jcup/code2doc/api/resourcepath1/path2/path3",pic.getResourcePath());
+	}
+	
+	@Test
+	public void test_content_add_code_resource__without_slash__uses_package_of_container_element(){
+		AbstractContentContainer container = (AbstractContentContainer) exampleElement.setup.content().addCodeResource(CodeType.JAVA,"resourcepath1/path2/path3");
+		CodeContentResource pic = (CodeContentResource) container.getChildren().iterator().next();
+		assertEquals("/de/jcup/code2doc/api/resourcepath1/path2/path3",pic.getResourcePath());
+	}
+	
+	
 	@Test
 	public void test_when_nothing_defined_even_nullsafe(){
 		/* no locale given */

@@ -21,15 +21,13 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.apache.commons.lang.StringUtils;
-
+import static de.jcup.code2doc.core.internal.util.StringUtil.*;
 import de.jcup.code2doc.core.filter.Filter;
 import de.jcup.code2doc.core.generator.Generator;
 import de.jcup.code2doc.core.internal.util.Transformer;
 
+
 public abstract class AbstractGenerator<RESULT,MODEL> implements Generator<RESULT,MODEL>{
-	/** this is the ONLY encoding we support in any generator.*/
-	protected static final String ENCODING = "UTF-8";
 	
 	protected Map<String,String> params = new TreeMap<String,String>();
 	protected Transformer transformer = new Transformer();
@@ -83,7 +81,7 @@ public abstract class AbstractGenerator<RESULT,MODEL> implements Generator<RESUL
 	 */
 	protected String getMandatoryParameter(String name) {
 		String value = params.get(name);
-		if (StringUtils.isEmpty(value)){
+		if (isEmpty(value)){
 			throw new IllegalArgumentException("Mandatory parameter "+name+" is NOT set!");
 		}
 		return value;

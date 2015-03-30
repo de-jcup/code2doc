@@ -17,16 +17,38 @@
 * under the License.*/
 package de.jcup.code2doc.generator.docbook;
 
-import org.apache.commons.lang.StringEscapeUtils;
+import java.io.ByteArrayOutputStream;
 
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamWriter;
+
+import de.jcup.code2doc.core.generator.Generator;
 import de.jcup.code2doc.core.internal.util.TextStyle;
 
 public class DocbookTextStyle extends TextStyle{
+	/* we use newInstance() because newFactory is only available at a specific JDK6 update and we want to
+	 * support every JRE 6 installation - so instead using newInstance()
+	 */
+	private XMLOutputFactory factory = XMLOutputFactory.newInstance();
 	
 	public String applyToImpl(String internalFormatText) {
-		String escaped = StringEscapeUtils.escapeXml(internalFormatText);
+		String escaped = escapeXml(internalFormatText);
 		String styledContent = convertToDocbook(escaped);
 		return styledContent;
+	}
+
+	private String escapeXml(String internalFormatText) {
+		ByteArrayOutputStream bas = new ByteArrayOutputStream();
+		try {
+			XMLStreamWriter x = factory.createXMLStreamWriter(bas, Generator.ENCODING);
+			x.writeCharacters(internalFormatText);
+			x.close();
+			String result = new String(bas.toByteArray(),Generator.ENCODING);
+			return result;
+		} catch (Exception e) {
+			throw new RuntimeException("cannot escape xml", e);
+		}
+		
 	}
 
 	private String convertToDocbook(String text) {

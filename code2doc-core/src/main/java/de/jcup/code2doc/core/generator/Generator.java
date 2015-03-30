@@ -23,6 +23,9 @@ import java.util.Locale;
 import de.jcup.code2doc.core.filter.Filter;
 
 public interface Generator <RESULT, MODEL> {
+	
+	/** this is the ONLY encoding we support in any text generator.*/
+	public static final String ENCODING = "UTF-8";
 
 	/**
 	 * Generates something by given specification

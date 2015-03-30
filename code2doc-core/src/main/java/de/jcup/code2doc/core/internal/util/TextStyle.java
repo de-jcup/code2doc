@@ -19,7 +19,7 @@ package de.jcup.code2doc.core.internal.util;
 
 import java.util.regex.Pattern;
 
-import org.apache.commons.lang.StringUtils;
+import static de.jcup.code2doc.core.internal.util.StringUtil.*;
 
 /**
  * Text style. This class supports simple html style mechanism.<br/>
@@ -125,7 +125,7 @@ public abstract class TextStyle {
 		}
 		
 		private boolean isWithAttribute() {
-			return StringUtils.isNotEmpty(attribute);
+			return isNotEmpty(attribute);
 		}
 
 		public String replace(String text, String replacement) {
@@ -212,8 +212,8 @@ public abstract class TextStyle {
 	 * @return styled text
 	 */
 	public final String applyTo(String text) {
-		if (StringUtils.isEmpty(text)) {
-			return StringUtils.EMPTY;
+		if (isEmpty(text)) {
+			return EMPTY;
 		}
 		String internal = convertToInternalFormat(text);
 		return applyToImpl(internal);

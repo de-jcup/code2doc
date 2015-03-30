@@ -15,7 +15,7 @@
 * KIND, either express or implied.  See the License for the
 * specific language governing permissions and limitations
 * under the License.*/
-package de.jcup.code2doc.core.validate;
+package de.jcup.code2doc.core.internal.validate;
 
 import static junit.framework.Assert.*;
 
@@ -27,7 +27,7 @@ import de.jcup.code2doc.core.internal.define.SpecificationImpl;
 import de.jcup.code2doc.core.internal.validate.ExamplePicturesAreAvailableValidator;
 import de.jcup.code2doc.core.validate.ValidationException;
 
-public class ExamplePictureValidatorTest {
+public class ExamplePicturesAreAvailableValidatorTest {
 
 	private ExamplePicturesAreAvailableValidator validator;
 	private SpecificationImpl specification;
@@ -71,6 +71,7 @@ public class ExamplePictureValidatorTest {
 			/* OK */
 		}
 	}
+	
 	
 	/* -----------------------------------------------------------*/
 	/* Internal helpers */

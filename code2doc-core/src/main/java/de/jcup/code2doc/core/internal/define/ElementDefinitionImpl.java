@@ -20,7 +20,7 @@ package de.jcup.code2doc.core.internal.define;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.apache.commons.lang.StringUtils;
+import static de.jcup.code2doc.core.internal.util.StringUtil.*;
 
 import de.jcup.code2doc.api.Element;
 import de.jcup.code2doc.core.define.TechnicalDefinition;
@@ -75,7 +75,7 @@ public abstract class ElementDefinitionImpl<TECH_PARENT,ELEMENT extends Element,
 	 */
 	public TechnicalDefinition<TECH_PARENT> addTechInfo(String techInfoGroup) {
 		String text = element.getHeadline();
-		if (StringUtils.isNotEmpty(techInfoGroup)){
+		if (isNotEmpty(techInfoGroup)){
 			text = text + " ("+techInfoGroup+")";
 		}
 		for (TechnicalDefinition<TECH_PARENT> techDef: getTechnicalDefinitions()){

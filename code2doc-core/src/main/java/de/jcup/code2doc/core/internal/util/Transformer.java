@@ -21,7 +21,8 @@ import java.io.File;
 import java.net.URL;
 import java.util.Locale;
 
-import org.apache.commons.lang.StringUtils;
+import static de.jcup.code2doc.core.internal.util.StringUtil.*;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -150,6 +151,9 @@ public class Transformer {
 	 * @return file or <code>null</code> if not transformable/not found
 	 */
 	public File transformToFile(String resourcePath){
+		/*
+		 * Remark: convenience resource handling is only done inside Element.prepareResourcePath() - not here
+		 */
 		if (resourcePath==null){
 			if (LOG.isErrorEnabled()){
 				LOG.error("resource path was null!");
@@ -167,7 +171,7 @@ public class Transformer {
 		}
 		if (resource!=null){
 			String filePath = resource.getFile();
-			if (StringUtils.isEmpty(filePath)){
+			if (isEmpty(filePath)){
 				if (LOG.isErrorEnabled()){
 					LOG.error("resource not available as file for resource path:"+resourcePath);
 				}

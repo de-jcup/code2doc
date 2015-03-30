@@ -197,7 +197,7 @@ public abstract class UseCase extends ContentElement {
 		 * @return setup
 		 */
 		public final UseCaseSetup setExamplePicture(String resourcePath) {
-			UseCase.this.examplePictureResourcePath = resourcePath;
+			UseCase.this.examplePictureResourcePath = prepareResourcePath(resourcePath);
 			return this;
 		}
 

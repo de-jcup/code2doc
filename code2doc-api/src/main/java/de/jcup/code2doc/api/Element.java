@@ -93,6 +93,11 @@ public abstract class Element {
 		}
 	}
 	
+	/**
+	 * Prepares resource path - does convenience resource path handling - so x.y.z.Element and "test.html" will result to path "/x/y/z/test.html"
+	 * @param resourcePath
+	 * @return prepared path (if necessary)
+	 */
 	String prepareResourcePath(String resourcePath){
 		notNull("resource path may not be null",  resourcePath);
 		if (resourcePath.startsWith("/")){

@@ -17,7 +17,7 @@
 * under the License.*/
 package de.jcup.code2doc.core.internal.define;
 
-import static org.apache.commons.lang.StringUtils.*;
+import static de.jcup.code2doc.core.internal.util.StringUtil.*;
 
 import java.util.ArrayList;
 import java.util.Collection;

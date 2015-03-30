@@ -2,8 +2,7 @@ dependencies{
 	compile project(':code2doc-api')
 	
 	compile library.slf4j_api
-	compile 'commons-lang:commons-lang:2.6'
-	
+
 	compile 'org.reflections:reflections:0.9.9'
 
 	/* spring framework needed for searching annotations in complete classpath */

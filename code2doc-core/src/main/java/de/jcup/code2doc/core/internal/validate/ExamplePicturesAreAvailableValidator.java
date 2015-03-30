@@ -20,27 +20,24 @@ package de.jcup.code2doc.core.internal.validate;
 import java.io.File;
 import java.util.Collection;
 
-import org.apache.commons.lang.StringUtils;
-
+import static de.jcup.code2doc.core.internal.util.StringUtil.*;
 import de.jcup.code2doc.api.UseCase;
 import de.jcup.code2doc.core.internal.define.DefinitionType;
 import de.jcup.code2doc.core.internal.define.GroupDefinitionImpl;
 import de.jcup.code2doc.core.internal.define.SpecificationImpl;
 import de.jcup.code2doc.core.internal.define.UseCaseDefinitionImpl;
 import de.jcup.code2doc.core.internal.util.Transformer;
+import de.jcup.code2doc.core.internal.util.Validation;
 import de.jcup.code2doc.core.validate.ValidationException;
 
 public class ExamplePicturesAreAvailableValidator extends AbstractSpecificationImplValidator{
 
 	private Transformer transformer = new Transformer();
 	
-	private static final String[] allowedFileEndings = new String[]{
+	private static final String[] allowedFileEndingsLowerCased = new String[]{
 		".jpg",
-		".JPG",
 		".gif",
-		".GIF",
 		".png",
-		".PNG"
 	};
 	
 
@@ -53,25 +50,36 @@ public class ExamplePicturesAreAvailableValidator extends AbstractSpecificationI
 			Collection<UseCaseDefinitionImpl> usecases = (Collection<UseCaseDefinitionImpl>) group.getDefinitions(DefinitionType.USECASE);
 			for (UseCaseDefinitionImpl usecaseDef: usecases){
 				UseCase useCase = usecaseDef.getElement();
+				Validation.notNull(useCase, "usecase may never be null!");
 				String path = useCase.getExamplePictureResourcePath();
-				assertCorrectImageType(path);
-				assertCorrectPath(path);
+				if (isEmpty(path)){
+					continue;
+				}
+				assertCorrectImageType(useCase,path);
+				assertCorrectPath(useCase, path);
 			}
 		}
 	}
 
-	private void assertCorrectImageType(String path) {
-		StringUtils.endsWithAny(path,allowedFileEndings);
+	private void assertCorrectImageType(UseCase useCase, String resourcePath) throws ValidationException {
+		Validation.notNull(useCase, "usecase may not be null");
+		Validation.notNull(resourcePath, "path may not be nutll - at this time");
+		String lowerCasedPath = resourcePath.toLowerCase();
+		for (String allowed : allowedFileEndingsLowerCased){
+			if (lowerCasedPath.endsWith(allowed)){
+				return;
+			}
+		}
+		throw new ValidationException("Unallowed path:"+resourcePath);
 	}
 
-	private void assertCorrectPath(String resourcePath) throws ValidationException {
-		if (resourcePath==null){
-			/* OK no resource path */
-			return;
-		}
+	private void assertCorrectPath(UseCase useCase, String resourcePath) throws ValidationException {
+		Validation.notNull(useCase, "usecase may not be null");
+		Validation.notNull(resourcePath, "path may not be nutll - at this time");
+
 		File file = transformer.transformToFile(resourcePath);
 		if (file==null){
-			throw new ValidationException("No file found for:"+resourcePath);
+			throw new ValidationException("Usecase:"+useCase.getHeadline()+":example picture not available: path="+resourcePath);
 		}
 		
 	}

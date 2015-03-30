@@ -17,8 +17,9 @@
 * under the License.*/
 package de.jcup.code2doc.api;
 
-import org.junit.Test;
 import static org.junit.Assert.*;
+
+import org.junit.Test;
 public class UseCaseTest {
 
 	@Test
@@ -28,11 +29,43 @@ public class UseCaseTest {
 		assertTrue(uc1.getConstraint(Role1.class).equals(Constraint1.class));
 	}
 	
+	/**
+	 * Test for bugfix of https://github.com/de-jcup/code2doc/issues/2
+	 */
+	@Test
+	public void test_setExampleUrl__without_slash__uses_package_of_container_element(){
+		
+		TestUseCase1 u1 = new TestUseCase1();
+		String resPath = u1.getExamplePictureResourcePath();
+		assertEquals("/de/jcup/code2doc/api/resourcePath1/path2/path3", resPath);
+		
+	}
+	
+	@Test
+	public void test_setExampleUrl__with_slash__uses_given_path(){
+		
+		TestUseCase2 u2 = new TestUseCase2();
+		String resPath = u2.getExamplePictureResourcePath();
+		assertEquals("/resourcePath4/path5/path6", resPath);
+		
+	}
+	
+	
 	public static class TestUseCase1 extends UseCase{
 
 		@Override
 		protected void doSetup(UseCaseSetup setup) {
 			setup.addRole(Role1.class,Constraint1.class);
+			setup.setExamplePicture("resourcePath1/path2/path3");
+		}
+		
+	}
+	
+	public static class TestUseCase2 extends UseCase{
+
+		@Override
+		protected void doSetup(UseCaseSetup setup) {
+			setup.setExamplePicture("/resourcePath4/path5/path6");
 		}
 		
 	}
