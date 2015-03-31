@@ -40,7 +40,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@LinkToUseCase(value = UC_08_LOGIN.class, type = "necessary fields for login", techInfoGroup = "internal fields")
+	@LinkToUseCase(value = UC_08_LOGIN.class, type = "necessary fields for login", group = "internal fields")
 	private String uid;
 
 	private List<Blog> blogs = new ArrayList<Blog>();

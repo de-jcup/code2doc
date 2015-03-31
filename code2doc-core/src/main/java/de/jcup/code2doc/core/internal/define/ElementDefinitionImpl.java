@@ -70,13 +70,13 @@ public abstract class ElementDefinitionImpl<TECH_PARENT,ELEMENT extends Element,
 	
 	/**
 	 * Adds a tech info
-	 * @param techInfoGroup
+	 * @param group
 	 * @return
 	 */
-	public TechnicalDefinition<TECH_PARENT> addTechInfo(String techInfoGroup) {
+	public TechnicalDefinition<TECH_PARENT> addTechInfo(String group) {
 		String text = element.getHeadline();
-		if (isNotEmpty(techInfoGroup)){
-			text = text + " ("+techInfoGroup+")";
+		if (isNotEmpty(group)){
+			text = text + " ("+group+")";
 		}
 		for (TechnicalDefinition<TECH_PARENT> techDef: getTechnicalDefinitions()){
 			if (!(techDef instanceof AbstractTechnicalDefinitionImpl<?>)){

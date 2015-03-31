@@ -45,8 +45,8 @@ public @interface LinkToConstraint {
 	
 
 	/**
-	 * Link techInfoGroup
+	 * Link group
 	 * @return name of TECHINFO group - default is empty
 	 */
-	String techInfoGroup() default "";
+	String group() default "";
 }

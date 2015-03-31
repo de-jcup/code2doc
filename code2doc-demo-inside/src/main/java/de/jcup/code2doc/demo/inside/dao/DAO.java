@@ -29,7 +29,7 @@ import javax.persistence.Query;
 import de.jcup.code2doc.api.LinkToArchitecture;
 import de.jcup.code2doc.demo.inside.documentation.architecture.PersistenceConcept;
 
-@LinkToArchitecture(value=PersistenceConcept.class,techInfoGroup=GROUP_DAO_BASE)
+@LinkToArchitecture(value=PersistenceConcept.class,group=GROUP_DAO_BASE)
 public abstract class DAO<T> {
 
 	private static final String PERSISTENCE_UNIT_NAME = "code2doc-demo-internal";
@@ -48,14 +48,14 @@ public abstract class DAO<T> {
 		 em = factory.createEntityManager();
 	}
 	
-	@LinkToArchitecture(value=PersistenceConcept.class,techInfoGroup=GROUP_DAO_BASE)
+	@LinkToArchitecture(value=PersistenceConcept.class,group=GROUP_DAO_BASE)
 	public T findById(Long id){
 		T entity = em.find(getEntityClass(), id);
 		return entity;
 	}
 	protected abstract Class<T> getEntityClass();
 	
-	@LinkToArchitecture(value=PersistenceConcept.class,techInfoGroup=GROUP_DAO_BASE)
+	@LinkToArchitecture(value=PersistenceConcept.class,group=GROUP_DAO_BASE)
 	public T update(T entity){
 		em.getTransaction().begin();
 		
@@ -65,7 +65,7 @@ public abstract class DAO<T> {
 		return entity;
 	}
 
-	@LinkToArchitecture(value=PersistenceConcept.class,techInfoGroup=GROUP_DAO_BASE)
+	@LinkToArchitecture(value=PersistenceConcept.class,group=GROUP_DAO_BASE)
 	public T create(T entity){
 		em.getTransaction().begin();
 		
@@ -75,7 +75,7 @@ public abstract class DAO<T> {
 		return entity;
 	}
 	
-	@LinkToArchitecture(value=PersistenceConcept.class,techInfoGroup=GROUP_DAO_BASE)
+	@LinkToArchitecture(value=PersistenceConcept.class,group=GROUP_DAO_BASE)
 	public T delete(T entity){
 		em.getTransaction().begin();
 		
@@ -85,7 +85,7 @@ public abstract class DAO<T> {
 		return entity;
 	}
 	
-	@LinkToArchitecture(value=PersistenceConcept.class,techInfoGroup=GROUP_DAO_BASE, type="base query method")
+	@LinkToArchitecture(value=PersistenceConcept.class,group=GROUP_DAO_BASE, type="base query method")
 	protected List<T> fetchByQuery(String queryString){
 		Query query = em.createQuery(queryString);
 		@SuppressWarnings("unchecked")

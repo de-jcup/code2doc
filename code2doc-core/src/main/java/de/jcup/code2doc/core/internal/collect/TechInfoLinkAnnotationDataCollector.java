@@ -38,7 +38,7 @@ import de.jcup.code2doc.api.LinkToUseCase;
 
 /**
  * Collector for all annotations compatible with techInfo (value=classes, type,
- * techInfoGroup). Be aware when using it - because annotations have lack of
+ * group). Be aware when using it - because annotations have lack of
  * interfaces or polymorphism only the internal known annotation types are
  * possible :<br>
  * <ul>
@@ -79,12 +79,12 @@ class TechInfoLinkAnnotationDataCollector<CONTENT_ELEMENT, ANNOTATION extends An
 		for (Class<?> type : types) {
 			Class<? extends CONTENT_ELEMENT>[] useCases = getValue(type);
 			String techInfoType = getType(type);
-			String techInfoGroup = getTechInfoGroup(type);
+			String group = getTechInfoGroup(type);
 			for (Class<? extends CONTENT_ELEMENT> useCase : useCases) {
 				TechInfoLinkAnnotationData data = new TechInfoLinkAnnotationData();
 				data.linkedClass = type;
 				data.type = techInfoType;
-				data.techInfoGroup = techInfoGroup;
+				data.group = group;
 				ensureList(fetchedAnnotationData, useCase).add(data);
 			}
 		}
@@ -92,14 +92,14 @@ class TechInfoLinkAnnotationDataCollector<CONTENT_ELEMENT, ANNOTATION extends An
 		/* handle method annotations */
 		for (Method method : methods) {
 			Class<? extends CONTENT_ELEMENT>[] useCases = getValue(method);
-			String group = getType(method);
-			String techInfoGroup = getTechInfoGroup(method);
+			String type = getType(method);
+			String group = getTechInfoGroup(method);
 			for (Class<? extends CONTENT_ELEMENT> useCase : useCases) {
 				TechInfoLinkAnnotationData data = new TechInfoLinkAnnotationData();
 				data.linkedClass = method.getDeclaringClass();
-				data.type = group;
+				data.type = type;
 				data.linkedMethod = method;
-				data.techInfoGroup = techInfoGroup;
+				data.group = group;
 				ensureList(fetchedAnnotationData, useCase).add(data);
 			}
 		}
@@ -108,13 +108,13 @@ class TechInfoLinkAnnotationDataCollector<CONTENT_ELEMENT, ANNOTATION extends An
 		for (Field field : fields) {
 			Class<? extends CONTENT_ELEMENT>[] useCases = getValue(field);
 			String type = getType(field);
-			String techInfoGroup = getTechInfoGroup(field);
+			String group = getTechInfoGroup(field);
 			for (Class<? extends CONTENT_ELEMENT> useCase : useCases) {
 				TechInfoLinkAnnotationData data = new TechInfoLinkAnnotationData();
 				data.linkedClass = field.getDeclaringClass();
 				data.type = type;
 				data.linkedField = field;
-				data.techInfoGroup = techInfoGroup;
+				data.group = group;
 				ensureList(fetchedAnnotationData, useCase).add(data);
 			}
 		}
@@ -197,26 +197,26 @@ class TechInfoLinkAnnotationDataCollector<CONTENT_ELEMENT, ANNOTATION extends An
 		if (result == null) {
 			return "";
 		}
-		String techInfoGroup = getTechInfoGroup(result);
-		return techInfoGroup;
+		String group = getTechInfoGroup(result);
+		return group;
 	}
 
 	private String getTechInfoGroup(ANNOTATION found) {
 		if (found instanceof LinkToArchitecture) {
 			LinkToArchitecture l = (LinkToArchitecture) found;
-			return l.techInfoGroup();
+			return l.group();
 		}
 		if (found instanceof LinkToUseCase) {
 			LinkToUseCase l = (LinkToUseCase) found;
-			return l.techInfoGroup();
+			return l.group();
 		}
 		if (found instanceof LinkToRole) {
 			LinkToRole l = (LinkToRole) found;
-			return l.techInfoGroup();
+			return l.group();
 		}
 		if (found instanceof LinkToConstraint) {
 			LinkToConstraint l = (LinkToConstraint) found;
-			return l.techInfoGroup();
+			return l.group();
 		}
 		throw new IllegalArgumentException("get techinfo is not supported for " + annotation);
 	}

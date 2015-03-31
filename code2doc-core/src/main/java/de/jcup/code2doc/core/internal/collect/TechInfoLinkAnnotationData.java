@@ -26,10 +26,10 @@ public class TechInfoLinkAnnotationData {
 	String type;
 	Method linkedMethod;
 	Field linkedField;
-	String techInfoGroup;
+	String group;
 	
 	public String getTechInfoGroup() {
-		return techInfoGroup;
+		return group;
 	}
 	
 	public String getType() {
@@ -63,7 +63,7 @@ public class TechInfoLinkAnnotationData {
 		result = prime * result + ((linkedClass == null) ? 0 : linkedClass.hashCode());
 		result = prime * result + ((linkedField == null) ? 0 : linkedField.hashCode());
 		result = prime * result + ((linkedMethod == null) ? 0 : linkedMethod.hashCode());
-		result = prime * result + ((techInfoGroup == null) ? 0 : techInfoGroup.hashCode());
+		result = prime * result + ((group == null) ? 0 : group.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
@@ -92,10 +92,10 @@ public class TechInfoLinkAnnotationData {
 				return false;
 		} else if (!linkedMethod.equals(other.linkedMethod))
 			return false;
-		if (techInfoGroup == null) {
-			if (other.techInfoGroup != null)
+		if (group == null) {
+			if (other.group != null)
 				return false;
-		} else if (!techInfoGroup.equals(other.techInfoGroup))
+		} else if (!group.equals(other.group))
 			return false;
 		if (type == null) {
 			if (other.type != null)
@@ -108,7 +108,7 @@ public class TechInfoLinkAnnotationData {
 	@Override
 	public String toString() {
 		return "TechInfoLinkAnnotationData [linkedClass=" + linkedClass + ", type=" + type + ", linkedMethod=" + linkedMethod + ", linkedField=" + linkedField
-				+ ", techInfoGroup=" + techInfoGroup + "]";
+				+ ", group=" + group + "]";
 	}
 
 

@@ -30,11 +30,11 @@ import de.jcup.code2doc.demo.inside.entity.Blog;
 @LinkToArchitecture(PersistenceConcept.class)
 public class BlogDAO extends DAO<Blog>{
 
-	@LinkToUseCase(value=UC_01_SHOW_BLOG_LIST.class,techInfoGroup=GROUP_DATA,type=TYPE_QUERY)
+	@LinkToUseCase(value=UC_01_SHOW_BLOG_LIST.class,group=GROUP_DATA,type=TYPE_QUERY)
 	private String QUERY_FETCH_ALL_BLOGS = "select b from BloggerContest b "; 
 	
 	
-	@LinkToUseCase(value=UC_01_SHOW_BLOG_LIST.class,techInfoGroup=GROUP_DATA)
+	@LinkToUseCase(value=UC_01_SHOW_BLOG_LIST.class,group=GROUP_DATA)
 	public List<Blog> fetchAllBlogs(){
 		return fetchByQuery(QUERY_FETCH_ALL_BLOGS);
 	}

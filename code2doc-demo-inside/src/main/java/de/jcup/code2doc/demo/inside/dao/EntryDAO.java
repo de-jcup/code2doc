@@ -31,17 +31,17 @@ import de.jcup.code2doc.demo.inside.documentation.usecase.entries.UC_05_EDIT_ENT
 import de.jcup.code2doc.demo.inside.entity.Entry;
 
 @LinkToArchitecture(PersistenceConcept.class)
-@LinkToUseCase(value = { UC_02_SHOW_ENTRY_LIST.class, UC_03_CREATE_NEW_ENTRY.class, UC_04_DELETE_ENTRY.class, UC_05_EDIT_ENTRY.class }, techInfoGroup = GROUP_DATA, type = TYPE_DAO)
+@LinkToUseCase(value = { UC_02_SHOW_ENTRY_LIST.class, UC_03_CREATE_NEW_ENTRY.class, UC_04_DELETE_ENTRY.class, UC_05_EDIT_ENTRY.class }, group = GROUP_DATA, type = TYPE_DAO)
 public class EntryDAO extends DAO<Entry> {
 
-	@LinkToUseCase(value = UC_02_SHOW_ENTRY_LIST.class, techInfoGroup = GROUP_DATA, type = TYPE_QUERY)
+	@LinkToUseCase(value = UC_02_SHOW_ENTRY_LIST.class, group = GROUP_DATA, type = TYPE_QUERY)
 	private String QUERY_FETCH_ALL_ENTRIES = "select * from ENTRIES";
 
 	/**
 	 * Fetches all entries via query
 	 * @return all entries
 	 */
-	@LinkToUseCase(value = UC_02_SHOW_ENTRY_LIST.class, techInfoGroup = GROUP_DATA, type= TYPE_DAO)
+	@LinkToUseCase(value = UC_02_SHOW_ENTRY_LIST.class, group = GROUP_DATA, type= TYPE_DAO)
 	public List<Entry> fetchAllEntries() {
 		return fetchByQuery(QUERY_FETCH_ALL_ENTRIES);
 	}
