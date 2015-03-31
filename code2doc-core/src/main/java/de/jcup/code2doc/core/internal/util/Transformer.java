@@ -51,7 +51,7 @@ public class Transformer {
 	 * <ol>
 	 * <li>null object -  to "null"</li>
 	 * <li>string - keeps the string</li>
-	 * <li>enumeration - returns name</li>
+	 * <li>enumeration - returns enum.simpleClassName()+"."+name() (when toString() is same as name()(default) - otherwise a string of enum.simpleClassName()+"."+name() +":"+toString() will be returned )</li>
 	 * <li>class - the complete class name</li>
 	 * <li>{@linkplain Element} - the i18n headline</li>
 	 * <li>all others return their .toString() result</li>
@@ -68,7 +68,14 @@ public class Transformer {
 		}
 		if (object instanceof Enum<?>){
 			Enum<?> en = (Enum<?>)object;
-			return en.name();
+			String simpleClassName = en.getClass().getSimpleName();
+			String name = en.name();
+			String toString = en.toString();
+			if (name.equals(toString)){
+				 return simpleClassName+"."+name;
+			}
+			return simpleClassName+"."+name+":"+toString;
+			
 		}
 		if (object instanceof Class<?>){
 			return ((Class<?>)object).getName();

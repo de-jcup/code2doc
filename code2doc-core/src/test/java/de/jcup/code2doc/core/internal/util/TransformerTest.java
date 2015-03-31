@@ -28,7 +28,9 @@ public class TransformerTest {
 	public void test_to_string() {
 		assertEquals("null", transformer.transformToString(null));
 		assertEquals(getClass().getName(), transformer.transformToString(TransformerTest.class));
-		assertEquals("BETA", transformer.transformToString(InternalTestEnum.BETA));
+		assertEquals("InternalTestEnum.BETA", transformer.transformToString(InternalTestEnum.BETA));
+		assertEquals("InternalTestEnumWithToString.X:1", transformer.transformToString(InternalTestEnumWithToString.X));
+		assertEquals("InternalTestEnumWithToString.Y:2", transformer.transformToString(InternalTestEnumWithToString.Y));
 		assertEquals("Casper",transformer.transformToString("Casper"));
 		assertEquals("internal test", transformer.transformToString(new InternalTestClass()));
 	}
@@ -59,5 +61,20 @@ public class TransformerTest {
 	private enum InternalTestEnum{
 		ALPHA,
 		BETA
+	}
+	
+	private enum InternalTestEnumWithToString{
+		X("1"),
+		Y("2");
+		private String data;
+
+		private InternalTestEnumWithToString(String data){
+			this.data=data;
+		}
+		
+		@Override
+		public String toString() {
+			return data;
+		}
 	}
 }
