@@ -21,6 +21,7 @@ public enum Code2docCoreResourceIdentifiers implements ResourceIdentifier{
 	
 	USECASE_TAG_HEADLINE ("code2doc.core.usecase.tag.headline"),
 	USECASE_DESCRIPTON_HEADLINE("code2doc.core.usecase.description.headline"), 
+	/* FIXME de-jcup, 31.03.2015: issue 4 - remove this constant + inside properties*/
 	USECASE_DESCRIPTON_CONTENT_NOTDEFINED("code2doc.core.usecase.description.content.notdefined"), 
 	
 	USECASE_ROLE_CONSTRAINT_HEADLINE_PREFIX("code2doc.core.usecase.role.constraint.headline.prefix"),
