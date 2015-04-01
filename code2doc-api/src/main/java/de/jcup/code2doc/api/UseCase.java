@@ -17,10 +17,13 @@
 * under the License.*/
 package de.jcup.code2doc.api;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -83,15 +86,17 @@ public abstract class UseCase extends ContentElement {
 
 	/**
 	 * Return all roles the use case is available for. When the returned
-	 * collection is empty this means its available for EVERY role!
-	 * 
-	 * @return empty collection when for every role - otherwise only dedicated -
-	 *         never null
+	 * collection is empty this means its available for EVERY role!<br>
+	 * <br>
+	 * The resulting collecting will be sorted by role class names
+	 * @return sorted collection - never null
 	 */
 	public final Collection<Class<? extends Role>> getRoles() {
-		return Collections.unmodifiableCollection(rolesAndConstraints.keySet());
+		List<Class<? extends Role>> list = new ArrayList<Class<? extends Role>>(rolesAndConstraints.keySet());
+		Collections.sort(list, new RoleSortComparator());
+		return list;
 	}
-
+	
 	/**
 	 * Returns constraint for given role - if there is one existing
 	 * 
@@ -215,5 +220,25 @@ public abstract class UseCase extends ContentElement {
 			linkToConcepts.add(concept);
 			return this;
 		}
+	}
+
+	private class RoleSortComparator implements Comparator<Class<? extends Role>>{
+	
+		@Override
+		public int compare(Class<? extends Role> role1, Class<? extends Role> role2) {
+			if (role1==null){
+				if (role2==null){
+					return 0;
+				}
+				return -1;
+			}
+			if (role2==null){
+				return 1;
+			}
+			String name1= role1.getName();
+			String name2= role2.getName();
+			return name1.compareTo(name2);
+		}
+		
 	}
 }

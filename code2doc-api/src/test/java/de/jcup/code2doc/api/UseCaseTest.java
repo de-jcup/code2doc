@@ -19,9 +19,25 @@ package de.jcup.code2doc.api;
 
 import static org.junit.Assert.*;
 
+import java.util.Collection;
+import java.util.Iterator;
+
 import org.junit.Test;
 public class UseCaseTest {
 
+	@Test
+	public void test_getRoles_is_aplphabetical_sorted_ascending(){
+		TestUseCase1 uc1 = new TestUseCase1();
+		Collection<Class<? extends Role>> roles = uc1.getRoles();
+		
+		assertEquals(4,roles.size());
+		Iterator<Class<? extends Role>> it = roles.iterator();
+		assertEquals(Role1.class, it.next());
+		assertEquals(Role2.class, it.next());
+		assertEquals(Role3.class, it.next());
+		assertEquals(Role4.class, it.next());
+	}
+	
 	@Test
 	public void test_get_constraint_works(){
 		TestUseCase1 uc1 = new TestUseCase1();
@@ -55,7 +71,10 @@ public class UseCaseTest {
 
 		@Override
 		protected void doSetup(UseCaseSetup setup) {
+			setup.addRole(Role3.class,Constraint1.class);
 			setup.addRole(Role1.class,Constraint1.class);
+			setup.addRole(Role4.class,Constraint1.class);
+			setup.addRole(Role2.class,Constraint1.class);
 			setup.setExamplePicture("resourcePath1/path2/path3");
 		}
 		
@@ -71,6 +90,33 @@ public class UseCaseTest {
 	}
 	
 	public static class Role1 extends Role{
+
+		@Override
+		protected void doSetup(RoleSetup setup) {
+			
+		}
+		
+	}
+	
+	public static class Role2 extends Role{
+
+		@Override
+		protected void doSetup(RoleSetup setup) {
+			
+		}
+		
+	}
+	
+	public static class Role3 extends Role{
+
+		@Override
+		protected void doSetup(RoleSetup setup) {
+			
+		}
+		
+	}
+	
+	public static class Role4 extends Role{
 
 		@Override
 		protected void doSetup(RoleSetup setup) {
