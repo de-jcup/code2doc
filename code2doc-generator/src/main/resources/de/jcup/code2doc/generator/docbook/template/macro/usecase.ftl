@@ -52,7 +52,7 @@
 		<#if useCase.examplePictureResourcePath??>
 		<figure>
 			<title>${i18n.get('code2doc.core.usecase.example.picture.headline.prefix')} '${useCase.headline}'</title>
-			<graphic fileref='${transformer.transformToFile(useCase.examplePictureResourcePath)}' />
+			<graphic fileref="${transformer.transformToFile(useCase.examplePictureResourcePath)}" scalefit="1" width="100%" contentdept="100%"/>
 		</figure>
 		</#if>
 		<#------------------------------------>

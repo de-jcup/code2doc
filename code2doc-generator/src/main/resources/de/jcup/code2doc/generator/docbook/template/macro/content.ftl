@@ -81,7 +81,7 @@
 		<#if transformer.transformToFile(pictureContent.resourcePath)??>
 		<figure>
 			<title>${pictureContent.title}</title>
-			<graphic fileref='${transformer.transformToFile(pictureContent.resourcePath)}' width='100%' scalefit='1'  />
+			<graphic fileref="${transformer.transformToFile(pictureContent.resourcePath)}" scalefit="1" width="100%" contentdept="100%"  />
 		</figure>
 		<#else>
 			<@error 'no file found for:'+pictureContent.resourcePath/>

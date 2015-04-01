@@ -54,7 +54,7 @@ public abstract class ContentElement extends Element{
 	
 	/**
 	 * Returns content - without locale
-	 * @return
+	 * @return content
 	 */
 	public final Content getContent(){
 		return getContent(null);
@@ -62,7 +62,7 @@ public abstract class ContentElement extends Element{
 	
 	/**
 	 * Returns content - for given locale
-	 * @param locale
+	 * @param locale content
 	 * @return
 	 */
 	public final Content getContent(Locale locale){

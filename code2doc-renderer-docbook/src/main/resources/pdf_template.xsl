@@ -8,18 +8,18 @@
 
 	<!-- linebreaks: http://www.sagehill.net/docbookxsl/LineBreaks.html -->
 	<xsl:template match="processing-instruction('linebreak')">
-	  <fo:block/>
+		<fo:block />
 	</xsl:template>
 
 	<!-- http://www.sagehill.net/docbookxsl/ProgramListings.html -->
-	<xsl:param name="shade.verbatim" select="1"/>
-	
+	<xsl:param name="shade.verbatim" select="1" />
+
 	<xsl:attribute-set name="shade.verbatim.style">
-	  <xsl:attribute name="background-color">#E0E0E0</xsl:attribute>
-	  <xsl:attribute name="border-width">0.5pt</xsl:attribute>
-	  <xsl:attribute name="border-style">solid</xsl:attribute>
-	  <xsl:attribute name="border-color">#575757</xsl:attribute>
-	  <xsl:attribute name="padding">3pt</xsl:attribute>
+		<xsl:attribute name="background-color">#E0E0E0</xsl:attribute>
+		<xsl:attribute name="border-width">0.5pt</xsl:attribute>
+		<xsl:attribute name="border-style">solid</xsl:attribute>
+		<xsl:attribute name="border-color">#575757</xsl:attribute>
+		<xsl:attribute name="padding">3pt</xsl:attribute>
 	</xsl:attribute-set>
 
 	<!-- http://www.dpawson.co.uk/docbook/styling/fo.html -->
@@ -45,11 +45,23 @@
 			<xsl:apply-templates />
 		</fo:inline>
 	</xsl:template>
-	
+
 	<!-- http://www.sagehill.net/docbookxsl/ImageSizing.html -->
 	<!-- http://docbook.org/tdg/en/html/imagedata.html -->
-	<!--  done inside generated docbook elements! -->
-	
-	<!--  left margin... http://stackoverflow.com/questions/17237093/xsl-fo-docbook-content-left-margin -->
-	<xsl:param name="body.start.indent">0pt</xsl:param>
+	<!-- done inside generated docbook elements! -->
+
+	<!-- left margin... http://stackoverflow.com/questions/17237093/xsl-fo-docbook-content-left-margin -->
+	<xsl:param name="body.start.indent">
+		0pt
+	</xsl:param>
+
+	<!-- http://www.sagehill.net/docbookxsl/ListSpacing.html -->
+	<xsl:attribute-set name="list.block.spacing">
+		<xsl:attribute name="margin-left">
+    <xsl:choose>
+      <xsl:when test="self::itemizedlist">1in</xsl:when>
+      <xsl:otherwise>0pt</xsl:otherwise>
+    </xsl:choose>
+  </xsl:attribute>
+	</xsl:attribute-set>
 </xsl:stylesheet>  
