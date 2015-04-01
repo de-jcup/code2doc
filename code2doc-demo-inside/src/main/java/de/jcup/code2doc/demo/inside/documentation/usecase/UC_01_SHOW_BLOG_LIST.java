@@ -29,7 +29,10 @@ public class UC_01_SHOW_BLOG_LIST extends UseCase{
 				"A list with all currently created blogs inside this system is shown "
 				+"to user. No matter if the user is logged in or not."
 				+"<p> </p>" /* example for an empty paragraph! Recommend the space between the elements - necessary to work!*/
-				+"<p>(<i>Its pretty normal that blogs are read by anonymous users...</i>)</p>");
+				+"<p>(<i>Its pretty normal that blogs are read by anonymous users...</i>)</p>"
+				/* next follows an example for an internal link */
+				+"<p>There is another use case (<a href='code2doc://de.jcup.code2doc.demo.inside.documentation.usecase.UC_13_SELECT_BLOG_LISTENTRY'>UC_13_SELECT_BLOG_LISTENTRY</a>) which depends on this one.</p>"
+				);
 		/* @formatter:on*/
 
 		useCaseSetup.setExactURL(UseCaseUtil.createURL("showAllBlogs"));

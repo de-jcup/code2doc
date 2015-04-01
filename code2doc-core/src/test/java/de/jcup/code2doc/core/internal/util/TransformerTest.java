@@ -25,6 +25,11 @@ import org.junit.Test;
 public class TransformerTest {
 
 	@Test
+	public void test_to_ID() {
+		assertEquals("java.lang.Object", transformer.transformToId(new Object()));
+	}
+	
+	@Test
 	public void test_to_string() {
 		assertEquals("null", transformer.transformToString(null));
 		assertEquals(getClass().getName(), transformer.transformToString(TransformerTest.class));
@@ -44,6 +49,7 @@ public class TransformerTest {
 		assertEquals("InternalTestClass", transformer.transformToTag(new InternalTestClass()));
 	}
 
+	
 	private Transformer transformer;
 
 	@Before

@@ -57,8 +57,15 @@ public class DocbookTextStyleTest {
 	}
 	
 	@Test
-	public void test_links(){
-		assertEquals("<ulink url='target1'>content</ulink>",style.applyTo("<a href='target'>content</a>"));
+	public void test_links_standard(){
+		assertEquals("<ulink url='target'>content</ulink>",style.applyTo("<a href='target'>content</a>"));
+	}
+	
+	
+	@Test
+	public void test_links_internal(){
+		/* target must be uppercased automatically - because IDs are always uppercased by transformer!*/
+		assertEquals("<xref linkend='targetUpper'>content</xref>",style.applyTo("<a href='code2doc://targetUpper'>content</a>"));
 	}
 	
 	private DocbookTextStyle style;

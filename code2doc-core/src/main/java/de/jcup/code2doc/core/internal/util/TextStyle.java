@@ -31,7 +31,8 @@ import static de.jcup.code2doc.core.internal.util.StringUtil.*;
  * <li>&ltul&gtcontent&lt/ul&gt</li>
  * <li>&ltli&gtcontent&lt/li&gt</li>
  * <li>&ltp&gtcontent&lt/p&gt</li>
- * <li>&lta href='...'&gtcontent&lt/a&gt</li>
+ * <li>&lta href='$link'&gtcontent&lt/a&gt - if $link is is matching 'code2doc://$target' an internal link to an element will be created. 
+ * It is <b>absolute important</b> that $target is a correct element identifier (means full class name).</li>
  * </ol>
  * 
  * TODO de-jcup, 22.03.2015: Think about using a parser (maybe state machine based) instead of heavy usage of regular expressions
@@ -83,6 +84,16 @@ public abstract class TextStyle {
 		 */
 		A("href");
 
+		
+		/**
+		 * prefix 1 (for internal format)
+		 */
+		private static final String P1 = "\\\\\\/";
+		/**
+		 * prefix 2 (for internal format)
+		 */
+		private static final String P2 = "\\\\\\//";
+		
 		private final Pattern patternInternal;
 		private final Pattern patternExternal;
 		private final String replaceExternalWithInternal;
@@ -163,19 +174,19 @@ public abstract class TextStyle {
 		}
 
 		private String createInternalString(String element, String content) {
-			return "\\\\\\/" + element + "\\\\\\/" + content + "\\\\\\//" + element + "\\\\\\/";
+			return P1 + element + P1 + content + P2 + element + P1;
 		}
 
 		private String createInternalString(String element, String content, String attribute) {
-			return "\\\\\\/" + element + "-" + attribute + "\\\\\\/" + content + "\\\\\\//" + element + "\\\\\\/";
+			return P1 + element + "-" + attribute + P1 + content + P2 + element + P1;
 		}
 		
 		private String createInternalStringNoContent(String element) {
-			return "\\\\\\/" + element + "\\\\\\/";
+			return P1 + element + P1;
 		}
 
 		private String createInternalStringNoContent(String element,String attribute) {
-			return "\\\\\\/" + element + "-" + attribute + "\\\\\\/";
+			return P1 + element + "-" + attribute + P1;
 		}
 
 		private String replacementSimpleXHTMLNoContentToInternal(String element) {

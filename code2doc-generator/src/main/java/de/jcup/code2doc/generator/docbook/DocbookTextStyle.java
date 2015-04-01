@@ -18,6 +18,7 @@
 package de.jcup.code2doc.generator.docbook;
 
 import java.io.ByteArrayOutputStream;
+import java.util.regex.Pattern;
 
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
@@ -30,6 +31,8 @@ public class DocbookTextStyle extends TextStyle{
 	 * support every JRE 6 installation - so instead using newInstance()
 	 */
 	private XMLOutputFactory factory = XMLOutputFactory.newInstance();
+	
+	private static final Pattern INTERNAL_LINK = Pattern.compile("<ulink url='code2doc://(.+?)'>(.+?)</ulink>",Pattern.DOTALL |Pattern.CASE_INSENSITIVE);
 	
 	public String applyToImpl(String internalFormatText) {
 		String escaped = escapeXml(internalFormatText);
@@ -62,9 +65,11 @@ public class DocbookTextStyle extends TextStyle{
 		text = XHTMLReplace.LI.replace(text, "<listitem>$1</listitem>");
 		text = XHTMLReplace.UL.replace(text, "<itemizedlist mark='opencircle'>$1</itemizedlist>");
 		text = XHTMLReplace.P.replace(text, "<para>$1</para>");
-		text = XHTMLReplace.A.replace(text, "<ulink url='$11'>$2</ulink>");
+		text = XHTMLReplace.A.replace(text, "<ulink url='$1'>$2</ulink>");
 		
 		text = XHTMLReplace.BR.replace(text, "<?linebreak?>");
+		
+		text = INTERNAL_LINK.matcher(text).replaceAll("<xref linkend='$1'>$2</xref>");
 		return text;
 	}
 	

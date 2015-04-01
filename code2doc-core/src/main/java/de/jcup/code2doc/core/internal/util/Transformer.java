@@ -139,7 +139,7 @@ public class Transformer {
 	/**
 	 * Transforms given object to an ID 
 	 * <ol>
-	 * <li>all others return their full class name as result</li> but as upper case
+	 * <li>all others return their full class name as result</li> 
 	 * </ol>
 	 * @param object
 	 * @return tag of object
@@ -148,7 +148,7 @@ public class Transformer {
 		if (object == null){
 			throw new IllegalArgumentException("Object is null! To create an identifier the object must always be available!");
 		}
-		return object.getClass().getName().toUpperCase();
+		return object.getClass().getName();
 	}
 
 	
