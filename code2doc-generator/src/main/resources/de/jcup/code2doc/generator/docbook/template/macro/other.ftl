@@ -8,7 +8,7 @@
 		<entry>
 		<#list map[key] as item>
 			<#assign itemAsString=transformer.transformToString(item)/>
-			${itemAsString} 
+			<para>${itemAsString}</para>
 		</#list>
 		</entry>
 	</row>

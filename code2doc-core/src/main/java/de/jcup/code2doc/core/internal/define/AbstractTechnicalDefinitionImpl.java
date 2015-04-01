@@ -50,10 +50,9 @@ public class AbstractTechnicalDefinitionImpl<TECH_PARENT> implements TechnicalDe
 	
 	public boolean isContainingLinks(){
 		int count =0;
-		count += getLinkToJavaClasses().size();
-		count += getLinkToJavaEnums().size();
-		count += getLinkToURLs().size();
-		
+		count += linkToJavaClasses.size();
+		count += linkToJavaEnums.size();
+		count += linkToURLs.size();
 		return count>0;
 	}
 	
@@ -75,20 +74,19 @@ public class AbstractTechnicalDefinitionImpl<TECH_PARENT> implements TechnicalDe
 		if (isEmpty(id)){
 			id="fields";
 		}
-		addLinkToURL(id, clazz.getSimpleName()+"."+fieldName);
+		addLinkToURL(id, createJavaFieldURL(clazz, fieldName));
 		return this;
 	}
 
-	
 	@Override
 	public TechnicalDefinition<TECH_PARENT> addLinkToJavaMethod(String id, Class<?> clazz, String methodName) {
 		if (isEmpty(id)){
 			id="methods";
 		}
-		addLinkToURL(id, clazz.getSimpleName()+"#"+methodName+"(...)");
+		addLinkToURL(id, createJavaMethodURL(clazz, methodName));
 		return this;
 	}
-	
+
 	@Override
 	public <T extends Enum<?>> TechnicalDefinition<TECH_PARENT> addLinkToJava(String id, T... enums) {
 		Collection<Enum<?>> x = ensuredCollection(linkToJavaEnums, id);
@@ -149,19 +147,29 @@ public class AbstractTechnicalDefinitionImpl<TECH_PARENT> implements TechnicalDe
 		return true;
 	}
 
-	public Map<String, Collection<Class<?>>> getLinkToJavaClasses() {
-		return linkToJavaClasses;
+	public Map<String, Collection<Object>> getLinksCombined(){
+		Map<String, Collection<Object>> map = new TreeMap<String, Collection<Object>>();
+		for (String key: linkToJavaClasses.keySet()){
+			ensuredCollection(map, key).addAll(linkToJavaClasses.get(key));
+		}
+		for (String key: linkToJavaEnums.keySet()){
+			ensuredCollection(map, key).addAll(linkToJavaEnums.get(key));
+		}
+		for (String key: linkToURLs.keySet()){
+			ensuredCollection(map, key).addAll(linkToURLs.get(key));
+		}
+		return map;
 	}
 	
-	public Map<String, Collection<Enum<?>>> getLinkToJavaEnums() {
-		return linkToJavaEnums;
+	
+	String createJavaFieldURL(Class<?> clazz, String fieldName) {
+		return clazz.getSimpleName()+"."+fieldName;
 	}
-	
-	public Map<String, Collection<String>> getLinkToURLs() {
-		return linkToURLs;
+
+	String createJavaMethodURL(Class<?> clazz, String methodName) {
+		return clazz.getSimpleName()+"#"+methodName+"(...)";
 	}
-	
-	
+
 	private <T> Collection<T> ensuredCollection(Map<String, Collection<T>> map, String key){
 		Collection<T> data = map.get(key);
 		if (data==null){

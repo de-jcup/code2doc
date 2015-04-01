@@ -30,9 +30,7 @@
 						</row>
 					</thead>
 					<tbody>
-						<@appendMaptoTable techInfo.linkToJavaClasses/>
-						<@appendMaptoTable techInfo.linkToJavaEnums/>
-						<@appendMaptoTable techInfo.linkToURLs/>
+						<@appendMaptoTable techInfo.linksCombined/>
 					</tbody>
 				</tgroup>
 			</table>
