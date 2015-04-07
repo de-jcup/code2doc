@@ -88,7 +88,10 @@ public class AbstractTechnicalDefinitionImpl<TECH_PARENT> implements TechnicalDe
 	}
 
 	@Override
-	public <T extends Enum<?>> TechnicalDefinition<TECH_PARENT> addLinkToJava(String id, T... enums) {
+	public <T extends Enum<T>> TechnicalDefinition<TECH_PARENT> addLinkToJava(String id, T... enums) {
+		if (isEmpty(id)){
+			id="enums";
+		}
 		Collection<Enum<?>> x = ensuredCollection(linkToJavaEnums, id);
 		for (Enum<?> enum_: enums ){
 			x.add(enum_);

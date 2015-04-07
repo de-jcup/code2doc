@@ -63,7 +63,7 @@ public abstract class ContentElement extends Element{
 	/**
 	 * Returns content - for given locale
 	 * @param locale content
-	 * @return
+	 * @return content for given locale
 	 */
 	public final Content getContent(Locale locale){
 		return getBaseContent(locale);
@@ -71,7 +71,9 @@ public abstract class ContentElement extends Element{
 	
 	
 	/**
-	 * Base setup class can be used by subclasses to enable a dedicated setup method... 
+	 * Base setup class can be used by subclasses to enable a dedicated setup methods.
+	 * Main purpose of setup objects is to avoid having protected fields were extending
+	 * classes can directly change fields 
 	 */
 	protected abstract class ContentSetup<X extends ContentSetup<?>>{
 		

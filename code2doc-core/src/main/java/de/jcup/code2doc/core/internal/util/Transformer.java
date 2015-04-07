@@ -70,11 +70,11 @@ public class Transformer {
 			Enum<?> en = (Enum<?>)object;
 			String simpleClassName = en.getClass().getSimpleName();
 			String name = en.name();
-			String toString = en.toString();
-			if (name.equals(toString)){
+//			String toString = en.toString();
+//			if (name.equals(toString)){
 				 return simpleClassName+"."+name;
-			}
-			return simpleClassName+"."+name+":"+toString;
+//			}
+//			return simpleClassName+"."+name+":"+toString;
 			
 		}
 		if (object instanceof Class<?>){

@@ -92,10 +92,11 @@ public class SpecificationImpl implements Specification {
 	/**
 	 * Return a element definition for given element clazz
 	 * 
-	 * @param clazz
+	 * @param clazz - the exact class of the element definition.
 	 * @return
 	 */
-	public ElementDefinitionImpl<?, ?, ?> getDefinition(Class<? extends Element> clazz) {
+	@SuppressWarnings("unchecked")
+	public <T extends Element> ElementDefinitionImpl<?, T, ?> getDefinition(Class<T> clazz) {
 		if (clazz == null){
 			throw new IllegalArgumentException("cant get a definition for NULL element!");
 		}
@@ -121,7 +122,7 @@ public class SpecificationImpl implements Specification {
 				ElementDefinitionImpl<?, ?, ?> elementDef = it.next();
 				Object obj = elementDef.getElement();
 				if (clazz.equals(obj.getClass())) {
-					return elementDef;
+					return (ElementDefinitionImpl<?, T, ?>) elementDef;
 				}
 			}
 		}

@@ -17,6 +17,7 @@
 * under the License.*/
 package de.jcup.code2doc.core.internal.decorate;
 
+import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
 
@@ -34,6 +35,7 @@ import de.jcup.code2doc.core.internal.collect.ClasspathDataCollector;
 import de.jcup.code2doc.core.internal.collect.TechInfoLinkAnnotationData;
 import de.jcup.code2doc.core.internal.define.ElementDefinitionImpl;
 import de.jcup.code2doc.core.internal.define.SpecificationImpl;
+import de.jcup.code2doc.core.internal.util.Validation;
 
 public class ClasspathDecorator extends AbstractSpecificationImplDecorator {
 
@@ -90,7 +92,7 @@ public class ClasspathDecorator extends AbstractSpecificationImplDecorator {
 
 	/* currently having problems with generics in IDE so made map raw  ...*/
 	@SuppressWarnings("rawtypes") 
-	private void appendTechInfoLinkAnnotationData(SpecificationImpl specificationImpl, Map/*<Class<? extends Element>, List<TechInfoLinkAnnotationData>>*/ mapOfLinkToElement) {
+	void appendTechInfoLinkAnnotationData(SpecificationImpl specificationImpl, Map/*<Class<? extends Element>, List<TechInfoLinkAnnotationData>>*/ mapOfLinkToElement) {
 		@SuppressWarnings("unchecked")
 		Map<Class<? extends Element>, List<TechInfoLinkAnnotationData>> map = mapOfLinkToElement; 
 		for (Class<? extends Element> elementClazzKey : map.keySet()) {
@@ -104,23 +106,41 @@ public class ClasspathDecorator extends AbstractSpecificationImplDecorator {
 		}
 	}
 
-	private void appendData(List<TechInfoLinkAnnotationData> linkDataList, ElementDefinitionImpl<?, ?, ?> element) {
+	void appendData(List<TechInfoLinkAnnotationData> linkDataList, ElementDefinitionImpl<?, ?, ?> element) {
 		if (linkDataList == null || linkDataList.isEmpty()) {
 			return;
 		}
 		/* append data to definition */
 		for (TechInfoLinkAnnotationData linkData : linkDataList) {
-			Class<?> clazz = linkData.getLinkedClass();
-			String group = linkData.getType();
 			TechnicalDefinition<?> techInfo = element.addTechInfo(linkData.getTechInfoGroup());
-			if (linkData.isFieldLink()) {
-				techInfo.addLinkToJavaField(group, clazz, linkData.getLinkedField().getName());
-			} else if (linkData.isMethodLink()) {
-				techInfo.addLinkToJavaMethod(group, clazz, linkData.getLinkedMethod().getName());
-			}else {
-				techInfo.addLinkToJava(group, clazz);
-			}
+			append(linkData, techInfo);
+		}
+	}
 
+	@SuppressWarnings(value={"unchecked", "rawtypes"})
+	void  append(TechInfoLinkAnnotationData linkData,  TechnicalDefinition<?> techInfo) {
+		String group = linkData.getType();
+		Class<?> clazz = linkData.getLinkedClass();
+		Validation.notNull(clazz, "clazz may not be null");
+		if (linkData.isFieldLink()) {
+			/* when the field is an enum - we must check if its an enum value - if so we add it with dedicated method */
+			Field field = linkData.getLinkedField();
+			if (clazz.isEnum()){
+				if (field.isEnumConstant()){
+					String name = field.getName();
+					Validation.notNull(name, "field name must be set!");
+					/* because of http://bugs.java.com/bugdatabase/view_bug.do?bug_id=6369605 we must use a reduced part because a generic approach fails for JAVA 6!*/
+					Class workaroundForJavaBug = clazz;
+					Enum enumValue = Enum.valueOf(workaroundForJavaBug, name);
+					techInfo.addLinkToJava(group, enumValue);
+				}
+			}else{
+				techInfo.addLinkToJavaField(group, clazz, field.getName());
+			}
+		} else if (linkData.isMethodLink()) {
+			techInfo.addLinkToJavaMethod(group, clazz, linkData.getLinkedMethod().getName());
+		}else {
+			techInfo.addLinkToJava(group, clazz);
 		}
 	}
 

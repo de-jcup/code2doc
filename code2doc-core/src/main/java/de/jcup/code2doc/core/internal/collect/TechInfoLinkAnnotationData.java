@@ -25,9 +25,12 @@ public class TechInfoLinkAnnotationData {
 	Class<?> linkedClass;
 	String type;
 	Method linkedMethod;
+	
+
 	Field linkedField;
 	String group;
 	
+
 	public String getTechInfoGroup() {
 		return group;
 	}

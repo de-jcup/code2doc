@@ -47,9 +47,9 @@ public abstract class UseCase extends ContentElement {
 	private Map<Class<? extends Role>, Class<? extends Constraint>> rolesAndConstraints = new HashMap<Class<? extends Role>, Class<? extends Constraint>>();
 	Set<Class<? extends Concept>> linkToConcepts = new LinkedHashSet<Class<? extends Concept>>();
 
-	private String exampleURL;
-	private String exactURL;
-	private String examplePictureResourcePath;
+	String exampleURL;
+	String exactURL;
+	String examplePictureResourcePath;
 
 	public UseCase() {
 		UseCaseSetup useCaseSetup = new UseCaseSetup();
@@ -99,8 +99,8 @@ public abstract class UseCase extends ContentElement {
 	
 	/**
 	 * Returns constraint for given role - if there is one existing
-	 * 
-	 * @param role
+	 * 	
+	 * @param role - role for which a constraint is defined
 	 * @return existing constraint or <code>null</code>
 	 */
 	public final Class<? extends Constraint> getConstraint(Class<? extends Role> role) {

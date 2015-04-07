@@ -17,10 +17,10 @@
 * under the License.*/
 package de.jcup.code2doc.core.internal.define;
 
+import static de.jcup.code2doc.core.internal.util.StringUtil.*;
+
 import java.util.ArrayList;
 import java.util.Collection;
-
-import static de.jcup.code2doc.core.internal.util.StringUtil.*;
 
 import de.jcup.code2doc.api.Element;
 import de.jcup.code2doc.core.define.TechnicalDefinition;
@@ -46,7 +46,7 @@ public abstract class ElementDefinitionImpl<TECH_PARENT,ELEMENT extends Element,
 
 	/**
 	 * get element
-	 * @return
+	 * @return element
 	 */
 	public ELEMENT getElement() {
 		return element;
@@ -55,7 +55,7 @@ public abstract class ElementDefinitionImpl<TECH_PARENT,ELEMENT extends Element,
 
 	/**
 	 * End this definition
-	 * @return
+	 *  @return parent
 	 */
 	public PARENT endDefinition() {
 		return parent;
@@ -71,7 +71,7 @@ public abstract class ElementDefinitionImpl<TECH_PARENT,ELEMENT extends Element,
 	/**
 	 * Adds a tech info
 	 * @param group
-	 * @return
+	 * @return technical definition
 	 */
 	public TechnicalDefinition<TECH_PARENT> addTechInfo(String group) {
 		String text = element.getHeadline();
@@ -95,7 +95,7 @@ public abstract class ElementDefinitionImpl<TECH_PARENT,ELEMENT extends Element,
 	/**
 	 * Implementation create a dedicated new technical definition with given text
 	 * @param text
-	 * @return
+	 * @return technical definition
 	 */
 	protected abstract TechnicalDefinition<TECH_PARENT> createImpl(String text);
 	

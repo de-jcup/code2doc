@@ -23,48 +23,48 @@ public interface TechnicalDefinition<P> {
 	
 	/**
 	 * Add link to java class
-	 * @param id
-	 * @param classes
+	 * @param group - group name
+	 * @param clazz - class
 	 * @return definition
 	 */
-	public TechnicalDefinition<P> addLinkToJava(String id, Class<?> ...classes);
+	public TechnicalDefinition<P> addLinkToJava(String group, Class<?> ...classes);
 	
 	/**
 	 * Add link to java linkedMethod
-	 * @param id
-	 * @param classes
+	 * @param group - group name
+	 * @param clazz - class
 	 * @return definition
 	 */
-	public TechnicalDefinition<P> addLinkToJavaMethod(String id, Class<?> clazz, String methodName);
+	public TechnicalDefinition<P> addLinkToJavaMethod(String group, Class<?> clazz, String methodName);
 	
 	
 	/**
-	 * Add link to java fieldname
-	 * @param id
-	 * @param classes
+	 * Add link to java field name
+	 * @param group - group name
+	 * @param clazz - class 
 	 * @return definition
 	 */
-	public TechnicalDefinition<P> addLinkToJavaField(String id, Class<?> clazz, String fieldName);
+	public TechnicalDefinition<P> addLinkToJavaField(String group, Class<?> clazz, String fieldName);
 	
 	/**
 	 * Add link to java enumeration
-	 * @param id
-	 * @param enums
+	 * @param group - group name
+	 * @param enums - one or more enumerations to add for group
 	 * @return definition
 	 */
-	public <T extends Enum<?>> TechnicalDefinition<P> addLinkToJava(String id, T ... enums);
+	public <T extends Enum<T>> TechnicalDefinition<P> addLinkToJava(String group, T ... enums);
 	
 	/**
 	 * Adds a link to an external URL
-	 * @param id
-	 * @param url
+	 * @param group - group name
+	 * @param url - url string 
 	 * @return definition
 	 */
-	public TechnicalDefinition<P> addLinkToURL(String id, String ... urls);
+	public TechnicalDefinition<P> addLinkToURL(String group, String ... urls);
 	
 	/**
 	 * End
-	 * @return
+	 * @return tech info parent
 	 */
 	public P endTechInfo();
 }

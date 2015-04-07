@@ -54,7 +54,7 @@ public class DummyTechnicalInfo<P> implements TechnicalDefinition<P>{
 	}
 
 	@Override
-	public <T extends Enum<?>> TechnicalDefinition<P> addLinkToJava(String id, T... enums) {
+	public <T extends Enum<T>> TechnicalDefinition<P> addLinkToJava(String id, T... enums) {
 		return this;
 	}
 

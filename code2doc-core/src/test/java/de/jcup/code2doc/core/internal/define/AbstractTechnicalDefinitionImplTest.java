@@ -13,6 +13,21 @@ import static org.junit.Assert.*;
 public class AbstractTechnicalDefinitionImplTest {
 	
 	@Test
+	public void test_adding_javafields_normal_way(){
+		def.addLinkToJava(null, TestEnumInside.Alpha);
+		
+		Map<String, Collection<Object>> combined = def.getLinksCombined();
+		assertNotNull(combined);
+		assertEquals(1, combined.keySet().size());
+		Collection<Object> data = combined.get(combined.keySet().iterator().next());
+		assertNotNull(data);
+		assertEquals(1, data.size());
+		Object value = data.iterator().next();
+		assertTrue(value instanceof TestEnumInside);
+		assertEquals(TestEnumInside.Alpha, value);
+	}
+	
+	@Test
 	public void test_combination_of_links(){
 		String id1 = "id1";
 		def.addLinkToJava(id1, AbstractTechnicalDefinitionImpl.class);

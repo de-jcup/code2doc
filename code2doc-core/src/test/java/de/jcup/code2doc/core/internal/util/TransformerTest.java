@@ -34,8 +34,8 @@ public class TransformerTest {
 		assertEquals("null", transformer.transformToString(null));
 		assertEquals(getClass().getName(), transformer.transformToString(TransformerTest.class));
 		assertEquals("InternalTestEnum.BETA", transformer.transformToString(InternalTestEnum.BETA));
-		assertEquals("InternalTestEnumWithToString.X:1", transformer.transformToString(InternalTestEnumWithToString.X));
-		assertEquals("InternalTestEnumWithToString.Y:2", transformer.transformToString(InternalTestEnumWithToString.Y));
+		assertEquals("InternalTestEnumWithToString.X", transformer.transformToString(InternalTestEnumWithToString.X));
+		assertEquals("InternalTestEnumWithToString.Y", transformer.transformToString(InternalTestEnumWithToString.Y));
 		assertEquals("Casper",transformer.transformToString("Casper"));
 		assertEquals("internal test", transformer.transformToString(new InternalTestClass()));
 	}
