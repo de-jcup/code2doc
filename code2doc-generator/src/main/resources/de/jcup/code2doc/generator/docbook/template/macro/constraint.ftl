@@ -9,13 +9,7 @@
 		<#assign tag=transformer.transformToTag(constraint)/>
 		<#assign id=transformer.transformToId(constraint)/>
 		<@openSection sectionStart id />
-			<#-- FIXME i18n -->
-			<title>${textDecorator.decorate(constraint.headline)}</title>
-			<formalpara>
-				<title>${i18n.get('code2doc.core.constraint.tag.headline')}</title>
-			</formalpara>
-			<para><indexterm><primary>${tag}</primary></indexterm>${tag}</para>
-			<para/>
+			<@renderHeader constraint/>
 			<#-------------------------->
 			<#-- description -->
 			<#-------------------------->

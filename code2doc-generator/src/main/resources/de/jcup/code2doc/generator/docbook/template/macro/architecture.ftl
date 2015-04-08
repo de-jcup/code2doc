@@ -8,10 +8,11 @@
 		<#assign architecture=architectureDef.element/>
 		<#assign id=transformer.transformToId(architecture)/>
 		<@openSection sectionStart id/>
-			<#-- FIXME i18n -->
-			<#assign title = textDecorator.decorate(architecture.headline)/>
-			<@debug 'showArchitecturDef (3): title='+title />
-			<title>${title}</title>
+			<@renderHeader architecture/>
+			<#-- FIXME 08.04.2015: add headline and description  to renderHeader too -->
+			<#-- FIXME 08.04.2015: handle empty descriptions there -->
+			<#-- FIXME 08.04.2015: use a general i18n key for description headline and content not defined etc. instead always dedicated -->
+			<#-- FIXME 08.04.2015: remove old tag parts -->
 			<#-------------------------->
 			<#--  description         -->
 			<#-------------------------->
@@ -23,8 +24,6 @@
 			<#else>
 				<#assign description=i18n.get('code2doc.core.architecture.description.content.notdefined')/>
 			</#if>
-			<#assign tag=transformer.transformToTag(architecture)/>
-			<indexterm><primary>${tag}</primary></indexterm>
 			<para>${textDecorator.decorate(description)}</para>
 			<@renderWikiURL architecture/>
 			<#------------------------------------>

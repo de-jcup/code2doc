@@ -9,13 +9,7 @@
 		<#assign tag=transformer.transformToTag(role)/>
 		<#assign id=transformer.transformToId(role)/>
 		<@openSection sectionStart id />
-			<#-- FIXME i18n -->
-			<title>${textDecorator.decorate(role.headline)}</title>
-			<formalpara>
-				<title>${i18n.get('code2doc.core.role.tag.headline')}</title>
-			</formalpara>
-			<para><indexterm><primary>${tag}</primary></indexterm>${tag}</para>
-			<para/>
+			<@renderHeader role/>
 			<#-------------------------->
 			<#-- description -->
 			<#-------------------------->

@@ -9,13 +9,7 @@
 		<#assign tag=transformer.transformToTag(concept)/>
 		<#assign id=transformer.transformToId(concept)/>
 		<@openSection sectionStart id />
-			<#-- FIXME i18n -->
-			<title>${textDecorator.decorate(concept.headline)}</title>
-			<formalpara>
-				<title>${i18n.get('code2doc.core.concept.tag.headline')}</title>
-			</formalpara>
-			<para><indexterm><primary>${tag}</primary></indexterm>${tag}</para>
-			<para/>
+			<@renderHeader concept/>
 			<#-------------------------->
 			<#-- description -->
 			<#-------------------------->

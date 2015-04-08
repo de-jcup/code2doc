@@ -1,3 +1,9 @@
+<#---------------------------------------->
+<#-- macro for indexing data            -->
+<#---------------------------------------->
+<#macro addToIndex data>
+	<indexterm><primary>${data}</primary></indexterm>
+</#macro>
 <#-------------------------------->
 <#-- macro for appending rows   -->
 <#-------------------------------->

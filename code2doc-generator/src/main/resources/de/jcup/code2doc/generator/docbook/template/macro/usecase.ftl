@@ -9,13 +9,7 @@
 		<#assign id=transformer.transformToId(useCase)/>
 		<@debug 'showUseCase (2)' />
 		<@openSection sectionStart id/>
-		<#-- FIXME i18n -->
-		<title>${textDecorator.decorate(useCase.headline)}</title>
-		<formalpara>
-			<title>${i18n.get('code2doc.core.usecase.tag.headline')}</title>
-		</formalpara>
-		<para><indexterm><primary>${tag}</primary></indexterm>${tag}</para>
-		<para/>
+		<@renderHeader useCase/>
 		<#-------------------------->
 		<#-- use case description -->
 		<#-------------------------->
