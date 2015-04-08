@@ -31,6 +31,7 @@ public class PersistenceConcept extends Architecture{
 	protected void doSetup(ArchitectureSetup architectureSetup) {
 		architectureSetup.setHeadline("Persistence concept");
 		architectureSetup.setDescription("A short introducction about the used technologies and internal architecture parts of persistence.");
+		architectureSetup.setWikiURL("http://en.wikipedia.org/wiki/Java_Persistence_API");
 		/* @formatter:off*/
 		architectureSetup.content().
 			addPictureResource("About persistence architecture","/demo/architecture_persistence_picture.png").

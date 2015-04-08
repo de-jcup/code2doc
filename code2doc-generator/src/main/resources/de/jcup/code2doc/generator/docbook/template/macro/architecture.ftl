@@ -26,6 +26,7 @@
 			<#assign tag=transformer.transformToTag(architecture)/>
 			<indexterm><primary>${tag}</primary></indexterm>
 			<para>${textDecorator.decorate(description)}</para>
+			<@renderWikiURL architecture/>
 			<#------------------------------------>
 			<#-- additional defined content parts  -->
 			<#------------------------------------>

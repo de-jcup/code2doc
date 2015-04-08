@@ -48,16 +48,38 @@ public abstract class Element {
 	}
 
 	/**
-	 * Get a short descriptions - e.g. for a headline
+	 * Get a short headline description
 	 * 
-	 * @return
+	 * @return headline string
 	 */
 	public final String getHeadline() {
 		return getHeadline(null);
 	}
 
+	/**
+	 * Get a short headline description for given locale 
+	 * 
+	 * @return headline string
+	 */
 	public final String getHeadline(Locale locale) {
 		return getBaseContent(locale).getHeadline();
+	}
+	
+	/**
+	 * Gets a WIKI URL if existing
+	 * @return wiki url or <code>null</code>
+	 */
+	public final String getWikiURL(){
+		return getWikiURL(null);
+	}
+	
+	/**
+	 * Gets a WIKI URL for given locale if existing
+	 * @param locale - locale
+	 * @return wiki url or <code>null</code>
+	 */
+	public final String getWikiURL(Locale locale){
+		return getBaseContent(locale).getWikiURL();
 	}
 
 	/**
@@ -362,7 +384,7 @@ public abstract class Element {
 		}
 
 	}
-
+	
 	public class HeadlineContainer extends AbstractContentContainer {
 		private String headline;
 
@@ -402,11 +424,6 @@ public abstract class Element {
 			return this;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see de.jcup.code2doc.api.ContentContainer#addText(java.lang.String)
-		 */
 		@Override
 		public ContentContainer addText(String text) {
 			notNull("text may not be null", text);
@@ -421,11 +438,6 @@ public abstract class Element {
 			return this;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see de.jcup.code2doc.api.ContentContainer#addPicture(java.lang.String)
-		 */
 		@Override
 		public ContentContainer addPictureResource(String title, String resourcePath) {
 			notNull("title may not be null", title);
@@ -443,13 +455,6 @@ public abstract class Element {
 			return this;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see
-		 * de.jcup.code2doc.api.ContentContainer#openHeadlineContainer(java.lang
-		 * .String)
-		 */
 		@Override
 		public ContentContainer openHeadlineContainer(String headline) {
 			notNull("headline may not be null", headline);
@@ -459,11 +464,6 @@ public abstract class Element {
 			return headlineContainer;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see de.jcup.code2doc.api.ContentContainer#closeContainer()
-		 */
 		@Override
 		public ContentContainer closeContainer() {
 			if (parent == null) {
@@ -483,6 +483,7 @@ public abstract class Element {
 		String description = "";
 		String headline = "";
 		Locale locale;
+		String wikiURL;
 
 		private BaseContentContainer(Locale locale) {
 			this.locale = locale;
@@ -494,6 +495,10 @@ public abstract class Element {
 
 		String getDescription() {
 			return description;
+		}
+		
+		public String getWikiURL() {
+			return wikiURL;
 		}
 
 		Locale getLocale() {

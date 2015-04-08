@@ -28,6 +28,7 @@
 				<#assign description=i18n.get('code2doc.core.constraint.description.content.notdefined')/>
 			</#if>
 			<para>${textDecorator.decorate(description)}</para>
+			<@renderWikiURL constraint/>
 			<#------------------------------------>
 			<#-- additional defined content parts  -->
 			<#------------------------------------>

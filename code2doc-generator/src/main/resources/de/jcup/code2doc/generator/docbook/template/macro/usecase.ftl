@@ -55,6 +55,7 @@
 			<graphic fileref="${transformer.transformToFile(useCase.examplePictureResourcePath)}" scalefit="1" width="100%" contentdept="100%"/>
 		</figure>
 		</#if>
+		<@renderWikiURL useCase/>
 		<#------------------------------------>
 		<#-- additional defined content parts  -->
 		<#------------------------------------>

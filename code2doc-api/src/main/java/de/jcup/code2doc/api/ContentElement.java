@@ -75,14 +75,14 @@ public abstract class ContentElement extends Element{
 	 * Main purpose of setup objects is to avoid having protected fields were extending
 	 * classes can directly change fields 
 	 */
-	protected abstract class ContentSetup<X extends ContentSetup<?>>{
+	protected abstract class ContentSetup<T extends ContentSetup<?>>{
 		
 		/**
 		 * Sets full description - no locale used
 		 * @param description - description text
 		 * @return setup
 		 */
-		public X setDescription(String description) {
+		public T setDescription(String description) {
 			return setDescription(description,null);
 		}
 		
@@ -94,9 +94,9 @@ public abstract class ContentElement extends Element{
 		 * @return setup
 		 */
 		@SuppressWarnings("unchecked")
-		public X setDescription(String description, Locale locale) {
+		public T setDescription(String description, Locale locale) {
 			baseContent(locale).description=description;
-			return (X) this;
+			return (T) this;
 		}
 
 		/**
@@ -105,7 +105,7 @@ public abstract class ContentElement extends Element{
 		 * @param description - description text
 		 * @return setup
 		 */
-		public X setHeadline(String description) {
+		public T setHeadline(String description) {
 			return setHeadline(description,null);
 		}
 		
@@ -117,9 +117,32 @@ public abstract class ContentElement extends Element{
 		 * @return setup
 		 */
 		@SuppressWarnings("unchecked")
-		public X setHeadline(String description, Locale locale) {
+		public T setHeadline(String description, Locale locale) {
 			baseContent(locale).headline=description;
-			return (X) this;
+			return (T) this;
+		}
+	
+		/**
+		 * Set a wiki URL where additinal information can be found - no locale used
+		 * 
+		 * @param description - description text
+		 * @return setup
+		 */
+		public T setWikiURL(String wikiURL) {
+			return setWikiURL(wikiURL,null);
+		}
+		
+		/**
+		 * Set a wiki URL where additinal information can be found
+		 * 
+		 * @param description - description text
+		 * @param locale - locale to use
+		 * @return setup
+		 */
+		@SuppressWarnings("unchecked")
+		public T setWikiURL(String wikiURL, Locale locale) {
+			baseContent(locale).wikiURL=wikiURL;
+			return (T) this;
 		}
 		
 		/**

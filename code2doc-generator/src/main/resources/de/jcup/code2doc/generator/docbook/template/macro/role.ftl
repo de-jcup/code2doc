@@ -28,6 +28,7 @@
 				<#assign description=i18n.get('code2doc.core.role.description.content.notdefined')/>
 			</#if>
 			<para>${textDecorator.decorate(description)}</para>
+			<@renderWikiURL role/>
 			<#------------------------------------>
 			<#-- additional defined content parts  -->
 			<#------------------------------------>
