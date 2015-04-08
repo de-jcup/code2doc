@@ -27,7 +27,7 @@ public interface ExampleURLExtension extends Code2DocExtension{
 	/**
 	 * Create example URL for given object
 	 * @param object
-	 * @return <code>null</code> if not supported for given object. If an exmple url can be built for given object a URL string is returned
+	 * @return <code>null</code> if not supported for given object. If an example URL can be built for given object a URL string is returned
 	 */
 	public String createExampleURL(Object object);
 }
