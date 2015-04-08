@@ -10,19 +10,7 @@
 		<#assign id=transformer.transformToId(constraint)/>
 		<@openSection sectionStart id />
 			<@renderHeader constraint/>
-			<#-------------------------->
-			<#-- description -->
-			<#-------------------------->
-			<formalpara>
-				<title>${i18n.get('code2doc.core.constraint.description.headline')}</title>
-			</formalpara>
-			<#if constraint.description??>
-				<#assign description=constraint.description/>
-			<#else>
-				<#assign description=i18n.get('code2doc.core.constraint.description.content.notdefined')/>
-			</#if>
-			<para>${textDecorator.decorate(description)}</para>
-			<@renderWikiURL constraint/>
+			<@renderDescription constraint />
 			<#------------------------------------>
 			<#-- additional defined content parts  -->
 			<#------------------------------------>

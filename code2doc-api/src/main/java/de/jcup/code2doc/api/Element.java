@@ -480,8 +480,11 @@ public abstract class Element {
 	}
 
 	class BaseContentContainer extends AbstractContentContainer {
-		String description = "";
-		String headline = "";
+		
+		static final String DEFAULT_DESCRIPTION = "";
+		
+		String headline = DEFAULT_DESCRIPTION; /* headline is never null*/
+		String description;
 		Locale locale;
 		String wikiURL;
 

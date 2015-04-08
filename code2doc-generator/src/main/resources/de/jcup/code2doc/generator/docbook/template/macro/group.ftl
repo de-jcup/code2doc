@@ -25,7 +25,7 @@
 			<#if definition.definitionType != definitionType>
 				<@error 'Difference found between definition types. Expected:' + definitionType+" but got:"+definition.definitionType /><#t>
 			</#if>
-			<@debug 'groupIterator (5):'+definitionType+', description='+definition.element.description /><#t>
+			<@debug 'groupIterator (5):'+definitionType+', description='+transformer.transformToString(definition.element.description) /><#t>
 			<@callShowMacro definitionType definition, newSection />
 		</#list>
 		

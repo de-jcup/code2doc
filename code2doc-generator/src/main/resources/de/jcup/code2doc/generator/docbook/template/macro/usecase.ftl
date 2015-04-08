@@ -10,18 +10,7 @@
 		<@debug 'showUseCase (2)' /><#t>
 		<@openSection sectionStart id/>
 		<@renderHeader useCase/>
-		<#-------------------------->
-		<#-- use case description -->
-		<#-------------------------->
-		<formalpara>
-			<title>${i18n.get('code2doc.core.usecase.description.headline')}</title>
-		</formalpara>
-		<#if useCase.description??>
-			<#assign description=useCase.description/>
-		<#else>
-			<#assign description=i18n.get('code2doc.core.usecase.description.content.notdefined')/>
-		</#if>
-		<para>${textDecorator.decorate(description)}</para>
+		<@renderDescription useCase />
 		<#--------------------->				
 		<#-- exact URL       -->
 		<#--------------------->
@@ -49,7 +38,6 @@
 			<graphic fileref="${transformer.transformToFile(useCase.examplePictureResourcePath)}" scalefit="1" width="100%" contentdept="100%"/>
 		</figure>
 		</#if>
-		<@renderWikiURL useCase/>
 		<#------------------------------------>
 		<#-- additional defined content parts  -->
 		<#------------------------------------>

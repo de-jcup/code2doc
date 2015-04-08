@@ -10,19 +10,7 @@
 		<#assign id=transformer.transformToId(concept)/>
 		<@openSection sectionStart id />
 			<@renderHeader concept/>
-			<#-------------------------->
-			<#-- description -->
-			<#-------------------------->
-			<formalpara>
-				<title>${i18n.get('code2doc.core.concept.description.headline')}</title>
-			</formalpara>
-			<#if concept.description??>
-				<#assign description=concept.description/>
-			<#else>
-				<#assign description=i18n.get('code2doc.core.concept.description.content.notdefined')/>
-			</#if>
-			<para>${textDecorator.decorate(description)}</para>
-			<@renderWikiURL concept/>
+			<@renderDescription concept />
 			<#------------------------------------>
 			<#-- additional defined content parts  -->
 			<#------------------------------------>

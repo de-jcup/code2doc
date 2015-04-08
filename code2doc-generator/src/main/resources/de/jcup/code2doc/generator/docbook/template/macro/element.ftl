@@ -25,9 +25,22 @@
 	<title>${textDecorator.decorate(element.headline)}</title>
 </#macro>
 <#---------------------------------------->
-<#-- macro for rendering tag data       -->
+<#-- macro for rendering element tag    -->
 <#---------------------------------------->
 <#macro renderTag element>
 	<@addToIndex tag/>
 	<foreignphrase>(${tag})</foreignphrase>
+</#macro>
+<#--------------------------------------------->
+<#-- macro for rendering element description -->
+<#--------------------------------------------->
+<#macro renderDescription element>
+	<#if element.description??>
+		<formalpara>
+			<title>${i18n.get('code2doc.core.description.headline')}</title>
+		</formalpara>
+		<#assign description=element.description/>
+		<para>${textDecorator.decorate(description)}</para>
+	</#if>
+	<@renderWikiURL element />
 </#macro>

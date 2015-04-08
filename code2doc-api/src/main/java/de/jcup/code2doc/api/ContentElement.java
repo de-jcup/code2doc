@@ -77,6 +77,8 @@ public abstract class ContentElement extends Element{
 	 */
 	protected abstract class ContentSetup<T extends ContentSetup<?>>{
 		
+		private static final String DEFAULT_DESCRIPTION = "";
+
 		/**
 		 * Sets full description - no locale used
 		 * @param description - description text
@@ -100,25 +102,28 @@ public abstract class ContentElement extends Element{
 		}
 
 		/**
-		 * Set the short description - think about a headline - no locale used
+		 * Set the headline - no locale
 		 * 
-		 * @param description - description text
+		 * @param headline - description text
 		 * @return setup
 		 */
-		public T setHeadline(String description) {
-			return setHeadline(description,null);
+		public T setHeadline(String headline) {
+			return setHeadline(headline,null);
 		}
 		
 		/**
-		 * Set the short description - think about a headline - no locale used
+		 * Set headline - no locale used
 		 * 
-		 * @param description - description text
+		 * @param headline - description text
 		 * @param locale - locale to use
 		 * @return setup
 		 */
 		@SuppressWarnings("unchecked")
-		public T setHeadline(String description, Locale locale) {
-			baseContent(locale).headline=description;
+		public T setHeadline(String headline, Locale locale) {
+			if (headline==null){
+				headline=BaseContentContainer.DEFAULT_DESCRIPTION;
+			}
+			baseContent(locale).headline=headline;
 			return (T) this;
 		}
 	

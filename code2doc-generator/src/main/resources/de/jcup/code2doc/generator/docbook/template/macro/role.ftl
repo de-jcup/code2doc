@@ -10,19 +10,7 @@
 		<#assign id=transformer.transformToId(role)/>
 		<@openSection sectionStart id />
 			<@renderHeader role/>
-			<#-------------------------->
-			<#-- description -->
-			<#-------------------------->
-			<formalpara>
-				<title>${i18n.get('code2doc.core.role.description.headline')}</title>
-			</formalpara>
-			<#if role.description??>
-				<#assign description=role.description/>
-			<#else>
-				<#assign description=i18n.get('code2doc.core.role.description.content.notdefined')/>
-			</#if>
-			<para>${textDecorator.decorate(description)}</para>
-			<@renderWikiURL role/>
+			<@renderDescription role />
 			<#------------------------------------>
 			<#-- additional defined content parts  -->
 			<#------------------------------------>
