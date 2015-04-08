@@ -5,7 +5,7 @@
 <#----------------------------------->
 <#macro openSection sectionStart id="NONE">
 	<#assign sectionName = createSectionName(sectionStart) />
-	<@debug '######## open section('+sectionName+') - nr:'+sectionStart />
+	<@debug '######## open section('+sectionName+') - nr:'+sectionStart /><#t>
 	<#if id='NONE'>
 		<${sectionName}>
 	<#else>
@@ -17,7 +17,7 @@
 <#----------------------------------->
 <#macro closeSection sectionStart>
 	<#assign sectionName = createSectionName(sectionStart) />
-	<@debug '######## close section('+sectionName+') - nr:'+sectionStart />
+	<@debug '######## close section('+sectionName+') - nr:'+sectionStart /><#t>
 	</${sectionName}>
 </#macro>
 <#----------------------------------->

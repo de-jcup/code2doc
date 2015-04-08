@@ -2,9 +2,9 @@
 <#-- macro for use case decoration -->
 <#----------------------------------->
 <#macro showArchitecturDef architectureDef sectionStart>
-	<@debug 'showArchitecturDef (1): sectionStart='+sectionStart />
+	<@debug 'showArchitecturDef (1): sectionStart='+sectionStart /><#t>
 	<#if architectureDef??>
-		<@debug 'showArchitecturDef (2)' />
+		<@debug 'showArchitecturDef (2)' /><#t>
 		<#assign architecture=architectureDef.element/>
 		<#assign id=transformer.transformToId(architecture)/>
 		<@openSection sectionStart id/>

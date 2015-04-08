@@ -20,35 +20,35 @@
 		</para>
 	</preface>
 	<article>
-		<@debug '######################## article: Concepts (1):######################## ' />
+		<@debug '######################## article: Concepts (1):######################## ' /><#t>
 		<title>${i18n.get('code2doc.core.article.concepts.title')}</title>
 		<#list spec.rootGroupDefinitions as rootGroupDefinition>
 			<@groupIterator 'CONCEPT' rootGroupDefinition 1 />
     	</#list>
 	</article>
 	<article>
-		<@debug '######################## article: Use cases (1):######################## ' />
+		<@debug '######################## article: Use cases (1):######################## ' /><#t>
 		<title>${i18n.get('code2doc.core.article.usecases.title')}</title>
 		<#list spec.rootGroupDefinitions as rootGroupDefinition>
      		<@groupIterator 'USECASE' rootGroupDefinition 1 />
     	</#list>
 	</article>
 	<article>
-		<@debug '######################## article: Architectures (1):######################## ' />
+		<@debug '######################## article: Architectures (1):######################## ' /><#t>
 		<title>${i18n.get('code2doc.core.article.architectures.title')}</title>
 		<#list spec.rootGroupDefinitions as rootGroupDefinition>
      		<@groupIterator 'ARCHITECTURE' rootGroupDefinition 1 />
     	</#list>
 	</article>
 	<article>
-		<@debug '######################## article: Roles (1):######################## ' />
+		<@debug '######################## article: Roles (1):######################## ' /><#t>
 		<title>${i18n.get('code2doc.core.article.roles.title')}</title>
 		<#list spec.rootGroupDefinitions as rootGroupDefinition>
 			<@groupIterator 'ROLE' rootGroupDefinition 1 />
     	</#list>
 	</article>
 	<article>
-		<@debug '######################## article: Constraints (1):######################## ' />
+		<@debug '######################## article: Constraints (1):######################## ' /><#t>
 		<title>${i18n.get('code2doc.core.article.constraints.title')}</title>
 		<#list spec.rootGroupDefinitions as rootGroupDefinition>
 			<@groupIterator 'CONSTRAINT' rootGroupDefinition 1 />

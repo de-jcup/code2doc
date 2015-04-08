@@ -2,9 +2,9 @@
 <#-- macro for role decoration -->
 <#----------------------------------->
 <#macro showRoleDef roleDef sectionStart>
-	<@debug 'showRole (1): sectionStart='+sectionStart />
+	<@debug 'showRole (1): sectionStart='+sectionStart /><#t>
 	<#if roleDef??>
-		<@debug 'showRole (2)' />
+		<@debug 'showRole (2)' /><#t>
 		<#assign role=roleDef.element/>
 		<#assign tag=transformer.transformToTag(role)/>
 		<#assign id=transformer.transformToId(role)/>

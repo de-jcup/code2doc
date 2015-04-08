@@ -2,9 +2,9 @@
 <#-- macro for use case decoration -->
 <#----------------------------------->
 <#macro showConceptDef conceptDef sectionStart>
-	<@debug 'showConcept (1): sectionStart='+sectionStart />
+	<@debug 'showConcept (1): sectionStart='+sectionStart /><#t>
 	<#if conceptDef??>
-		<@debug 'showConcept (2)' />
+		<@debug 'showConcept (2)' /><#t>
 		<#assign concept=conceptDef.element/>
 		<#assign tag=transformer.transformToTag(concept)/>
 		<#assign id=transformer.transformToId(concept)/>
@@ -46,8 +46,6 @@
 				</simplelist>
 				</para>
 			</#if>
-			
-			
 		<@closeSection sectionStart/>
 	</#if>
 </#macro>

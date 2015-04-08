@@ -12,10 +12,10 @@
 	<row>
 		<entry>${key}</entry>
 		<entry>
-		<#list map[key] as item>
+		<#list map[key] as item><#t>
 			<#assign itemAsString=transformer.transformToString(item)/>
 			<para>${itemAsString}</para>
-		</#list>
+		</#list><#t>
 		</entry>
 	</row>
 </#list>
@@ -24,7 +24,10 @@
 <#-- macro for error in generation-->
 <#---------------------------------->
 <#macro error message>
-${log.error(message)}
+	<!-- -------------- -->
+	<!-- error: message -->
+	<!-- -------------- -->
+	${log.error(message)}<#t>
 <para>
 	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 </para>
@@ -39,5 +42,5 @@ ${log.error(message)}
 <#-- macro for debug in generation-->
 <#---------------------------------->
 <#macro debug message>
-	${log.debug(message)}
+	${log.debug(message)}<#t>
 </#macro>

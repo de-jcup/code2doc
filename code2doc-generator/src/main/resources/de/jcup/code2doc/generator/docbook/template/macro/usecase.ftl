@@ -2,12 +2,12 @@
 <#-- macro for use case decoration -->
 <#----------------------------------->
 <#macro showUseCase useCaseDef sectionStart>
-	<@debug 'showUseCase (1): sectionStart='+sectionStart />
+	<@debug 'showUseCase (1): sectionStart='+sectionStart /><#t>
 	<#if useCaseDef??>	
 		<#assign useCase=useCaseDef.element/>
 		<#assign tag=transformer.transformToTag(useCase)/>
 		<#assign id=transformer.transformToId(useCase)/>
-		<@debug 'showUseCase (2)' />
+		<@debug 'showUseCase (2)' /><#t>
 		<@openSection sectionStart id/>
 		<@renderHeader useCase/>
 		<#-------------------------->

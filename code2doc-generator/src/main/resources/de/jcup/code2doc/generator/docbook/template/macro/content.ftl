@@ -2,7 +2,7 @@
 <#-- macro for content of an base element-->
 <#----------------------------------------->
 <#macro showElementContent baseElement sectionStart>
-	<@debug 'showElementContent (1)' />
+	<@debug 'showElementContent (1)' /><#t>
 	<#-- if locale is set use content of locale-->
 	<#if locale??>
 		<#assign content=baseElement.getContent(locale)/>
@@ -15,7 +15,7 @@
 <#-- macro for iterating content children-->
 <#----------------------------------------->
 <#macro iterateContentChildren content sectionStart>
-	<@debug 'iterateContentChildren (1)' />
+	<@debug 'iterateContentChildren (1)' /><#t>
 	<#list content.children as child>
 		<@showContent child sectionStart/>
 	</#list>
@@ -25,7 +25,7 @@
 <#----------------------------------------->
 <#macro showContent content sectionStart>
 		<#assign name=content.class.simpleName/>
-		<@debug 'showContent (1): content type=\''+name+'\'' />
+		<@debug 'showContent (1): content type=\''+name+'\'' /><#t>
 		<#if name = 'TextContent'>	
 			<@renderTextContent content sectionStart/>
 		<#elseif name = 'TextContentResource'>	
@@ -84,10 +84,10 @@
 			<graphic fileref="${transformer.transformToFile(pictureContent.resourcePath)}" scalefit="1" width="100%" contentdept="100%"  />
 		</figure>
 		<#else>
-			<@error 'no file found for:'+pictureContent.resourcePath/>
+			<@error 'no file found for:'+pictureContent.resourcePath/><#t>
 		</#if>
 	<#else>
-		<@error 'no title defined for picture content!'/>
+		<@error 'no title defined for picture content!'/><#t>
 	</#if>
 </#macro>
 <#-------------------------------->
