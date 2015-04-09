@@ -19,6 +19,9 @@
 	<#assign sectionName = createSectionName(sectionStart) />
 	<@debug '######## close section('+sectionName+') - nr:'+sectionStart /><#t>
 	</${sectionName}>
+	<#-- create two empty lines - so sections are more readable and not stucked together -->
+	<para/>
+	<para/>
 </#macro>
 <#----------------------------------->
 <#-- function for section name     -->

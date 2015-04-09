@@ -79,7 +79,7 @@ public class ExamplePicturesAreAvailableValidator extends AbstractSpecificationI
 
 		File file = transformer.transformToFile(resourcePath);
 		if (file==null){
-			throw new ValidationException("Usecase:"+useCase.getHeadline()+":example picture not available: path="+resourcePath);
+			throw new ValidationException("Usecase:"+useCase.getClass().getSimpleName()+" - "+useCase.getHeadline()+":example picture not available: path="+resourcePath);
 		}
 		
 	}
