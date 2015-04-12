@@ -32,6 +32,7 @@ public class DocbookTextStyle extends TextStyle{
 	 */
 	private XMLOutputFactory factory = XMLOutputFactory.newInstance();
 	
+	/* normal links to outside are done via ulink, but with protocol code2doc we want an internal link instead */
 	private static final Pattern INTERNAL_LINK = Pattern.compile("<ulink url='code2doc://(.+?)'>(.+?)</ulink>",Pattern.DOTALL |Pattern.CASE_INSENSITIVE);
 	
 	public String applyToImpl(String internalFormatText) {
@@ -69,7 +70,7 @@ public class DocbookTextStyle extends TextStyle{
 		
 		text = XHTMLReplace.BR.replace(text, "<?linebreak?>");
 		
-		text = INTERNAL_LINK.matcher(text).replaceAll("<xref linkend='$1'>$2</xref>");
+		text = INTERNAL_LINK.matcher(text).replaceAll("<link linkend='$1'>$2</link>");
 		return text;
 	}
 	
