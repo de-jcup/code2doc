@@ -46,7 +46,7 @@
     </#if>
 </#macro>
 <#function getDefinitions groupDef definitionType >
-	<#return groupDef.getDefinitions(definitionType) />
+	<#return groupDef.getDefinitionsSorted(definitionType) />
 </#function>
 <#----------------------------------------------------------->
 <#-- macro for showing dedicated definition type info      -->

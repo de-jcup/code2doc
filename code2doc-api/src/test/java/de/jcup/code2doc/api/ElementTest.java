@@ -73,9 +73,6 @@ public class ElementTest {
 	@Test
 	public void test_when_nothing_defined_even_nullsafe(){
 		/* no locale given */
-		assertNotNull(exampleElement.getDescription());
-		assertNotNull(exampleElement.getDescription(Locale.GERMAN));
-
 		assertNotNull(exampleElement.getHeadline());
 		assertNotNull(exampleElement.getHeadline(Locale.GERMAN));
 		

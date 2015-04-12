@@ -18,7 +18,7 @@
 package de.jcup.code2doc.core.extend;
 
 /**
- * ExampleURLProviderExtension
+ * ExampleURLExtension
  * @author de-jcup
  *
  */

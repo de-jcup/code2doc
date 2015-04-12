@@ -33,10 +33,13 @@ import de.jcup.code2doc.renderer.docbook.PDFSpecificationRenderer;
 public class FromOutsideDocumentation {
 
 	public static void main(String[] args) throws Exception {
-		new FromOutsideDocumentation().create();
+		new FromOutsideDocumentation().create(false);
 	}
 
-	void create() throws Exception {
+	void create(boolean keepTempFiles) throws Exception {
+		if (keepTempFiles){
+			System.setProperty("code2doc.renderer.docbook.keep_temporary_files", "true");
+		}
 		Specification spec = new SpecificationBuilder().start();
 
 		PDFSpecificationRenderer renderer = new PDFSpecificationRenderer(spec, new File("build","code2doc-documentation.pdf"));

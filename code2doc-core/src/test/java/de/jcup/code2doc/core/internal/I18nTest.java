@@ -35,16 +35,6 @@ public class I18nTest {
 		assertEquals(result, result2);
 	}
 	
-	@Test
-	public void testAllResourceIdentifiersAreAvailable(){
-		for (ResourceIdentifier ri: Code2docCoreResourceIdentifiers.values()){
-			String key = ri.getKey();
-			assertKeyInResourceBundleFound(key);
-		}
-	}
-
-	
-	
 	
 	
 	/* ---------------------------------- */
@@ -52,17 +42,6 @@ public class I18nTest {
 	/* Helpers*/
 	/* ---------------------------------- */
 	/* ---------------------------------- */
-	
-	
-	private void assertKeyInResourceBundleFound(String key) {
-		String notFound = i18n.createNotFoundResult(key);
-		String result = i18n.get(key);
-		assertNotNull(result);
-		if (result.equals(notFound)){
-			System.out.println("missing key: \n"+key+"\n");
-			fail("Key not in resource bundles:"+key+"\nSee also System.out to copy key");
-		}
-	}
 	
 	@Before
 	public void before(){

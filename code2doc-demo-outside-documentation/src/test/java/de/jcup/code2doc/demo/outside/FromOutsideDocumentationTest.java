@@ -19,11 +19,11 @@ package de.jcup.code2doc.demo.outside;
 
 import org.junit.Test;
 
-public class ExternalDocumentationTest {
+public class FromOutsideDocumentationTest {
 
 	@Test
 	public void test_documentation_can_be_generated() throws Exception {
 		FromOutsideDocumentation doc = new FromOutsideDocumentation();
-		doc.create();
+		doc.create(true);
 	}
 }

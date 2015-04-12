@@ -44,7 +44,6 @@ import de.jcup.code2doc.core.define.ConstraintDefinition;
 import de.jcup.code2doc.core.define.RoleDefinition;
 import de.jcup.code2doc.core.define.Specification;
 import de.jcup.code2doc.core.define.UseCaseDefinition;
-import de.jcup.code2doc.core.internal.Code2docCoreResourceIdentifiers;
 import de.jcup.code2doc.core.internal.I18n;
 import de.jcup.code2doc.core.internal.group.PackageGroupProvider;
 import de.jcup.code2doc.core.internal.util.Transformer;
@@ -57,7 +56,7 @@ public class SpecificationImpl implements Specification {
 	private String legalNotice = "";
 	private String authorFirstName = "";
 	private String authorLastName = "";
-	private String title = I18n.INSTANCE.get(Code2docCoreResourceIdentifiers.DEFAULT_TITLE.getKey());
+	private String title = I18n.INSTANCE.get("code2doc.core.default.title");
 	private String preface = "";
 	private Map<Group, GroupDefinitionImpl> groupDefinitions = new HashMap<Group, GroupDefinitionImpl>();
 	private boolean freezed;

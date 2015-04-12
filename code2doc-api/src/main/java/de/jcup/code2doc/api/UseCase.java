@@ -160,9 +160,9 @@ public abstract class UseCase extends ContentElement {
 		 * Add roles where use case is available for but only with given
 		 * constraint
 		 * 
-		 * @param role
-		 * @param constraint
-		 * @return
+		 * @param role - a role where use case is available (with given constraint)
+		 * @param constraint - constraining access of role
+		 * @return setup
 		 */
 		public final UseCaseSetup addRole(Class<? extends Role> role, Class<? extends Constraint> constraint) {
 			rolesAndConstraints.put(role, constraint);

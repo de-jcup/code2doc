@@ -40,9 +40,11 @@ import de.jcup.code2doc.core.define.GroupDefinition;
 import de.jcup.code2doc.core.define.RoleDefinition;
 import de.jcup.code2doc.core.define.Specification;
 import de.jcup.code2doc.core.define.UseCaseDefinition;
+import de.jcup.code2doc.core.internal.sort.ElementDefinitionImplByClassNameComparator;
 
 
 public class GroupDefinitionImpl implements GroupDefinition, Comparable<GroupDefinitionImpl> {
+	private static final ElementDefinitionImplByClassNameComparator SHARED_COMPARATOR = new ElementDefinitionImplByClassNameComparator();
 	private static final Logger LOG = LoggerFactory.getLogger(GroupDefinitionImpl.class); 
 	private static final GroupDefinitionImpl typeInstanceDummyParentGroup = new GroupDefinitionImpl(null, null);
 	
@@ -137,28 +139,62 @@ public class GroupDefinitionImpl implements GroupDefinition, Comparable<GroupDef
 		return specification;
 	}
 
-	public Collection<? extends ElementDefinitionImpl<?,?,?>> getDefinitions(String definitionType) {
+	/**
+	 * Get all element definitions sorted
+	 * @param definitionType
+	 * @return collection with all element definitions
+	 * @throws IllegalArgumentException when definition type not supported on not in enum 
+	 */
+	public List<? extends ElementDefinitionImpl<?,?,?>> getDefinitionsSorted(String definitionType) {
+		DefinitionType type = DefinitionType.valueOf(definitionType);
+		List<? extends ElementDefinitionImpl<?, ?, ?>> list = getDefinitions(type);
+		return createSortedList(list);
+	}
+	
+	/**
+	 * Get all element definitions 
+	 * @param definitionType - must be one of the names defined in {@link DefinitionType}
+	 * @return collection with all element definitions 
+	 * @throws IllegalArgumentException when definition type not supported on not in enum
+	 */
+	public List<? extends ElementDefinitionImpl<?,?,?>> getDefinitions(String definitionType) {
 		DefinitionType type = DefinitionType.valueOf(definitionType);
 		return getDefinitions(type);
 	}
 	
+	/**
+	 * Get all definitions - not sorted
+	 * @param definitionType
+	 * @return list for given definition type - never null
+	 * @throws IllegalArgumentException when unsupported definition type
+	 */
 	public List<? extends ElementDefinitionImpl<?,?,?>> getDefinitions(DefinitionType definitionType) {
+		List<? extends ElementDefinitionImpl<?,?,?>> list = null;
 		if (definitionType==DefinitionType.USECASE){
-			return useCaseDefinitions;
+			list= useCaseDefinitions;
+		}else if (definitionType==DefinitionType.ARCHITECTURE){
+			list= architectureDefinitions;
+		}else if (definitionType==DefinitionType.CONCEPT){
+			list= conceptDefinitions;
+		}else if (definitionType==DefinitionType.ROLE){
+			list= roleDefinitions;
+		}else if (definitionType==DefinitionType.CONSTRAINT){
+			list= constraintDefinitions;
 		}
-		if (definitionType==DefinitionType.ARCHITECTURE){
-			return architectureDefinitions;
+		assertListAvailable(definitionType, list);
+		return list;
+	}
+
+	private void assertListAvailable(DefinitionType definitionType, List<? extends ElementDefinitionImpl<?, ?, ?>> list) {
+		if (list==null){
+			throw new IllegalArgumentException("definition type unsupported - no list found for::"+definitionType);
 		}
-		if (definitionType==DefinitionType.CONCEPT){
-			return conceptDefinitions;
-		}
-		if (definitionType==DefinitionType.ROLE){
-			return roleDefinitions;
-		}
-		if (definitionType==DefinitionType.CONSTRAINT){
-			return constraintDefinitions;
-		}
-		throw new IllegalArgumentException("unsupported:"+definitionType);
+	}
+	
+	List<? extends ElementDefinitionImpl<?,?,?>> createSortedList(List<? extends ElementDefinitionImpl<?,?,?>>list ){
+		List<? extends ElementDefinitionImpl<?,?,?>> sortedList = new ArrayList<ElementDefinitionImpl<?,?,?>>(list);
+		Collections.sort(sortedList,SHARED_COMPARATOR);
+		return sortedList;
 	}
 
 	public Group getGroup() {
@@ -219,7 +255,8 @@ public class GroupDefinitionImpl implements GroupDefinition, Comparable<GroupDef
 				Class<? extends Element> elementClazz,
 				ElementDefinitionCreator definitionCreator, 
 				GroupDefinitionImpl parentContainer) {
-		List list = (List) getDefinitions(definitionCreator.getType());
+		DefinitionType defType = definitionCreator.getType();
+		List list = (List) getDefinitions(defType);
 		if (elementToelementDefininitionMap.containsKey(elementClazz))	{
 			LOG.debug("key already exists. So reuse it.");
 			return elementToelementDefininitionMap.get(elementClazz);
@@ -317,10 +354,5 @@ public class GroupDefinitionImpl implements GroupDefinition, Comparable<GroupDef
 		}
 
 	}
-
-
-
-	
-	
 	
 }

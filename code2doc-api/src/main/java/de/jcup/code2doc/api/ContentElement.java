@@ -77,8 +77,6 @@ public abstract class ContentElement extends Element{
 	 */
 	protected abstract class ContentSetup<T extends ContentSetup<?>>{
 		
-		private static final String DEFAULT_DESCRIPTION = "";
-
 		/**
 		 * Sets full description - no locale used
 		 * @param description - description text

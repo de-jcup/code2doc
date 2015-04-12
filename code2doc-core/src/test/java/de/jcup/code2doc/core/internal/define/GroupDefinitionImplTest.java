@@ -20,12 +20,16 @@ package de.jcup.code2doc.core.internal.define;
 import static org.junit.Assert.*;
 
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 import org.junit.Test;
+
+import de.jcup.code2doc.api.ContentElement;
+import de.jcup.code2doc.api.Element;
+import de.jcup.code2doc.testdata.TestUseCases;
 public class GroupDefinitionImplTest {
 
-
-	
 	@Test
 	public void testGetChildrenSorted() {
 		
@@ -59,6 +63,34 @@ public class GroupDefinitionImplTest {
 		Collection<GroupDefinitionImpl> children2 = impl2.getChildrenSorted();
 		assertTrue(children2.isEmpty());
 	}
+	
+	@Test
+	public void test_usecase_sortedDefinitions_are_ordered_by_classnames(){
+		SpecificationImpl specification = new SpecificationImpl();
+		GroupDefinitionImpl impl = specification.defineGroup("test.group.root1");
+		
+		/* prepare - add unsorted...*/
+		impl.addUseCase(TestUseCases.UC_1__SHOW_ENTRIES.class);
+		impl.addUseCase(TestUseCases.UC_3__EDIT_ENTRY.class);
+		impl.addUseCase(TestUseCases.UC_2__DELETE_ENTRY.class);
+		
+		/* fetch sorted*/
+		List<? extends ElementDefinitionImpl<?, ?, ?>> sortedDefinitions = impl.getDefinitionsSorted(DefinitionType.USECASE.name());
+		
+		Iterator<? extends ElementDefinitionImpl<?, ?, ?>> it = sortedDefinitions.iterator();
+		/* test sorting */
+		assertIsElement(TestUseCases.UC_1__SHOW_ENTRIES.class, it.next());
+		assertIsElement(TestUseCases.UC_2__DELETE_ENTRY.class, it.next());
+		assertIsElement(TestUseCases.UC_3__EDIT_ENTRY.class, it.next());
+		assertEquals(3, sortedDefinitions.size());
+		
+	}
+	
+	private void assertIsElement(Class<? extends ContentElement> expectedElement, ElementDefinitionImpl<?, ?, ?> definition){
+		Class<? extends Element> elementClazz = definition.getElement().getClass();
+		assertEquals("Wrong element found\n", expectedElement, elementClazz);
+	}
+	
 	
 
 }

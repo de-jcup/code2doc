@@ -36,6 +36,7 @@ import de.jcup.code2doc.testdata.TestUseCases.UC_2__DELETE_ENTRY;
 
 public class SpecificationImplTest {
 	
+	
 	@Test
 	public void testFreezeWillCreateLinksBetweenConceptAndUseCases(){
 		/* prepare */

@@ -19,7 +19,8 @@ import de.jcup.code2doc.core.internal.define.GroupDefinitionImpl;
 import de.jcup.code2doc.core.internal.define.SpecificationImpl;
 import de.jcup.code2doc.core.internal.util.Validation;
 
-@SuppressWarnings("deprecation") /* we use internal access so "deprecation" is wellknown and accepted */
+/* we use internal access so "deprecation" is well known and accepted */
+@SuppressWarnings("deprecation")
 public class UseCaseExampleURLDecorator extends AbstractSpecificationImplDecorator {
 
 	private ExampleURLExtension extension;
@@ -31,7 +32,7 @@ public class UseCaseExampleURLDecorator extends AbstractSpecificationImplDecorat
 		this.extension = extension;
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked"})
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	@Override
 	protected void decorateImpl(SpecificationImpl specificationImpl) {
 		for (GroupDefinitionImpl groupDefImpl : specificationImpl.getGroupDefinitions()) {
