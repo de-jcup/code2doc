@@ -48,8 +48,9 @@ public class CONCEPT_CODE2DOC extends Concept{
 				addTextResource("code2docConcept_common_en.html").
 			
 				openHeadlineContainer("Inside").
-					addText("The inside approach means you got a dependency to code2doc api in all your projects - but you will have some ").
+					addTextResource("code2docConcept_inside_approach_1_en.html").
 					addPictureResource("Inside approach overview", "code2doc_inside_approach_overview.png").
+					addTextResource("code2docConcept_inside_approach_2_en.html").
 				closeContainer().
 				
 				openHeadlineContainer("Outside").

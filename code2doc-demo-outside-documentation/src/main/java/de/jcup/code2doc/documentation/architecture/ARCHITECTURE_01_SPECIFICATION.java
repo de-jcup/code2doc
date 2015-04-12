@@ -29,14 +29,12 @@ public class ARCHITECTURE_01_SPECIFICATION extends Architecture{
 	private void defaultLocale(ArchitectureSetup setup) {
 		/* @formatter:off*/
 		setup.setHeadline("Specification");
-		setup.setDescription("Specification (model> concept"); 
+		setup.setDescription("Specification (model) concept"); 
 		setup.content().addText(
-				"code2doc is based on a <b>Specification></b> which is internally the model for all generated outputs."+
-				"<p> </p>"+
-				"Inside the specification the"
+				"code2doc is based on a <b>Specification</b> which is internally the model for all generated outputs."+
+				"<p>All elements are added to this model. A DSL like java based fluent API enables the developer to define additional information to the model.</p>"
 				);
 		
-		setup.content().addPictureResource("Example project structure and dependencies", "code2doc-dependency-overview.png");
 		/* @formatter:on*/
 	}
 	

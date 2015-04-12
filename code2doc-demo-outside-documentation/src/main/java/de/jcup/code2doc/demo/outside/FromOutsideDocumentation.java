@@ -41,7 +41,7 @@ public class FromOutsideDocumentation {
 			System.setProperty("code2doc.renderer.docbook.keep_temporary_files", "true");
 		}
 		Specification spec = new SpecificationBuilder().start();
-
+		
 		PDFSpecificationRenderer renderer = new PDFSpecificationRenderer(spec, new File("build","code2doc-documentation.pdf"));
 		File file = renderer.render();
 		System.out.println("generated to:" + file.getAbsolutePath());

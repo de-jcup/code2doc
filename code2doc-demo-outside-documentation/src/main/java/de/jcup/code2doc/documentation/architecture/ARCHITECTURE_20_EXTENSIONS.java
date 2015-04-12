@@ -15,28 +15,22 @@
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
  * under the License.*/
-package de.jcup.code2doc.documentation.usecases._1_specification;
+package de.jcup.code2doc.documentation.architecture;
 
-import de.jcup.code2doc.api.UseCase;
-import de.jcup.code2doc.documentation.concept.CONCEPT_CODE2DOC;
-import de.jcup.code2doc.documentation.roles.Roles;
+import de.jcup.code2doc.api.Architecture;
+import de.jcup.code2doc.core.extend.ExampleURLExtension;
+import de.jcup.code2doc.core.internal.decorate.UseCaseExampleURLDecorator;
 
-public class UC_120_CREATE_SPECIFICATION__OUTSIDE extends UseCase {
+public class ARCHITECTURE_20_EXTENSIONS extends Architecture {
 
 	@Override
-	protected void doSetup(UseCaseSetup setup) {
-		/*@formatter:off*/
-		setup.
-			setHeadline("Create a OUTSIDE specification").
-			setDescription("A developer creates an empty specification (means a modell) and fills all parts manually.").
-			
-			addRole(Roles.DEVELOPER.class).
-			
-			content().
-				addTextResource("UC_120_CREATE_SPECIFICATION_en.html").
-				addCodeResource(CodeType.JAVA, "UC_120_CREATE_SPECIFICATION.java.example");
-		/*@formatter:on*/
-		setup.addLinkToConcept(CONCEPT_CODE2DOC.class);
+	protected void doSetup(ArchitectureSetup setup) {
+		/* @formatter:off */
+		setup.setHeadline("Code2Doc extensions");
+		setup.setDescription("Via a code2doc extension and a corresponding decorator project developers are able to decorate their specification automatically in some "
+				+ "parts. E.g. "+ExampleURLExtension.class.getSimpleName()+" can be used via "+UseCaseExampleURLDecorator.class.getSimpleName()+" to add example urls automatical to UseCases");
+		
+		/* @formatter:on */
 	}
 
 }

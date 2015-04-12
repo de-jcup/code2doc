@@ -1,8 +1,8 @@
-		// spec already created...
-		
-		generator = new PDFFileGenerator();
-		generator.setOutputFileName("filename");
-		generator.setOutputFolder(new File("build"));
 
-		File file = generator.generate(spec);
-		System.out.println("generated to:" + file.getAbsolutePath());
+/* for this example we use a filled spec */
+Specification spec = Factory.createFilledSpecification(); 
+		
+/* create a render and use it */
+File output = new File("build","code2doc-documentation.pdf");
+PDFSpecificationRenderer renderer = new PDFSpecificationRenderer(spec, output);
+renderer.render();
