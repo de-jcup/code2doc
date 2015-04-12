@@ -33,11 +33,35 @@ public class CONCEPT_CODE2DOC extends Concept{
 		/* @formatter:off */
 		setup.setHeadline("code2doc concept");
 		setup.setDescription("What is code2doc and what are the averages when using?");
-		setup.content().addTextResource("code2docConcept_en.html");
+		setup.setWikiURL("https://github.com/de-jcup/code2doc/wiki");
 
+		setup.content().
+			addTextResource("code2docConcept_en.html").
+			
+			openHeadlineContainer("Data model").
+				addText("Code2Doc uses a simple data model with some kind of elements as shown in next picture:").
+				addPictureResource("Reduced data model ", "code2doc_datamodel.png").
+			closeContainer().
+			
+			
+			openHeadlineContainer("Usage").
+				addTextResource("code2docConcept_common_en.html").
+			
+				openHeadlineContainer("Inside").
+					addText("The inside approach means you got a dependency to code2doc api in all your projects - but you will have some ").
+					addPictureResource("Inside approach overview", "code2doc_inside_approach_overview.png").
+				closeContainer().
+				
+				openHeadlineContainer("Outside").
+					addPictureResource("Outside approach overview", "code2doc_outside_approach_overview.png").
+				closeContainer().
+			closeContainer()
+					;
+			
 		/* @formatter:on */
 	}
 
+	@SuppressWarnings("deprecation") /* incubating code...*/
 	private void gemanLocale(ConceptSetup setup) {
 		Locale locale = Locale.GERMAN;
 		/* @formatter:off */

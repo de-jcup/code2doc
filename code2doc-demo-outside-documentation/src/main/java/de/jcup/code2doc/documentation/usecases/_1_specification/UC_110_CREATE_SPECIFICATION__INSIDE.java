@@ -19,27 +19,27 @@ package de.jcup.code2doc.documentation.usecases._1_specification;
 
 import static de.jcup.code2doc.api.Element.CodeType.*;
 import de.jcup.code2doc.api.UseCase;
+import de.jcup.code2doc.documentation.concept.CONCEPT_CODE2DOC;
 import de.jcup.code2doc.documentation.roles.Roles;
 
 public class UC_110_CREATE_SPECIFICATION__INSIDE extends UseCase {
 
 	@Override
-	protected void doSetup(UseCaseSetup useCaseSetup) {
-		addDefaultLocale(useCaseSetup);
-	}
-
-	private void addDefaultLocale(UseCaseSetup useCaseSetup) {
+	protected void doSetup(UseCaseSetup setup) {
 		/*@formatter:off*/
-		useCaseSetup.
+		setup.
 			setHeadline("Create a INSIDE specification").
 			setDescription("A developer creates a specification for inside approach.").
 			
 			addRole(Roles.DEVELOPER.class).
 			
+			
 			content().
 				addTextResource("UC_110_CREATE_SPECIFICATION_en.html").
 				addCodeResource(JAVA, "UC_110_CREATE_SPECIFICATION.java.example");
-		/*@formatter:on*/
-	}
+			
+		setup.addLinkToConcept(CONCEPT_CODE2DOC.class);
+		/*@formatter:on*/	}
+
 
 }
