@@ -19,24 +19,24 @@ package de.jcup.code2doc.documentation.architecture;
 
 import de.jcup.code2doc.api.Architecture;
 
-public class SpecificationArchitecture extends Architecture{
+public class ARCHITECTURE_01_SPECIFICATION extends Architecture{
 
 	@Override
 	protected void doSetup(ArchitectureSetup architectureSetup) {
 		defaultLocale(architectureSetup);
 	}
 
-	private void defaultLocale(ArchitectureSetup architectureSetup) {
+	private void defaultLocale(ArchitectureSetup setup) {
 		/* @formatter:off*/
-		architectureSetup.setHeadline("Specification");
-		architectureSetup.setDescription("Specification (model> concept"); 
-		architectureSetup.content().addText(
-				"code2doc is based on a <bSpecification></b> which is internally the model for all generated outputs."+
+		setup.setHeadline("Specification");
+		setup.setDescription("Specification (model> concept"); 
+		setup.content().addText(
+				"code2doc is based on a <b>Specification></b> which is internally the model for all generated outputs."+
 				"<p> </p>"+
 				"Inside the specification the"
 				);
 		
-		architectureSetup.content().addPictureResource("Example project structure and dependencies", "code2doc-dependency-overview.png");
+		setup.content().addPictureResource("Example project structure and dependencies", "code2doc-dependency-overview.png");
 		/* @formatter:on*/
 	}
 	

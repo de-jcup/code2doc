@@ -15,9 +15,10 @@
 * KIND, either express or implied.  See the License for the
 * specific language governing permissions and limitations
 * under the License.*/
-package de.jcup.code2doc.documentation.usecases._1_specification._2_create_outside;
+package de.jcup.code2doc.documentation.usecases._1_specification;
 
 import de.jcup.code2doc.api.UseCase;
+import de.jcup.code2doc.documentation.roles.Roles;
 
 public class UC_120_CREATE_SPECIFICATION__OUTSIDE extends UseCase {
 
@@ -25,11 +26,14 @@ public class UC_120_CREATE_SPECIFICATION__OUTSIDE extends UseCase {
 	protected void doSetup(UseCaseSetup useCaseSetup) {
 		/*@formatter:off*/
 		useCaseSetup.
-			setHeadline("Create a new specification").
+			setHeadline("Create a OUTSIDE specification").
 			setDescription("A developer creates a specification (means a modell).").
+			
+			addRole(Roles.DEVELOPER.class).
+			
 			content().
-				addTextResource("UC_120_CREATE_OUTSIDE_SPECIFICATION_en.html").
-				addCodeResource(CodeType.JAVA, "UC_120_CREATE_OUTSIDE_SPECIFICATION.java.example");
+				addTextResource("UC_120_CREATE_SPECIFICATION_en.html").
+				addCodeResource(CodeType.JAVA, "UC_120_CREATE_SPECIFICATION.java.example");
 		/*@formatter:on*/
 	}
 

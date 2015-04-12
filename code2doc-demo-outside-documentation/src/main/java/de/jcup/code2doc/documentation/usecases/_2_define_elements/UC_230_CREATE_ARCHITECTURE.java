@@ -26,13 +26,14 @@ public class UC_230_CREATE_ARCHITECTURE extends UseCase {
 		/*@formatter:off*/
 		useCaseSetup.
 			setHeadline("Create an architecture").
-			setDescription("A developer creates an architecture part. This is done by creating a class which extends Architecture").
+			setDescription("A developer creates an architecture. This is done by creating a class which extends Architecture").
 			content().addCode(CodeType.JAVA,
-					"public class Synchronization_LDAP_TO_DB extends Architecture{\n"+
+					"public class ARCHITECTURE_SYNCH_PROCESS_LDAP_TO_DB extends de.jcup.api.Architecture{\n"+
 				    "   /* setup method with dedicated setup object */\n"+
-				    "   protected void doSetup(ArchitectureSetup architectureSetup){\n"+
-					"        architectureSetup.setHeadline(\"Synch from LDAP to database\");\n"+
-					"        architectureSetup.setDescription(\"This documentation part describes the synchronization mechanism from LDAP to database\");\n"+
+				    "   protected void doSetup(ArchitectureSetup setup){\n"+
+					"        setup.setHeadline(\"Synch from LDAP to database\");\n"+
+					"        setup.setDescription(\"This documentation part describes \"+\n"
+					+ 				"\" the synchronization approach from LDAP to database\");\n"+
 					"   }\n"+
 					"}\n"
 					);

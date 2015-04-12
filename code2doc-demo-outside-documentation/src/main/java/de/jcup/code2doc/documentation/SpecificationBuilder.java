@@ -22,15 +22,19 @@ import de.jcup.code2doc.api.Concept;
 import de.jcup.code2doc.api.UseCase;
 import de.jcup.code2doc.core.Factory;
 import de.jcup.code2doc.core.define.Specification;
-import de.jcup.code2doc.documentation.architecture.DecoratorArchitecture;
-import de.jcup.code2doc.documentation.architecture.SpecificationArchitecture;
-import de.jcup.code2doc.documentation.concept.Code2docConcept;
-import de.jcup.code2doc.documentation.usecases._1_specification._1_create_inside.UC_110_CREATE_SPECIFICATION__INSIDE;
-import de.jcup.code2doc.documentation.usecases._1_specification._2_create_outside.UC_120_CREATE_SPECIFICATION__OUTSIDE;
+import de.jcup.code2doc.documentation.architecture.ARCHITECTURE_10_DECORATORS;
+import de.jcup.code2doc.documentation.architecture.ARCHITECTURE_01_SPECIFICATION;
+import de.jcup.code2doc.documentation.concept.CONCEPT_CODE2DOC;
+import de.jcup.code2doc.documentation.roles.Roles;
+import de.jcup.code2doc.documentation.usecases._1_specification.UC_110_CREATE_SPECIFICATION__INSIDE;
+import de.jcup.code2doc.documentation.usecases._1_specification.UC_120_CREATE_SPECIFICATION__OUTSIDE;
 import de.jcup.code2doc.documentation.usecases._2_define_elements.UC_210_CREATE_CONCEPT;
 import de.jcup.code2doc.documentation.usecases._2_define_elements.UC_220_CREATE_USECASE;
 import de.jcup.code2doc.documentation.usecases._2_define_elements.UC_230_CREATE_ARCHITECTURE;
+import de.jcup.code2doc.documentation.usecases._2_define_elements.UC_240_CREATE_ROLE;
+import de.jcup.code2doc.documentation.usecases._2_define_elements.UC_250_CREATE_CONSTRAINT;
 import de.jcup.code2doc.documentation.usecases._3_rendering.UC_900_CREATE_PDF_OUTPUT;
+import de.jcup.code2doc.documentation.usecases._3_rendering.UC_950_READ_PDF_OUTPUT;
 /**
  * Eat your own dog food... via the uncomfortable approach (outside).
  * @author de-jcup
@@ -43,11 +47,22 @@ public class SpecificationBuilder {
 		
 		Specification spec = Factory.createEmptySpecification();
 		spec.
-			addConcept(Code2docConcept.class).
-			addArchitecture(SpecificationArchitecture.class).
-			addArchitecture(DecoratorArchitecture.class).
+			/* concepts */
+			addConcept(CONCEPT_CODE2DOC.class).
 			
-			addUseCase(UC_110_CREATE_SPECIFICATION__INSIDE.class).
+			/* architectures */
+			addArchitecture(ARCHITECTURE_01_SPECIFICATION.class).
+			addArchitecture(ARCHITECTURE_10_DECORATORS.class).
+			
+			/* use cases */
+			addUseCaseAndDefine(UC_110_CREATE_SPECIFICATION__INSIDE.class).
+				addTechInfo("Classes used inside specification does extend").
+					addLinkToJava("Architecture parts", Architecture.class).
+					addLinkToJava("Use cases", UseCase.class). 
+					addLinkToJava("Concepts", Concept.class). 
+				endTechInfo().
+			endDefinition().
+			
 			addUseCaseAndDefine(UC_120_CREATE_SPECIFICATION__OUTSIDE.class).
 				addTechInfo("Classes used inside specification does extend").
 					addLinkToJava("Architecture parts", Architecture.class).
@@ -55,12 +70,25 @@ public class SpecificationBuilder {
 					addLinkToJava("Concepts", Concept.class). 
 				endTechInfo().
 			endDefinition().
+			
 			addUseCase(UC_210_CREATE_CONCEPT.class).
 			addUseCaseAndDefine(UC_220_CREATE_USECASE.class).
 			endDefinition().
 			addUseCase(UC_230_CREATE_ARCHITECTURE.class).
-			addUseCaseAndDefine(UC_900_CREATE_PDF_OUTPUT.class)
+			addUseCaseAndDefine(UC_900_CREATE_PDF_OUTPUT.class).
+
+			endDefinition().
 			
+			addUseCase(UC_240_CREATE_ROLE.class).
+			addUseCase(UC_250_CREATE_CONSTRAINT.class).
+			
+			addUseCase(UC_900_CREATE_PDF_OUTPUT.class).
+			addUseCase(UC_950_READ_PDF_OUTPUT.class).
+			
+			/* roles */
+			addRole(Roles.DEVELOPER.class).
+			addRole(Roles.DOCUMENT_READER.class)
+			/* constraints - we got no constraints inside code2doc currently*/
 			;
 
 		/* @formatter:on */

@@ -1,0 +1,61 @@
+/**
+ * Eat your own dog food... via the uncomfortable approach (outside).
+ * @author de-jcup
+ *
+ */
+public class SpecificationBuilder {
+
+	public Specification start() {
+		/* @formatter:off */
+		
+		Specification spec = Factory.createEmptySpecification();
+		spec.
+			/* concepts */
+			addConcept(Code2docConcept.class).
+			
+			/* architectures */
+			addArchitecture(SpecificationArchitecture.class).
+			addArchitecture(DecoratorArchitecture.class).
+			
+			/* use cases */
+			addUseCaseAndDefine(UC_110_CREATE_SPECIFICATION__INSIDE.class).
+				addTechInfo("Classes used inside specification does extend").
+					addLinkToJava("Architecture parts", Architecture.class).
+					addLinkToJava("Use cases", UseCase.class). 
+					addLinkToJava("Concepts", Concept.class). 
+				endTechInfo().
+			endDefinition().
+			
+			addUseCaseAndDefine(UC_120_CREATE_SPECIFICATION__OUTSIDE.class).
+				addTechInfo("Classes used inside specification does extend").
+					addLinkToJava("Architecture parts", Architecture.class).
+					addLinkToJava("Use cases", UseCase.class). 
+					addLinkToJava("Concepts", Concept.class). 
+				endTechInfo().
+			endDefinition().
+			
+			addUseCase(UC_210_CREATE_CONCEPT.class).
+			addUseCaseAndDefine(UC_220_CREATE_USECASE.class).
+			endDefinition().
+			addUseCase(UC_230_CREATE_ARCHITECTURE.class).
+			addUseCaseAndDefine(UC_900_CREATE_PDF_OUTPUT.class).
+
+			endDefinition().
+			
+			addUseCase(UC_240_CREATE_ROLE.class).
+			addUseCase(UC_250_CREATE_CONSTRAINT.class).
+			
+			addUseCase(UC_900_CREATE_PDF_OUTPUT.class).
+			addUseCase(UC_950_READ_PDF_OUTPUT.class).
+			
+			/* roles */
+			addRole(Roles.DEVELOPER.class).
+			addRole(Roles.DOCUMENT_READER.class)
+			/* constraints - we got no constraints inside code2doc currently*/
+			;
+
+		/* @formatter:on */
+		
+		return spec;
+	}
+}

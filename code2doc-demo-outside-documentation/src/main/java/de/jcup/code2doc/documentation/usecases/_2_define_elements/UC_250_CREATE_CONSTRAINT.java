@@ -15,27 +15,27 @@
 * KIND, either express or implied.  See the License for the
 * specific language governing permissions and limitations
 * under the License.*/
-package de.jcup.code2doc.documentation.usecases._1_specification._1_create_inside;
+package de.jcup.code2doc.documentation.usecases._2_define_elements;
 
-import static de.jcup.code2doc.api.Element.CodeType.*;
 import de.jcup.code2doc.api.UseCase;
 
-public class UC_110_CREATE_SPECIFICATION__INSIDE extends UseCase {
+public class UC_250_CREATE_CONSTRAINT extends UseCase {
 
 	@Override
 	protected void doSetup(UseCaseSetup useCaseSetup) {
-		addDefaultLocale(useCaseSetup);
-	}
-
-	private void addDefaultLocale(UseCaseSetup useCaseSetup) {
 		/*@formatter:off*/
 		useCaseSetup.
-			setHeadline("Create a new INSIDE specification").
-			setDescription("A developer creates a specification for inside approach.").
-			content().
-				addTextResource("UC_110_CREATE_SPECIFICATION_en.html").
-				addCodeResource(JAVA, "UC_110_CREATE_SPECIFICATION.java.example");
+			setHeadline("Create a constraint").
+			setDescription("A developer creates a constraint. This is done by creating a class which extends Constraint").
+			content().addCode(CodeType.JAVA,
+					"public class CONSTRAINT_ONLY_READ_ACCESS extends de.jcup.api.Constraint{\n"+
+				    "   /* setup method with dedicated setup object */\n"+
+				    "   protected void doSetup(ConstraintSetup setup){\n"+
+					"        setup.setHeadline(\"Read only\");\n"+
+					"        setup.setDescription(\"Only read access is granted to this user. No write, or create access\");\n"+
+					"   }\n"+
+					"}\n"
+					);
 		/*@formatter:on*/
 	}
-
 }

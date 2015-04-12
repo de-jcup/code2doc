@@ -28,6 +28,7 @@
 <#-- macro for rendering element tag    -->
 <#---------------------------------------->
 <#macro renderTag element>
+	<#assign tag=transformer.transformToTag(element)/>
 	<@addToIndex tag/>
 	<foreignphrase>(${tag})</foreignphrase>
 </#macro>

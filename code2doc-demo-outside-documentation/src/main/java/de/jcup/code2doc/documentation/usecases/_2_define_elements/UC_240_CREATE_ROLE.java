@@ -18,18 +18,24 @@
 package de.jcup.code2doc.documentation.usecases._2_define_elements;
 
 import de.jcup.code2doc.api.UseCase;
-import de.jcup.code2doc.documentation.roles.Roles;
 
-public class UC_220_CREATE_USECASE extends UseCase {
+public class UC_240_CREATE_ROLE extends UseCase {
 
 	@Override
-	protected void doSetup(UseCaseSetup setup) {
+	protected void doSetup(UseCaseSetup useCaseSetup) {
 		/*@formatter:off*/
-		setup.
-			setHeadline("Create a usecase").
-			setDescription("A developer creates a use case. This is done by creating a class which extends UseCase").
-			content().addCodeResource(CodeType.JAVA,"UC_220_CREATE_USECASE.java.example");
+		useCaseSetup.
+			setHeadline("Create a role").
+			setDescription("A developer creates a role. This is done by creating a class which extends Role").
+			content().addCode(CodeType.JAVA,
+					"public class ROLE_DEVELOPER extends de.jcup.api.Role{\n"+
+				    "   /* setup method with dedicated setup object */\n"+
+				    "   protected void doSetup(ArchitectureSetup setup){\n"+
+					"        setup.setHeadline(\"Devlopers\");\n"+
+					"        setup.setDescription(\"Developers are the main role inside code2doc...\");\n"+
+					"   }\n"+
+					"}\n"
+					);
 		/*@formatter:on*/
-		setup.addRole(Roles.DEVELOPER.class);
 	}
 }

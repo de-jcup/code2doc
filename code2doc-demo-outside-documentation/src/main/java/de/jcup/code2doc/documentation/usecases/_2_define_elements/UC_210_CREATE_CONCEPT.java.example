@@ -1,0 +1,10 @@
+
+// ...class definition
+public class CONCEPT_CODE2DOC extends de.jcup.api.Concept {
+	/* setup method with dedicated setup object */
+	protected void doSetup(ConceptSetup setup){
+		setup.setHeadline("Code2doc concept");
+		setup.setDescription("Code2doc is an approach to"+
+				" create documentation like system }
+	}
+}

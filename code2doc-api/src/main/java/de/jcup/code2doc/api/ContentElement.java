@@ -92,6 +92,7 @@ public abstract class ContentElement extends Element{
 		 * @param description - description text
 		 * @param locale - locale to use
 		 * @return setup
+		 * @deprecated - incubating method could change in future
 		 */
 		@SuppressWarnings("unchecked")
 		public T setDescription(String description, Locale locale) {
@@ -115,6 +116,7 @@ public abstract class ContentElement extends Element{
 		 * @param headline - description text
 		 * @param locale - locale to use
 		 * @return setup
+		 * @deprecated - incubating method could change in future
 		 */
 		@SuppressWarnings("unchecked")
 		public T setHeadline(String headline, Locale locale) {
@@ -160,6 +162,7 @@ public abstract class ContentElement extends Element{
 		 * Define content - for given locale
 		 * @param locale - locale to use
 		 * @return content
+		 * @deprecated - incubating method could change in future
 		 */
 		public ContentContainer content(Locale locale){
 			BaseContentContainer content = baseContent(locale);

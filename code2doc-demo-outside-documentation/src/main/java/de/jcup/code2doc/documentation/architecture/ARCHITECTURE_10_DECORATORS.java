@@ -15,35 +15,33 @@
 * KIND, either express or implied.  See the License for the
 * specific language governing permissions and limitations
 * under the License.*/
-package de.jcup.code2doc.documentation.concept;
+package de.jcup.code2doc.documentation.architecture;
 
 import java.util.Locale;
 
-import de.jcup.code2doc.api.Concept;
+import de.jcup.code2doc.api.Architecture;
 
-public class Code2docConcept extends Concept{
+public class ARCHITECTURE_10_DECORATORS extends Architecture{
 
 	@Override
-	protected void doSetup(ConceptSetup architectureSetup) {
-		gemanLocale(architectureSetup);
+	protected void doSetup(ArchitectureSetup architectureSetup) {
 		defaultLocale(architectureSetup);
+		germanLocale(architectureSetup);
 	}
 
-	private void defaultLocale(ConceptSetup architectureSetup) {
+	private void defaultLocale(ArchitectureSetup architectureSetup) {
 		/* @formatter:off */
-		architectureSetup.setHeadline("code2doc concept");
-		architectureSetup.setDescription("What is code2doc and what are the averages when using?");
-		architectureSetup.content().addTextResource("code2docConcept_en.html");
-
+		architectureSetup.setHeadline("Specification decorators");
+		architectureSetup.setDescription("Specification decorators do automatically extend an existing or empty specification");
+		
 		/* @formatter:on */
 	}
-
-	private void gemanLocale(ConceptSetup architectureSetup) {
+	
+	private void germanLocale(ArchitectureSetup architectureSetup) {
 		Locale locale = Locale.GERMAN;
 		/* @formatter:off */
-		architectureSetup.setHeadline("code2doc Konzept", locale);
-		architectureSetup.setDescription("Was ist code2doc und welche Vorteile bietet die Verwendung?");
-		architectureSetup.content(locale).addText("code2docConcept_de.html");
+		architectureSetup.setHeadline("Spezifikation-Dekorierer", locale);
+		architectureSetup.setDescription("Spezifikation-Dekorierer erweitern automatisch eine leere oder bestehende Spezifikation.",locale);
 		/* @formatter:on */
 	}
 

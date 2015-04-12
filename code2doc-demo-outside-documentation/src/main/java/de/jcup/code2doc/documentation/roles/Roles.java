@@ -26,7 +26,8 @@ public class Roles{
 
 		@Override
 		protected void doSetup(RoleSetup setup) {
-			
+			setup.setHeadline("Document reader");
+			setup.setDescription("One of the document readers - means document consumer");
 		}
 		
 	}
@@ -35,7 +36,8 @@ public class Roles{
 
 		@Override
 		protected void doSetup(RoleSetup setup) {
-			
+			setup.setHeadline("Developer");
+			setup.setDescription("Any developer creating code and so via code2doc also documentation.");
 		}
 		
 	}

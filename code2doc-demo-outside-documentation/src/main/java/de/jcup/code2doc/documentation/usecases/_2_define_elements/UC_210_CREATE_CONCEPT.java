@@ -18,24 +18,21 @@
 package de.jcup.code2doc.documentation.usecases._2_define_elements;
 
 import de.jcup.code2doc.api.UseCase;
+import de.jcup.code2doc.documentation.roles.Roles;
 
 public class UC_210_CREATE_CONCEPT extends UseCase {
 
 	@Override
-	protected void doSetup(UseCaseSetup useCaseSetup) {
+	protected void doSetup(UseCaseSetup setup) {
 		/*@formatter:off*/
-		useCaseSetup.
+		setup.
 			setHeadline("Create a concept").
-			setDescription("A developer creates a concept. This is done by creating a class which extends Concept").
-			content().addCode(CodeType.JAVA,
-				"public class TechnicalUsers extends Concept{\n"+
-			    "   /* setup method with dedicated setup object */\n"+
-			    "   protected void doSetup(ConceptSetup conceptSetup){\n"+
-				"        conceptSetup.setHeadline(\"Technical users\");\n"+
-				"        conceptSetup.setDescription(\"Technical users are used from different systems to connect to other applications and use them. These users requires a special administrative process. \");\n"+
-				"   }\n"+
-				"}\n"
-				);
+			setDescription("A developer creates a concept. This is done by "+""
+					+ "creating a class which extends Concept").
+			content().
+				addCodeResource(CodeType.JAVA, "UC_210_CREATE_CONCEPT.java.example");
+		
+		setup.addRole(Roles.DEVELOPER.class);
 		/*@formatter:on*/
 	}
 }
