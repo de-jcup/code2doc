@@ -20,7 +20,10 @@ Each of these elements is represented by one java class extending a dedicated ab
 
 A **documentation project** is created and referenced by every other sub project. The documentation project has only code2doc-api library as dependency and elements - e.g. use cases - are defined there.
 
-Being common all other project code can use annotations inside code2doc-api and use them to link to the defined elements
+Being common **in all other sub projects** code can use annotations from  code2doc-api and use them to link to the defined elements - e.g. 
+```java 
+@LinkToUseCase(UC_1_SHOW_USERS.class)
+```
 
 A **documentation output project** is additionally created having all documented sub projects and all code2doc libraries as dependencies. This project is not part of the release but only for doumentation creation.
 
