@@ -33,7 +33,7 @@ A filled specification is creatable out of the box from the documentation projec
 
 Both documentation projects should reside in same SCM repository as other sub projects.
 
-Advantages:
+###Advantages:
 - References can be found via IDE
   - e.g. Type hierarchy for UseCase class shows all use cases inside your projects
   - e.g. Call reference for your dedicated use case class shows all marked code fragments
@@ -46,4 +46,6 @@ Advantages:
   - e.g. ExampleURLExtension for web based projects to decorate their example URLs automatically
 - Developers have the documentation inside their code
 - Binding to Wiki pages are in code
+ - existing documentation can be linked
+ 
 
