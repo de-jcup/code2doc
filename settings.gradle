@@ -3,6 +3,7 @@ include 'code2doc-api',
 		'code2doc-core', 
 		'code2doc-generator', 
 		'code2doc-renderer-docbook', 
-		'code2doc-demo-outside-documentation', 
-		'code2doc-demo-inside', 
-		'code2doc-demo-inside-documentation'
+		'code2doc-documentation', 
+		'code2doc-demo-documentation', 
+		'code2doc-demo', 
+		'code2doc-demo-documentation-output'

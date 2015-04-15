@@ -1,0 +1,10 @@
+dependencies{
+	compile project(':code2doc-demo')
+	
+	compile project(':code2doc-core')
+	compile project(':code2doc-renderer-docbook')
+	
+	compile 'org.slf4j:slf4j-simple:1.7.10'
+
+
+}
