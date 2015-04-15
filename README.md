@@ -18,25 +18,22 @@ A specification (model) contains of
 
 Each of these elements is represented by one java class extending a dedicated abstract element class from code2doc-api.
 
-A **documentation project** is created and referenced by every other sub project. The documentation project has only code2doc-api library as dependency and elements - e.g. use cases - are defined there.
-
-Being common **in all other sub projects** code can use annotations from  code2doc-api and use them to link to the defined elements - e.g. 
+A **documentation project** has to be created and documentation elements defined. It will be referenced by other project. So every **code inside other projects** can **link to** defined documentation **elements by annotations** of code2doc-api. For example: 
 ```java 
 @LinkToUseCase(UC_1_SHOW_USERS.class)
 ```
+The documentation project itself has only code2doc-api library as dependency.
 
-A **documentation output project** is additionally created having all documented sub projects and all code2doc libraries as dependencies. This project is not part of the release but only for doumentation creation.
-
-*This project should also be the container of all resource parts used by documentation. So shipped documentation.jar has only annotation relevant classes inside.*
-
-A filled specification is creatable out of the box from the documentation project. The documentation project itself is not part of delivery.
+A **documentation _output_ project** is also created which has documented projects and all code2doc libraries as dependencies. This project is not part of the release but only necessary for documentation creation/generation.
+Code2Doc provides a tooling to generate documentation out of the box. 
 
 Both documentation projects should reside in same SCM repository as other sub projects.
 
 ###Advantages:
-- References can be found via IDE
-  - e.g. Type hierarchy for UseCase class shows all use cases inside your projects
-  - e.g. Call reference for your dedicated use case class shows all marked code fragments
+- References can be found via IDE (e.g. eclipse)
+  - Type hierarchy for UseCase class shows all use cases inside your projects
+  - Call reference for your dedicated use case class shows all code parts involved in use case
+  - ...
 - Specification can be generated
 - Documentation is in code
  - versioned by SCM (e.g. git)
