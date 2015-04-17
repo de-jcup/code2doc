@@ -41,7 +41,10 @@ A **documentation _output_ project** is also created which has documented projec
 - Project specific extensions
   - e.g. ExampleURLExtension for web based projects to decorate their example URLs automatically
 - Developers have the documentation inside their code
-- Binding to Wiki pages are in code
+- Bindings
+ - to Wiki pages are in code
  - existing documentation can be linked
-- Binding to magic code possible...
- - e.g parts belonging to each other but only via Reflection is seen
+ - to magic code possible...
+   (e.g parts belonging to each other but only via Reflection is seen)
+- Sustainable
+ - code2doc-api is simply java... no matter if using swing,java-fx, jee...
