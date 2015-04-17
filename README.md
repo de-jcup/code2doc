@@ -43,4 +43,5 @@ A **documentation _output_ project** is also created which has documented projec
 - Developers have the documentation inside their code
 - Binding to Wiki pages are in code
  - existing documentation can be linked
- 
+- Binding to magic code possible...
+ - e.g parts belonging to each other but only via Reflection is seen
