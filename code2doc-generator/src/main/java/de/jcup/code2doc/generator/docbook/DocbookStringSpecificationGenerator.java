@@ -37,11 +37,11 @@ public class DocbookStringSpecificationGenerator extends FreeMarkerStringSpecifi
 	}
 	
 	private static class DocbookTextDecorator implements Decorator<String>{
-		private DocbookTextStyle style = new DocbookTextStyle();
+		private DocbookHTMLMarkupTypeSupport htmlMarkupSupport = new DocbookHTMLMarkupTypeSupport();
 		@Override
 		public String decorate(String text) {
 			Validation.notNull(text, "decorated text may not be null!");
-			return style.applyTo(text);
+			return htmlMarkupSupport.handleMarkup(text);
 		}
 		
 	}

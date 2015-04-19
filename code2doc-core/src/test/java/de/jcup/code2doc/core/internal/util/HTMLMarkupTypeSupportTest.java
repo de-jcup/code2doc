@@ -22,53 +22,53 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TextStyleTest {
+public class HTMLMarkupTypeSupportTest {
 
 	@Test
 	public void test_elements_mixed(){
-		assertEquals("<para>albert<?linebreak?>tregnaghi</para>", ts.applyTo("<p>albert<br/>tregnaghi</p>"));
-		assertEquals("<para>albert<?linebreak?>uuuxxxitem1xxxxxxitem2xxxuuutregnaghi</para>", ts.applyTo("<p>albert<br/><ul><li>item1</li><li>item2</li></ul>tregnaghi</p>"));
+		assertEquals("<para>albert<?linebreak?>tregnaghi</para>", htmlMarkupTypeSupport.handleMarkup("<p>albert<br/>tregnaghi</p>"));
+		assertEquals("<para>albert<?linebreak?>uuuxxxitem1xxxxxxitem2xxxuuutregnaghi</para>", htmlMarkupTypeSupport.handleMarkup("<p>albert<br/><ul><li>item1</li><li>item2</li></ul>tregnaghi</p>"));
 		/* do same with line breaks*/
-		assertEquals("<para>albert<?linebreak?>\nuuuxxxitem1xxxxxxitem2xxxuuutregnaghi</para>", ts.applyTo("<p>albert<br/>\n<ul><li>item1</li><li>item2</li></ul>tregnaghi</p>"));
+		assertEquals("<para>albert<?linebreak?>\nuuuxxxitem1xxxxxxitem2xxxuuutregnaghi</para>", htmlMarkupTypeSupport.handleMarkup("<p>albert<br/>\n<ul><li>item1</li><li>item2</li></ul>tregnaghi</p>"));
 	}
 	
 	@Test
 	public void test_elements_no_content(){
-		assertEquals("albert<?linebreak?>tregnaghi", ts.applyTo("albert<br/>tregnaghi"));
+		assertEquals("albert<?linebreak?>tregnaghi", htmlMarkupTypeSupport.handleMarkup("albert<br/>tregnaghi"));
 	}
 
 	public void testCaseInsensitive(){
-		assertEquals("_*message*_", ts.applyTo("<b>message</b>"));
-		assertEquals("_*message*_", ts.applyTo("<B>message</B>"));
-		assertEquals("_*message*_", ts.applyTo("<b>message</B>"));
+		assertEquals("_*message*_", htmlMarkupTypeSupport.handleMarkup("<b>message</b>"));
+		assertEquals("_*message*_", htmlMarkupTypeSupport.handleMarkup("<B>message</B>"));
+		assertEquals("_*message*_", htmlMarkupTypeSupport.handleMarkup("<b>message</B>"));
 	}
 	
 	@Test
 	public void test_no_argument(){
 		
-		assertEquals("_*message*_", ts.applyTo("<b>message</b>"));
-		assertEquals("_XmessageX_", ts.applyTo("<i>message</i>"));
-		assertEquals("_#message#_", ts.applyTo("<u>message</u>"));
+		assertEquals("_*message*_", htmlMarkupTypeSupport.handleMarkup("<b>message</b>"));
+		assertEquals("_XmessageX_", htmlMarkupTypeSupport.handleMarkup("<i>message</i>"));
+		assertEquals("_#message#_", htmlMarkupTypeSupport.handleMarkup("<u>message</u>"));
 	}
 	
 	@Test
 	public void test_multiple_elements_no_argument(){
-		assertEquals("_*message*__*message2*_", ts.applyTo("<b>message</b><b>message2</b>"));
+		assertEquals("_*message*__*message2*_", htmlMarkupTypeSupport.handleMarkup("<b>message</b><b>message2</b>"));
 	}
 	
 	@Test
 	public void test_with_argument(){
-		assertEquals("_Alinktarget link=message_A_", ts.applyTo("<a href='linktarget'>message</a>"));
+		assertEquals("_Alinktarget link=message_A_", htmlMarkupTypeSupport.handleMarkup("<a href='linktarget'>message</a>"));
 	}
 	
-	private TextStyle ts;
+	private HTMLMarkupTypeSupport htmlMarkupTypeSupport;
 	
 	@Before
 	public void before(){
-		ts = new TextStyle() {
+		htmlMarkupTypeSupport = new HTMLMarkupTypeSupport() {
 
 			@Override
-			public String applyToImpl(String text) {
+			public String handleMarkupImpl(String text) {
 				text = XHTMLReplace.P.replace(text,"<para>$1</para>");
 				text = XHTMLReplace.B.replace(text,"_*$1*_");
 				text = XHTMLReplace.I.replace(text,"_X$1X_");

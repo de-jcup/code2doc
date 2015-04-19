@@ -40,7 +40,7 @@ import static de.jcup.code2doc.core.internal.util.StringUtil.*;
  * @author de-jcup
  *
  */
-public abstract class TextStyle {
+public abstract class HTMLMarkupTypeSupport {
 
 	protected enum XHTMLReplace {
 		/**
@@ -222,12 +222,12 @@ public abstract class TextStyle {
 	 *            - source
 	 * @return styled text
 	 */
-	public final String applyTo(String text) {
+	public final String handleMarkup(String text) {
 		if (isEmpty(text)) {
 			return EMPTY;
 		}
 		String internal = convertToInternalFormat(text);
-		return applyToImpl(internal);
+		return handleMarkupImpl(internal);
 	}
 
 	private String convertToInternalFormat(String text) {
@@ -238,7 +238,7 @@ public abstract class TextStyle {
 	}
 
 	/**
-	 * Implementation of applying style. The given text is in internal format so
+	 * Implementation of applying markup style. The given text is in internal format so
 	 * it can be escaped in proper form (e.g. XML escaping). Simply use the
 	 * XHTML replace enums inside implementation
 	 * 
@@ -247,7 +247,7 @@ public abstract class TextStyle {
 	 *            representation
 	 * @return styled text
 	 */
-	protected abstract String applyToImpl(String internalFormatText);
+	protected abstract String handleMarkupImpl(String internalFormatText);
 
 	public static void main(String[] args) {
 		/* javadoc output generation */

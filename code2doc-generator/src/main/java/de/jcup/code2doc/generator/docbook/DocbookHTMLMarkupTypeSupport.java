@@ -24,9 +24,9 @@ import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
 
 import de.jcup.code2doc.core.generator.Generator;
-import de.jcup.code2doc.core.internal.util.TextStyle;
+import de.jcup.code2doc.core.internal.util.HTMLMarkupTypeSupport;
 
-public class DocbookTextStyle extends TextStyle{
+public class DocbookHTMLMarkupTypeSupport extends HTMLMarkupTypeSupport{
 	/* we use newInstance() because newFactory is only available at a specific JDK6 update and we want to
 	 * support every JRE 6 installation - so instead using newInstance()
 	 */
@@ -35,7 +35,7 @@ public class DocbookTextStyle extends TextStyle{
 	/* normal links to outside are done via ulink, but with protocol code2doc we want an internal link instead */
 	private static final Pattern INTERNAL_LINK = Pattern.compile("<ulink url='code2doc://(.+?)'>(.+?)</ulink>",Pattern.DOTALL |Pattern.CASE_INSENSITIVE);
 	
-	public String applyToImpl(String internalFormatText) {
+	public String handleMarkupImpl(String internalFormatText) {
 		String escaped = escapeXml(internalFormatText);
 		String styledContent = convertToDocbook(escaped);
 		return styledContent;

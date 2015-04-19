@@ -21,57 +21,59 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-public class DocbookTextStyleTest {
+
+
+public class DocbookHTMLMarkupTypeSupportTest {
 	
 	@Test
 	public void test_linesep_makes_paragraphs(){
 		String text  ="Test1<br/>Test2";
-		assertEquals("Test1<?linebreak?>Test2", style.applyTo(text));
+		assertEquals("Test1<?linebreak?>Test2", htmlMarkupSupport.handleMarkup(text));
 	}
 	
 	@Test
 	public void test_bold_italic_underline_styles(){
-		assertEquals("<emphasis role='bold'>text</emphasis>",style.applyTo("<b>text</b>"));
-		assertEquals("<emphasis role='italic'>text</emphasis>",style.applyTo("<i>text</i>"));
-		assertEquals("<emphasis role='underline'>text</emphasis>",style.applyTo("<u>text</u>"));
+		assertEquals("<emphasis role='bold'>text</emphasis>",htmlMarkupSupport.handleMarkup("<b>text</b>"));
+		assertEquals("<emphasis role='italic'>text</emphasis>",htmlMarkupSupport.handleMarkup("<i>text</i>"));
+		assertEquals("<emphasis role='underline'>text</emphasis>",htmlMarkupSupport.handleMarkup("<u>text</u>"));
 	}
 	
 	@Test
 	public void test_xml_escaping(){
-		assertEquals("&lt;para&gt;somehting&lt;/para&gt;",style.applyTo("<para>somehting</para>"));
+		assertEquals("&lt;para&gt;somehting&lt;/para&gt;",htmlMarkupSupport.handleMarkup("<para>somehting</para>"));
 	}
 	
 	@Test
 	public void test_listitems(){
-		assertEquals("<listitem>item</listitem>",style.applyTo("<li>item</li>"));
+		assertEquals("<listitem>item</listitem>",htmlMarkupSupport.handleMarkup("<li>item</li>"));
 	}
 	
 	@Test
 	public void test_unsorted_list(){
-		assertEquals("<itemizedlist mark='opencircle'>x</itemizedlist>",style.applyTo("<ul>x</ul>"));
+		assertEquals("<itemizedlist mark='opencircle'>x</itemizedlist>",htmlMarkupSupport.handleMarkup("<ul>x</ul>"));
 	}
 	
 	@Test
 	public void test_unsorted_list_with_entries(){
-		assertEquals("<itemizedlist mark='opencircle'><listitem>item1</listitem><listitem>item2</listitem></itemizedlist>",style.applyTo("<ul><li>item1</li><li>item2</li></ul>"));
+		assertEquals("<itemizedlist mark='opencircle'><listitem>item1</listitem><listitem>item2</listitem></itemizedlist>",htmlMarkupSupport.handleMarkup("<ul><li>item1</li><li>item2</li></ul>"));
 	}
 	
 	@Test
 	public void test_links_standard(){
-		assertEquals("<ulink url='target'>content</ulink>",style.applyTo("<a href='target'>content</a>"));
+		assertEquals("<ulink url='target'>content</ulink>",htmlMarkupSupport.handleMarkup("<a href='target'>content</a>"));
 	}
 	
 	
 	@Test
 	public void test_links_internal(){
 		/* target must be uppercased automatically - because IDs are always uppercased by transformer!*/
-		assertEquals("<xref linkend='targetUpper'>content</xref>",style.applyTo("<a href='code2doc://targetUpper'>content</a>"));
+		assertEquals("<xref linkend='targetUpper'>content</xref>",htmlMarkupSupport.handleMarkup("<a href='code2doc://targetUpper'>content</a>"));
 	}
 	
-	private DocbookTextStyle style;
+	private DocbookHTMLMarkupTypeSupport htmlMarkupSupport;
 	
 	@Before
 	public void before(){
-		style = new DocbookTextStyle();
+		htmlMarkupSupport = new DocbookHTMLMarkupTypeSupport();
 	}
 }
