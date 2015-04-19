@@ -60,7 +60,7 @@ public class SpecificationImplTest {
 		impl.freeze();
 		
 		/* test */
-		ElementDefinitionImpl<?, ?, ?> def = impl.getDefinition(TestUseCases.UC_3__EDIT_ENTRY.class);
+		AbstractElementDefinitionImpl<?, ?, ?> def = impl.getDefinition(TestUseCases.UC_3__EDIT_ENTRY.class);
 		assertNotNull(def);
 		assertEquals(DefinitionType.USECASE, def.getDefinitionType());
 		UseCaseDefinitionImpl bimpl = (UseCaseDefinitionImpl) def;
@@ -78,7 +78,7 @@ public class SpecificationImplTest {
 		impl.freeze();
 		
 		/* test */
-		ElementDefinitionImpl<?, ?, ?> def = impl.getDefinition(TestUseCases.UC_1__SHOW_ENTRIES.class);
+		AbstractElementDefinitionImpl<?, ?, ?> def = impl.getDefinition(TestUseCases.UC_1__SHOW_ENTRIES.class);
 		assertNotNull(def);
 		assertEquals(DefinitionType.USECASE, def.getDefinitionType());
 		UseCaseDefinitionImpl bimpl = (UseCaseDefinitionImpl) def;
@@ -109,7 +109,7 @@ public class SpecificationImplTest {
 		SpecificationImpl impl = new SpecificationImpl();
 		impl.addUseCase(TestUseCases.UC_1__SHOW_ENTRIES.class);
 
-		ElementDefinitionImpl<?, ?, ?> result = impl.getDefinition(TestUseCases.UC_1__SHOW_ENTRIES.class);
+		AbstractElementDefinitionImpl<?, ?, ?> result = impl.getDefinition(TestUseCases.UC_1__SHOW_ENTRIES.class);
 		assertNotNull(result);
 
 		result = impl.getDefinition(TestUseCases.UC_666_NEVER_LINKED.class);
@@ -122,7 +122,7 @@ public class SpecificationImplTest {
 		SpecificationImpl impl = new SpecificationImpl();
 		impl.addArchitecture(TestArchitectureConcepts.TestPersistenceConcept.class);
 
-		ElementDefinitionImpl<?, ?, ?> result = impl.getDefinition(TestArchitectureConcepts.TestPersistenceConcept.class);
+		AbstractElementDefinitionImpl<?, ?, ?> result = impl.getDefinition(TestArchitectureConcepts.TestPersistenceConcept.class);
 		assertNotNull(result);
 
 		result = impl.getDefinition(TestArchitectureConcepts.TestArchitectureConceptNeverLinked.class);
@@ -130,7 +130,7 @@ public class SpecificationImplTest {
 		
 		/* fetch via group definitions*/
 		GroupDefinitionImpl root = impl.getGroupDefinitions().iterator().next();
-		Collection<? extends ElementDefinitionImpl<?, ?, ?>> ad = root.getDefinitions(DefinitionType.ARCHITECTURE);
+		Collection<? extends AbstractElementDefinitionImpl<?, ?, ?>> ad = root.getDefinitions(DefinitionType.ARCHITECTURE);
 		ArchitectureDefinitionImpl def = (ArchitectureDefinitionImpl) ad.iterator().next();
 		Architecture element = def.getElement();
 		
@@ -144,7 +144,7 @@ public class SpecificationImplTest {
 		SpecificationImpl impl = new SpecificationImpl();
 		impl.addArchitecture(TestArchitectureConcepts.TestPersistenceConcept.class);
 
-		ElementDefinitionImpl<?, ?, ?> result = impl.getDefinition(TestArchitectureConcepts.TestPersistenceConcept.class);
+		AbstractElementDefinitionImpl<?, ?, ?> result = impl.getDefinition(TestArchitectureConcepts.TestPersistenceConcept.class);
 		assertNotNull(result);
 		Architecture element = (Architecture) result.getElement();
 		assertNotNull(element);
@@ -158,7 +158,7 @@ public class SpecificationImplTest {
 		for (GroupDefinitionImpl groupDef : impl.getGroupDefinitions()){
 			if (groupDef.getGroup().getName().equals(TestArchitectureConcepts.TestPersistenceConcept.class.getPackage().getName())){
 				found=true;
-				Collection<? extends ElementDefinitionImpl<?, ?, ?>> ad = groupDef.getDefinitions(DefinitionType.ARCHITECTURE);
+				Collection<? extends AbstractElementDefinitionImpl<?, ?, ?>> ad = groupDef.getDefinitions(DefinitionType.ARCHITECTURE);
 				ArchitectureDefinitionImpl def = (ArchitectureDefinitionImpl) ad.iterator().next();
 				element = def.getElement();
 				
@@ -169,7 +169,7 @@ public class SpecificationImplTest {
 	}
 	
 	private void assertTestConceptInSpecAndConceptHasBothUseCases(SpecificationImpl impl) {
-		ElementDefinitionImpl<?, ?, ?> def = impl.getDefinition(TestConcept.class);
+		AbstractElementDefinitionImpl<?, ?, ?> def = impl.getDefinition(TestConcept.class);
 		assertNotNull(def);
 		assertEquals(DefinitionType.CONCEPT, def.getDefinitionType());
 		ConceptDefinitionImpl bimpl = (ConceptDefinitionImpl) def;

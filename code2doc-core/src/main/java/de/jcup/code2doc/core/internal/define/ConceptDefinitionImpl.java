@@ -28,7 +28,7 @@ import de.jcup.code2doc.core.define.ConceptDefinition;
 import de.jcup.code2doc.core.define.Specification;
 import de.jcup.code2doc.core.define.TechnicalDefinition;
 
-public class ConceptDefinitionImpl extends ElementDefinitionImpl<ConceptDefinition,Concept, Specification> implements ConceptDefinition  {
+public class ConceptDefinitionImpl extends AbstractElementDefinitionImpl<ConceptDefinition,Concept, Specification> implements ConceptDefinition  {
 
 	private GroupDefinitionImpl groupDefinition;
 	Set<UseCaseDefinitionImpl> linkedUseCases = new HashSet<UseCaseDefinitionImpl>();
@@ -39,7 +39,7 @@ public class ConceptDefinitionImpl extends ElementDefinitionImpl<ConceptDefiniti
 	}
 
 	@Override
-	protected TechnicalDefinition<ConceptDefinition> createImpl(String text) {
+	protected TechnicalDefinition<ConceptDefinition> createNewTechnicalDefinition(String text) {
 		return new DummyTechnicalInfo<ConceptDefinition>(this);
 	}
 	

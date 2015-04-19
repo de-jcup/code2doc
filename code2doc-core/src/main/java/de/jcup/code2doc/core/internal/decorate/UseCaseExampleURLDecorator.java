@@ -14,7 +14,7 @@ import de.jcup.code2doc.core.extend.ExampleURLExtension;
 import de.jcup.code2doc.core.internal.define.AbstractTechnicalDefinitionImpl;
 import de.jcup.code2doc.core.internal.define.DefinitionType;
 import de.jcup.code2doc.core.internal.define.DummyTechnicalInfo;
-import de.jcup.code2doc.core.internal.define.ElementDefinitionImpl;
+import de.jcup.code2doc.core.internal.define.AbstractElementDefinitionImpl;
 import de.jcup.code2doc.core.internal.define.GroupDefinitionImpl;
 import de.jcup.code2doc.core.internal.define.SpecificationImpl;
 import de.jcup.code2doc.core.internal.util.Validation;
@@ -36,8 +36,8 @@ public class UseCaseExampleURLDecorator extends AbstractSpecificationImplDecorat
 	@Override
 	protected void decorateImpl(SpecificationImpl specificationImpl) {
 		for (GroupDefinitionImpl groupDefImpl : specificationImpl.getGroupDefinitions()) {
-			List<? extends ElementDefinitionImpl<?, ?, ?>> useCaseDefinitions = groupDefImpl.getDefinitions(DefinitionType.USECASE);
-			for (ElementDefinitionImpl<?, ?, ?> useCaseDef : useCaseDefinitions) {
+			List<? extends AbstractElementDefinitionImpl<?, ?, ?>> useCaseDefinitions = groupDefImpl.getDefinitions(DefinitionType.USECASE);
+			for (AbstractElementDefinitionImpl<?, ?, ?> useCaseDef : useCaseDefinitions) {
 				UseCase useCase = (UseCase) useCaseDef.getElement();
 				String exampleURL = null;
 				for (TechnicalDefinition<?> usecaseTechInfo : useCaseDef.getTechnicalDefinitions()) {

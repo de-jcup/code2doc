@@ -2,19 +2,19 @@ package de.jcup.code2doc.core.internal.sort;
 
 import java.util.Comparator;
 
-import de.jcup.code2doc.core.internal.define.ElementDefinitionImpl;
+import de.jcup.code2doc.core.internal.define.AbstractElementDefinitionImpl;
 
 /**
  * Compares element definitin impl by the class names of their elements
  * @author de-jcup
  *
  */
-public class ElementDefinitionImplByClassNameComparator implements Comparator<ElementDefinitionImpl<?, ?, ?>>{
+public class ElementDefinitionImplByClassNameComparator implements Comparator<AbstractElementDefinitionImpl<?, ?, ?>>{
 
 	private ObjectByClassNameComparator classNameComparator = new ObjectByClassNameComparator();
 	
 	@Override
-	public int compare(ElementDefinitionImpl<?, ?, ?> o1, ElementDefinitionImpl<?, ?, ?> o2) {
+	public int compare(AbstractElementDefinitionImpl<?, ?, ?> o1, AbstractElementDefinitionImpl<?, ?, ?> o2) {
 		if (o1==o2){
 			return 0;
 		}

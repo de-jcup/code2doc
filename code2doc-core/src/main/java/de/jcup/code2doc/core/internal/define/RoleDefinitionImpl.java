@@ -22,7 +22,7 @@ import de.jcup.code2doc.core.define.Specification;
 import de.jcup.code2doc.core.define.TechnicalDefinition;
 import de.jcup.code2doc.core.define.RoleDefinition;
 
-public class RoleDefinitionImpl extends ElementDefinitionImpl<RoleDefinition,Role,Specification> implements RoleDefinition, Comparable<RoleDefinitionImpl> {
+public class RoleDefinitionImpl extends AbstractElementDefinitionImpl<RoleDefinition,Role,Specification> implements RoleDefinition, Comparable<RoleDefinitionImpl> {
 	
 
 	RoleDefinitionImpl(GroupDefinitionImpl groupDefinition, Role role) {
@@ -30,7 +30,7 @@ public class RoleDefinitionImpl extends ElementDefinitionImpl<RoleDefinition,Rol
 	}
 
 	@Override
-	protected TechnicalDefinition<RoleDefinition> createImpl(String text) {
+	protected TechnicalDefinition<RoleDefinition> createNewTechnicalDefinition(String text) {
 		RoleTechnicalDefinitionImpl impl = new RoleTechnicalDefinitionImpl(this,text);
 		return impl;
 	}

@@ -81,8 +81,6 @@ public class AbstractTechnicalDefinitionImplTest {
 	}
 	
 
-	private AbstractTechnicalDefinitionImpl<?> technicalDefinition;
-
 	@Test
 	public void test_equals_implemented() {
 		/* prepare additional data*/
@@ -118,11 +116,14 @@ public class AbstractTechnicalDefinitionImplTest {
 		technicalDefinition= new TestTechnicalDefinition(null, "headline");
 	}
 
+	private AbstractTechnicalDefinitionImpl<?> technicalDefinition;
+
 	private class TestTechnicalDefinition extends AbstractTechnicalDefinitionImpl<Object>{
 
 		TestTechnicalDefinition(Object parent, String headline) {
 			super(parent, headline);
 		}
+
 		
 	}
 	

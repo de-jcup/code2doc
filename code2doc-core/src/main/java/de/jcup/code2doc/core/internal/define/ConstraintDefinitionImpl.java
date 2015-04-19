@@ -22,7 +22,7 @@ import de.jcup.code2doc.core.define.Specification;
 import de.jcup.code2doc.core.define.TechnicalDefinition;
 import de.jcup.code2doc.core.define.ConstraintDefinition;
 
-public class ConstraintDefinitionImpl extends ElementDefinitionImpl<ConstraintDefinition,Constraint,Specification> implements ConstraintDefinition, Comparable<ConstraintDefinitionImpl> {
+public class ConstraintDefinitionImpl extends AbstractElementDefinitionImpl<ConstraintDefinition,Constraint,Specification> implements ConstraintDefinition, Comparable<ConstraintDefinitionImpl> {
 	
 
 	ConstraintDefinitionImpl(GroupDefinitionImpl groupDefinition, Constraint role) {
@@ -30,7 +30,7 @@ public class ConstraintDefinitionImpl extends ElementDefinitionImpl<ConstraintDe
 	}
 
 	@Override
-	protected TechnicalDefinition<ConstraintDefinition> createImpl(String text) {
+	protected TechnicalDefinition<ConstraintDefinition> createNewTechnicalDefinition(String text) {
 		ConstraintTechnicalDefinitionImpl impl = new ConstraintTechnicalDefinitionImpl(this,text);
 		return impl;
 	}

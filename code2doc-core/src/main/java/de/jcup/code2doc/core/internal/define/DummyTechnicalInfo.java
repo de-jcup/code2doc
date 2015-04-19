@@ -58,5 +58,13 @@ public class DummyTechnicalInfo<P> implements TechnicalDefinition<P>{
 		return this;
 	}
 
+	@Override
+	public int compareTo(TechnicalDefinition<P> def) {
+		if (def instanceof DummyTechnicalInfo){
+			return 0; // all same
+		}
+		return -1; // dummies to end...
+	}
+
 
 }

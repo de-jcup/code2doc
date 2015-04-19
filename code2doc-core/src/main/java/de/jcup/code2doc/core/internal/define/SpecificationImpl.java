@@ -95,7 +95,7 @@ public class SpecificationImpl implements Specification {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public <T extends Element> ElementDefinitionImpl<?, T, ?> getDefinition(Class<T> clazz) {
+	public <T extends Element> AbstractElementDefinitionImpl<?, T, ?> getDefinition(Class<T> clazz) {
 		if (clazz == null){
 			throw new IllegalArgumentException("cant get a definition for NULL element!");
 		}
@@ -115,13 +115,13 @@ public class SpecificationImpl implements Specification {
 		}
 
 		for (GroupDefinitionImpl groupdef : getGroupDefinitions()) {
-			Collection<? extends de.jcup.code2doc.core.internal.define.ElementDefinitionImpl<?, ?, ?>> definitions = groupdef.getDefinitions(definitionType);
-			Iterator<? extends de.jcup.code2doc.core.internal.define.ElementDefinitionImpl<?, ?, ?>> it = definitions.iterator();
+			Collection<? extends de.jcup.code2doc.core.internal.define.AbstractElementDefinitionImpl<?, ?, ?>> definitions = groupdef.getDefinitions(definitionType);
+			Iterator<? extends de.jcup.code2doc.core.internal.define.AbstractElementDefinitionImpl<?, ?, ?>> it = definitions.iterator();
 			while (it.hasNext()) {
-				ElementDefinitionImpl<?, ?, ?> elementDef = it.next();
+				AbstractElementDefinitionImpl<?, ?, ?> elementDef = it.next();
 				Object obj = elementDef.getElement();
 				if (clazz.equals(obj.getClass())) {
-					return (ElementDefinitionImpl<?, T, ?>) elementDef;
+					return (AbstractElementDefinitionImpl<?, T, ?>) elementDef;
 				}
 			}
 		}

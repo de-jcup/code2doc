@@ -33,7 +33,7 @@ import de.jcup.code2doc.api.UseCase;
 import de.jcup.code2doc.core.define.TechnicalDefinition;
 import de.jcup.code2doc.core.internal.collect.ClasspathDataCollector;
 import de.jcup.code2doc.core.internal.collect.TechInfoLinkAnnotationData;
-import de.jcup.code2doc.core.internal.define.ElementDefinitionImpl;
+import de.jcup.code2doc.core.internal.define.AbstractElementDefinitionImpl;
 import de.jcup.code2doc.core.internal.define.SpecificationImpl;
 import de.jcup.code2doc.core.internal.util.Validation;
 
@@ -96,7 +96,7 @@ public class ClasspathDecorator extends AbstractSpecificationImplDecorator {
 		@SuppressWarnings("unchecked")
 		Map<Class<? extends Element>, List<TechInfoLinkAnnotationData>> map = mapOfLinkToElement; 
 		for (Class<? extends Element> elementClazzKey : map.keySet()) {
-			ElementDefinitionImpl<?, ?, ?> useCaseDefinition = specificationImpl.getDefinition(elementClazzKey);
+			AbstractElementDefinitionImpl<?, ?, ?> useCaseDefinition = specificationImpl.getDefinition(elementClazzKey);
 			if (useCaseDefinition == null) {
 				continue;
 			}
@@ -106,7 +106,7 @@ public class ClasspathDecorator extends AbstractSpecificationImplDecorator {
 		}
 	}
 
-	void appendData(List<TechInfoLinkAnnotationData> linkDataList, ElementDefinitionImpl<?, ?, ?> element) {
+	void appendData(List<TechInfoLinkAnnotationData> linkDataList, AbstractElementDefinitionImpl<?, ?, ?> element) {
 		if (linkDataList == null || linkDataList.isEmpty()) {
 			return;
 		}

@@ -119,6 +119,36 @@ public abstract class AbstractTechnicalDefinitionImpl<TECH_PARENT> implements Te
 
 
 	@Override
+	public int compareTo(TechnicalDefinition<TECH_PARENT> other) {
+		if (other==null){
+			return 1;
+		}
+		if (! (other instanceof AbstractTechnicalDefinitionImpl)){
+			/* not comparable handle as same level*/
+			return 0;
+		}
+		AbstractTechnicalDefinitionImpl<?> otherImpl=(AbstractTechnicalDefinitionImpl<?>) other;
+		String otherHeadline = otherImpl.getHeadline();
+		if (otherHeadline==null){
+			if (headline==null){
+				return 0;
+			}
+			return 1;
+		}
+		if (headline==null){
+			return -1;
+		}
+		return headline.compareTo(otherHeadline);
+	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "TechInfo [headline=" + headline + ", className=" + className + "]";
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;

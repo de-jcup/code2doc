@@ -75,9 +75,9 @@ public class GroupDefinitionImplTest {
 		impl.addUseCase(TestUseCases.UC_2__DELETE_ENTRY.class);
 		
 		/* fetch sorted*/
-		List<? extends ElementDefinitionImpl<?, ?, ?>> sortedDefinitions = impl.getDefinitionsSorted(DefinitionType.USECASE.name());
+		List<? extends AbstractElementDefinitionImpl<?, ?, ?>> sortedDefinitions = impl.getDefinitionsSorted(DefinitionType.USECASE.name());
 		
-		Iterator<? extends ElementDefinitionImpl<?, ?, ?>> it = sortedDefinitions.iterator();
+		Iterator<? extends AbstractElementDefinitionImpl<?, ?, ?>> it = sortedDefinitions.iterator();
 		/* test sorting */
 		assertIsElement(TestUseCases.UC_1__SHOW_ENTRIES.class, it.next());
 		assertIsElement(TestUseCases.UC_2__DELETE_ENTRY.class, it.next());
@@ -86,7 +86,7 @@ public class GroupDefinitionImplTest {
 		
 	}
 	
-	private void assertIsElement(Class<? extends ContentElement> expectedElement, ElementDefinitionImpl<?, ?, ?> definition){
+	private void assertIsElement(Class<? extends ContentElement> expectedElement, AbstractElementDefinitionImpl<?, ?, ?> definition){
 		Class<? extends Element> elementClazz = definition.getElement().getClass();
 		assertEquals("Wrong element found\n", expectedElement, elementClazz);
 	}

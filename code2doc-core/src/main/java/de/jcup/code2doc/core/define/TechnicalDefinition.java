@@ -19,7 +19,13 @@ package de.jcup.code2doc.core.define;
 
 
 
-public interface TechnicalDefinition<P> {
+/**
+ * A technical definition
+ * @author de-jcup
+ *
+ * @param <P>
+ */
+public interface TechnicalDefinition<P> extends Comparable<TechnicalDefinition<P>>{
 	
 	/**
 	 * Add link to java class

@@ -19,8 +19,8 @@ package de.jcup.code2doc.core.internal.define;
 
 import static de.jcup.code2doc.core.internal.util.StringUtil.*;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.TreeSet;
 
 import de.jcup.code2doc.api.Element;
 import de.jcup.code2doc.core.define.TechnicalDefinition;
@@ -33,14 +33,14 @@ import de.jcup.code2doc.core.define.TechnicalDefinition;
  * @param <ELEMENT> - element type
  * @param <PARENT> - parent type
  */
-public abstract class ElementDefinitionImpl<TECH_PARENT,ELEMENT extends Element,PARENT> {
+public abstract class AbstractElementDefinitionImpl<TECH_PARENT,ELEMENT extends Element,PARENT> {
 
-	private ELEMENT element;
-	private Collection<TechnicalDefinition<TECH_PARENT>> technicalDefinitions = new ArrayList<TechnicalDefinition<TECH_PARENT>>();
+	ELEMENT element;
 	PARENT parent;
+	private Collection<TechnicalDefinition<TECH_PARENT>> technicalDefinitions = new TreeSet<TechnicalDefinition<TECH_PARENT>>();
 
-	ElementDefinitionImpl(PARENT parent, ELEMENT useCase) {
-		this.element = useCase;
+	AbstractElementDefinitionImpl(PARENT parent, ELEMENT element) {
+		this.element = element;
 		this.parent = parent;
 	}
 
@@ -78,6 +78,7 @@ public abstract class ElementDefinitionImpl<TECH_PARENT,ELEMENT extends Element,
 		if (isNotEmpty(group)){
 			text = text + " ("+group+")";
 		}
+		/* try to resolve technical definition for given group*/
 		for (TechnicalDefinition<TECH_PARENT> techDef: getTechnicalDefinitions()){
 			if (!(techDef instanceof AbstractTechnicalDefinitionImpl<?>)){
 				throw new IllegalArgumentException("this kind of tech def is not supported:"+techDef);
@@ -87,7 +88,8 @@ public abstract class ElementDefinitionImpl<TECH_PARENT,ELEMENT extends Element,
 				return techDef;
 			}
 		}
-		TechnicalDefinition<TECH_PARENT> impl = createImpl(text);
+		/* not found - add new one*/
+		TechnicalDefinition<TECH_PARENT> impl = createNewTechnicalDefinition(text);
 		technicalDefinitions.add(impl);
 		return impl;
 	}
@@ -97,7 +99,7 @@ public abstract class ElementDefinitionImpl<TECH_PARENT,ELEMENT extends Element,
 	 * @param text
 	 * @return technical definition
 	 */
-	protected abstract TechnicalDefinition<TECH_PARENT> createImpl(String text);
+	protected abstract TechnicalDefinition<TECH_PARENT> createNewTechnicalDefinition(String text);
 	
 	/**
 	 * Returns all technical definitions

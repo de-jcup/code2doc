@@ -22,7 +22,7 @@ import de.jcup.code2doc.core.define.Specification;
 import de.jcup.code2doc.core.define.TechnicalDefinition;
 import de.jcup.code2doc.core.define.UseCaseDefinition;
 
-public class UseCaseDefinitionImpl extends ElementDefinitionImpl<UseCaseDefinition,UseCase,Specification> implements UseCaseDefinition, Comparable<UseCaseDefinitionImpl> {
+public class UseCaseDefinitionImpl extends AbstractElementDefinitionImpl<UseCaseDefinition,UseCase,Specification> implements UseCaseDefinition, Comparable<UseCaseDefinitionImpl> {
 	
 
 	UseCaseDefinitionImpl(GroupDefinitionImpl groupDefinition, UseCase useCase) {
@@ -30,7 +30,7 @@ public class UseCaseDefinitionImpl extends ElementDefinitionImpl<UseCaseDefiniti
 	}
 
 	@Override
-	protected TechnicalDefinition<UseCaseDefinition> createImpl(String text) {
+	protected TechnicalDefinition<UseCaseDefinition> createNewTechnicalDefinition(String text) {
 		UseCaseTechnicalDefinitionImpl impl = new UseCaseTechnicalDefinitionImpl(this,text);
 		return impl;
 	}

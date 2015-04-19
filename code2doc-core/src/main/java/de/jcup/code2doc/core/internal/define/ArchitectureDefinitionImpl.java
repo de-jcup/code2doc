@@ -22,7 +22,7 @@ import de.jcup.code2doc.core.define.ArchitectureDefinition;
 import de.jcup.code2doc.core.define.Specification;
 import de.jcup.code2doc.core.define.TechnicalDefinition;
 
-public class ArchitectureDefinitionImpl extends ElementDefinitionImpl<ArchitectureDefinition,Architecture, Specification> implements ArchitectureDefinition  {
+public class ArchitectureDefinitionImpl extends AbstractElementDefinitionImpl<ArchitectureDefinition,Architecture, Specification> implements ArchitectureDefinition  {
 	
 
 	ArchitectureDefinitionImpl(GroupDefinitionImpl groupDefinition, Architecture architecture) {
@@ -30,7 +30,7 @@ public class ArchitectureDefinitionImpl extends ElementDefinitionImpl<Architectu
 	}
 
 	@Override
-	protected TechnicalDefinition<ArchitectureDefinition> createImpl(String text) {
+	protected TechnicalDefinition<ArchitectureDefinition> createNewTechnicalDefinition(String text) {
 		ArchitectureTechnicalDefinitionImpl impl = new ArchitectureTechnicalDefinitionImpl(this,text);
 		return impl;
 	}

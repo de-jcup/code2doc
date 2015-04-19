@@ -53,7 +53,7 @@ public class GroupDefinitionImpl implements GroupDefinition, Comparable<GroupDef
 	/**
 	 * Used only to have a mapping for already created element definitions
 	 */
-	private  Map<Class<Element>, ElementDefinitionImpl> elementToelementDefininitionMap = new HashMap<Class<Element>, ElementDefinitionImpl>();
+	private  Map<Class<Element>, AbstractElementDefinitionImpl> elementToelementDefininitionMap = new HashMap<Class<Element>, AbstractElementDefinitionImpl>();
 	
 	List<UseCaseDefinitionImpl> useCaseDefinitions = new ArrayList<UseCaseDefinitionImpl>();
 	List<ArchitectureDefinitionImpl> architectureDefinitions = new ArrayList<ArchitectureDefinitionImpl>();
@@ -145,9 +145,9 @@ public class GroupDefinitionImpl implements GroupDefinition, Comparable<GroupDef
 	 * @return collection with all element definitions
 	 * @throws IllegalArgumentException when definition type not supported on not in enum 
 	 */
-	public List<? extends ElementDefinitionImpl<?,?,?>> getDefinitionsSorted(String definitionType) {
+	public List<? extends AbstractElementDefinitionImpl<?,?,?>> getDefinitionsSorted(String definitionType) {
 		DefinitionType type = DefinitionType.valueOf(definitionType);
-		List<? extends ElementDefinitionImpl<?, ?, ?>> list = getDefinitions(type);
+		List<? extends AbstractElementDefinitionImpl<?, ?, ?>> list = getDefinitions(type);
 		return createSortedList(list);
 	}
 	
@@ -157,7 +157,7 @@ public class GroupDefinitionImpl implements GroupDefinition, Comparable<GroupDef
 	 * @return collection with all element definitions 
 	 * @throws IllegalArgumentException when definition type not supported on not in enum
 	 */
-	public List<? extends ElementDefinitionImpl<?,?,?>> getDefinitions(String definitionType) {
+	public List<? extends AbstractElementDefinitionImpl<?,?,?>> getDefinitions(String definitionType) {
 		DefinitionType type = DefinitionType.valueOf(definitionType);
 		return getDefinitions(type);
 	}
@@ -168,8 +168,8 @@ public class GroupDefinitionImpl implements GroupDefinition, Comparable<GroupDef
 	 * @return list for given definition type - never null
 	 * @throws IllegalArgumentException when unsupported definition type
 	 */
-	public List<? extends ElementDefinitionImpl<?,?,?>> getDefinitions(DefinitionType definitionType) {
-		List<? extends ElementDefinitionImpl<?,?,?>> list = null;
+	public List<? extends AbstractElementDefinitionImpl<?,?,?>> getDefinitions(DefinitionType definitionType) {
+		List<? extends AbstractElementDefinitionImpl<?,?,?>> list = null;
 		if (definitionType==DefinitionType.USECASE){
 			list= useCaseDefinitions;
 		}else if (definitionType==DefinitionType.ARCHITECTURE){
@@ -185,14 +185,14 @@ public class GroupDefinitionImpl implements GroupDefinition, Comparable<GroupDef
 		return list;
 	}
 
-	private void assertListAvailable(DefinitionType definitionType, List<? extends ElementDefinitionImpl<?, ?, ?>> list) {
+	private void assertListAvailable(DefinitionType definitionType, List<? extends AbstractElementDefinitionImpl<?, ?, ?>> list) {
 		if (list==null){
 			throw new IllegalArgumentException("definition type unsupported - no list found for::"+definitionType);
 		}
 	}
 	
-	List<? extends ElementDefinitionImpl<?,?,?>> createSortedList(List<? extends ElementDefinitionImpl<?,?,?>>list ){
-		List<? extends ElementDefinitionImpl<?,?,?>> sortedList = new ArrayList<ElementDefinitionImpl<?,?,?>>(list);
+	List<? extends AbstractElementDefinitionImpl<?,?,?>> createSortedList(List<? extends AbstractElementDefinitionImpl<?,?,?>>list ){
+		List<? extends AbstractElementDefinitionImpl<?,?,?>> sortedList = new ArrayList<AbstractElementDefinitionImpl<?,?,?>>(list);
 		Collections.sort(sortedList,SHARED_COMPARATOR);
 		return sortedList;
 	}
@@ -251,7 +251,7 @@ public class GroupDefinitionImpl implements GroupDefinition, Comparable<GroupDef
 	/* hmm... currently no generics are used here - but we know what we do here. so normally not necessary. effort with generic approach too great */
 	@SuppressWarnings({"unchecked","rawtypes"})
 	/* @formatter:off*/
-	private ElementDefinitionImpl internalAddElement(
+	private AbstractElementDefinitionImpl internalAddElement(
 				Class<? extends Element> elementClazz,
 				ElementDefinitionCreator definitionCreator, 
 				GroupDefinitionImpl parentContainer) {
@@ -263,7 +263,7 @@ public class GroupDefinitionImpl implements GroupDefinition, Comparable<GroupDef
 		}
 		/* create instance*/
 		Element elementInstance = specification.transformer.transformToInstance(elementClazz);
-		ElementDefinitionImpl  elementDef = definitionCreator.createDefinitionFor(elementInstance, parentContainer);
+		AbstractElementDefinitionImpl  elementDef = definitionCreator.createDefinitionFor(elementInstance, parentContainer);
 		list.add(elementDef);
 		elementToelementDefininitionMap.put((Class)elementClazz, elementDef);
 		if (LOG.isDebugEnabled()){
@@ -288,7 +288,7 @@ public class GroupDefinitionImpl implements GroupDefinition, Comparable<GroupDef
 
 
 	private interface ElementDefinitionCreator{
-		public ElementDefinitionImpl<?, ?, ?> createDefinitionFor(Element element, GroupDefinitionImpl parentContainerOfDefinition);
+		public AbstractElementDefinitionImpl<?, ?, ?> createDefinitionFor(Element element, GroupDefinitionImpl parentContainerOfDefinition);
 		
 		public DefinitionType getType();
 	}
@@ -298,7 +298,7 @@ public class GroupDefinitionImpl implements GroupDefinition, Comparable<GroupDef
 		/*
 		 * An internal instance only for fetching type...
 		 */
-		private ElementDefinitionImpl<?, ?, ?> typeInstance;
+		private AbstractElementDefinitionImpl<?, ?, ?> typeInstance;
 		
 		@Override
 		public DefinitionType getType() {
