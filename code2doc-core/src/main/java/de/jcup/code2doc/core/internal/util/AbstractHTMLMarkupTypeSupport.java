@@ -19,6 +19,7 @@ package de.jcup.code2doc.core.internal.util;
 
 import java.util.regex.Pattern;
 
+import de.jcup.code2doc.api.Element.MarkupType;
 import static de.jcup.code2doc.core.internal.util.StringUtil.*;
 
 /**
@@ -40,188 +41,8 @@ import static de.jcup.code2doc.core.internal.util.StringUtil.*;
  * @author de-jcup
  *
  */
-public abstract class HTMLMarkupTypeSupport {
+public abstract class AbstractHTMLMarkupTypeSupport implements MarkupSupport{
 
-	protected enum XHTMLReplace {
-		/**
-		 * Italic
-		 */
-		I,
-
-		/**
-		 * Bold
-		 */
-		B,
-
-		/**
-		 * Underline
-		 */
-		U,
-
-		/**
-		 * Unsorted list
-		 */
-		UL,
-
-		/**
-		 * List item
-		 */
-		LI,
-
-		/**
-		 * Paragraph
-		 */
-		P,
-
-		/**
-		 * New line <br/>
-		 */
-		BR(true),
-		
-		
-		/**
-		 * html like link Supports attribute href
-		 */
-		A("href");
-
-		
-		/**
-		 * prefix 1 (for internal format)
-		 */
-		private static final String P1 = "\\\\\\/";
-		/**
-		 * prefix 2 (for internal format)
-		 */
-		private static final String P2 = "\\\\\\//";
-		
-		private final Pattern patternInternal;
-		private final Pattern patternExternal;
-		private final String replaceExternalWithInternal;
-		private final String attribute;
-		private boolean withoutContent;
-
-		private XHTMLReplace() {
-			this(null);
-		}
-
-		/**
-		 * Short element variant - e.g. BR- <br/>
-		 * 
-		 * @param withoutContent
-		 */
-		private XHTMLReplace(boolean withoutContent) {
-			this(null, withoutContent);
-		}
-
-		private XHTMLReplace(String attribute) {
-			this(attribute, false);
-		}
-
-		private XHTMLReplace(String attribute, boolean withoutContent) {
-			String tag = name().toLowerCase();
-			this.attribute = attribute;
-			this.withoutContent = withoutContent;
-			if (this.withoutContent){
-				patternExternal = Pattern.compile(patternSimpleXHTMLNoContent(tag),Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-				patternInternal = Pattern.compile(patternSimpleXHTMLNoContentToInternal(tag),Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-
-				replaceExternalWithInternal = replacementSimpleXHTMLNoContentToInternal(tag);
-			}else{
-				patternExternal = Pattern.compile(patternSimpleXHTML(tag),Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-				patternInternal = Pattern.compile(patternSimpleXHTMLToInternal(tag),Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
-
-				replaceExternalWithInternal = replacementSimpleXHTMLToInternal(tag);
-			}
-
-		}
-		
-		private boolean isWithAttribute() {
-			return isNotEmpty(attribute);
-		}
-
-		public String replace(String text, String replacement) {
-			return replacePatternWith(text, patternInternal, replacement);
-		}
-
-		/* white spaces are not supported - so <u > will not work.. */
-		private String patternSimpleXHTML(String element) {
-			if (isWithAttribute()) {
-				return "<" + element + " " + attribute + "='(.+?)'>(.+?)</" + element + ">";
-			}
-			return "<" + element + ">(.+?)</" + element + ">";
-		}
-		
-		private String patternSimpleXHTMLNoContent(String element) {
-			if (isWithAttribute()) {
-				return "<" + element + " " + attribute + "='(.+?)'/>";
-			}
-			return "<" + element + "/>";
-		}
-
-
-		private String patternSimpleXHTMLToInternal(String element) {
-			if (isWithAttribute()) {
-				return createInternalString(element, "(.+?)", "(.+?)");
-			}
-			return createInternalString(element, "(.+?)");
-		}
-		
-		private String patternSimpleXHTMLNoContentToInternal(String element) {
-			if (isWithAttribute()) {
-				return createInternalStringNoContent(element,"(.+?)");
-			}
-			return createInternalStringNoContent(element);
-		}
-
-		private String createInternalString(String element, String content) {
-			return P1 + element + P1 + content + P2 + element + P1;
-		}
-
-		private String createInternalString(String element, String content, String attribute) {
-			return P1 + element + "-" + attribute + P1 + content + P2 + element + P1;
-		}
-		
-		private String createInternalStringNoContent(String element) {
-			return P1 + element + P1;
-		}
-
-		private String createInternalStringNoContent(String element,String attribute) {
-			return P1 + element + "-" + attribute + P1;
-		}
-
-		private String replacementSimpleXHTMLNoContentToInternal(String element) {
-			if (isWithAttribute()) {
-				return createInternalStringNoContent(element, "$1");
-			}
-			return createInternalStringNoContent(element);
-		}
-		
-		private String replacementSimpleXHTMLToInternal(String element) {
-			if (isWithAttribute()) {
-				return createInternalString(element, "$2", "$1");
-			}
-			return createInternalString(element, "$1");
-		}
-
-		private String convertToInternalFormat(String text, XHTMLReplace r) {
-			text = replacePatternWith(text, r.patternExternal, r.replaceExternalWithInternal);
-			return text;
-		}
-
-		private String replacePatternWith(String text, Pattern p, String replacement) {
-			String replaced = p.matcher(text).replaceAll(replacement);
-			return replaced;
-		}
-
-	}
-
-	/**
-	 * Does apply style to given text
-	 * 
-	 * @param text
-	 *            - source
-	 * @return styled text
-	 */
 	public final String handleMarkup(String text) {
 		if (isEmpty(text)) {
 			return EMPTY;
@@ -229,7 +50,13 @@ public abstract class HTMLMarkupTypeSupport {
 		String internal = convertToInternalFormat(text);
 		return handleMarkupImpl(internal);
 	}
-
+	
+	
+	@Override
+	public MarkupType getMarkupType() {
+		return MarkupType.HTML;
+	}
+	
 	private String convertToInternalFormat(String text) {
 		for (XHTMLReplace r : XHTMLReplace.values()) {
 			text = r.convertToInternalFormat(text, r);
@@ -249,14 +76,177 @@ public abstract class HTMLMarkupTypeSupport {
 	 */
 	protected abstract String handleMarkupImpl(String internalFormatText);
 
-	public static void main(String[] args) {
-		/* javadoc output generation */
-		System.out.println("* <ol>");
-		for (XHTMLReplace r : XHTMLReplace.values()) {
-			String name = r.name().toLowerCase();
-			System.out.println("* <li>&lt" + name + (r.attribute != null ? " " + r.attribute + "='...'" : "") + "&gtcontent&lt/" + name + "&gt</li>");
+	protected enum XHTMLReplace {
+		/**
+		 * Italic
+		 */
+		I,
+	
+		/**
+		 * Bold
+		 */
+		B,
+	
+		/**
+		 * Underline
+		 */
+		U,
+	
+		/**
+		 * Unsorted list
+		 */
+		UL,
+	
+		/**
+		 * List item
+		 */
+		LI,
+	
+		/**
+		 * Paragraph
+		 */
+		P,
+	
+		/**
+		 * New line <br/>
+		 */
+		BR(true),
+		
+		
+		/**
+		 * html like link Supports attribute href
+		 */
+		A("href");
+	
+		
+		/**
+		 * prefix 1 (for internal format)
+		 */
+		private static final String P1 = "\\\\\\/";
+		/**
+		 * prefix 2 (for internal format)
+		 */
+		private static final String P2 = "\\\\\\//";
+		
+		private final Pattern patternInternal;
+		private final Pattern patternExternal;
+		final String replaceExternalWithInternal;
+		final String attribute;
+		private boolean withoutContent;
+	
+		private XHTMLReplace() {
+			this(null);
 		}
-		System.out.println("* </ol>");
+	
+		/**
+		 * Short element variant - e.g. BR- <br/>
+		 * 
+		 * @param withoutContent
+		 */
+		private XHTMLReplace(boolean withoutContent) {
+			this(null, withoutContent);
+		}
+	
+		private XHTMLReplace(String attribute) {
+			this(attribute, false);
+		}
+	
+		private XHTMLReplace(String attribute, boolean withoutContent) {
+			String tag = name().toLowerCase();
+			this.attribute = attribute;
+			this.withoutContent = withoutContent;
+			if (this.withoutContent){
+				patternExternal = Pattern.compile(patternSimpleXHTMLNoContent(tag),Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+				patternInternal = Pattern.compile(patternSimpleXHTMLNoContentToInternal(tag),Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+	
+				replaceExternalWithInternal = replacementSimpleXHTMLNoContentToInternal(tag);
+			}else{
+				patternExternal = Pattern.compile(patternSimpleXHTML(tag),Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+				patternInternal = Pattern.compile(patternSimpleXHTMLToInternal(tag),Pattern.DOTALL|Pattern.CASE_INSENSITIVE);
+	
+				replaceExternalWithInternal = replacementSimpleXHTMLToInternal(tag);
+			}
+	
+		}
+		
+		private boolean isWithAttribute() {
+			return isNotEmpty(attribute);
+		}
+	
+		public String replace(String text, String replacement) {
+			return replacePatternWith(text, patternInternal, replacement);
+		}
+	
+		/* white spaces are not supported - so <u > will not work.. */
+		private String patternSimpleXHTML(String element) {
+			if (isWithAttribute()) {
+				return "<" + element + " " + attribute + "='(.+?)'>(.+?)</" + element + ">";
+			}
+			return "<" + element + ">(.+?)</" + element + ">";
+		}
+		
+		private String patternSimpleXHTMLNoContent(String element) {
+			if (isWithAttribute()) {
+				return "<" + element + " " + attribute + "='(.+?)'/>";
+			}
+			return "<" + element + "/>";
+		}
+	
+	
+		private String patternSimpleXHTMLToInternal(String element) {
+			if (isWithAttribute()) {
+				return createInternalString(element, "(.+?)", "(.+?)");
+			}
+			return createInternalString(element, "(.+?)");
+		}
+		
+		private String patternSimpleXHTMLNoContentToInternal(String element) {
+			if (isWithAttribute()) {
+				return createInternalStringNoContent(element,"(.+?)");
+			}
+			return createInternalStringNoContent(element);
+		}
+	
+		private String createInternalString(String element, String content) {
+			return P1 + element + P1 + content + P2 + element + P1;
+		}
+	
+		private String createInternalString(String element, String content, String attribute) {
+			return P1 + element + "-" + attribute + P1 + content + P2 + element + P1;
+		}
+		
+		private String createInternalStringNoContent(String element) {
+			return P1 + element + P1;
+		}
+	
+		private String createInternalStringNoContent(String element,String attribute) {
+			return P1 + element + "-" + attribute + P1;
+		}
+	
+		private String replacementSimpleXHTMLNoContentToInternal(String element) {
+			if (isWithAttribute()) {
+				return createInternalStringNoContent(element, "$1");
+			}
+			return createInternalStringNoContent(element);
+		}
+		
+		private String replacementSimpleXHTMLToInternal(String element) {
+			if (isWithAttribute()) {
+				return createInternalString(element, "$2", "$1");
+			}
+			return createInternalString(element, "$1");
+		}
+	
+		private String convertToInternalFormat(String text, XHTMLReplace r) {
+			text = replacePatternWith(text, r.patternExternal, r.replaceExternalWithInternal);
+			return text;
+		}
+	
+		private String replacePatternWith(String text, Pattern p, String replacement) {
+			String replaced = p.matcher(text).replaceAll(replacement);
+			return replaced;
+		}
+	
 	}
 
 }

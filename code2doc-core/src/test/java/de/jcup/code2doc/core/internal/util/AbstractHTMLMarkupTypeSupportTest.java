@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class HTMLMarkupTypeSupportTest {
+public class AbstractHTMLMarkupTypeSupportTest {
 
 	@Test
 	public void test_elements_mixed(){
@@ -61,11 +61,11 @@ public class HTMLMarkupTypeSupportTest {
 		assertEquals("_Alinktarget link=message_A_", htmlMarkupTypeSupport.handleMarkup("<a href='linktarget'>message</a>"));
 	}
 	
-	private HTMLMarkupTypeSupport htmlMarkupTypeSupport;
+	private AbstractHTMLMarkupTypeSupport htmlMarkupTypeSupport;
 	
 	@Before
 	public void before(){
-		htmlMarkupTypeSupport = new HTMLMarkupTypeSupport() {
+		htmlMarkupTypeSupport = new AbstractHTMLMarkupTypeSupport() {
 
 			@Override
 			public String handleMarkupImpl(String text) {

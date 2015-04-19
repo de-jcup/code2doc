@@ -24,9 +24,9 @@ import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
 
 import de.jcup.code2doc.core.generator.Generator;
-import de.jcup.code2doc.core.internal.util.HTMLMarkupTypeSupport;
+import de.jcup.code2doc.core.internal.util.AbstractHTMLMarkupTypeSupport;
 
-public class DocbookHTMLMarkupTypeSupport extends HTMLMarkupTypeSupport{
+public class DocbookHTMLMarkupTypeSupport extends AbstractHTMLMarkupTypeSupport{
 	/* we use newInstance() because newFactory is only available at a specific JDK6 update and we want to
 	 * support every JRE 6 installation - so instead using newInstance()
 	 */

@@ -67,7 +67,7 @@ public class DocbookHTMLMarkupTypeSupportTest {
 	@Test
 	public void test_links_internal(){
 		/* target must be uppercased automatically - because IDs are always uppercased by transformer!*/
-		assertEquals("<xref linkend='targetUpper'>content</xref>",htmlMarkupSupport.handleMarkup("<a href='code2doc://targetUpper'>content</a>"));
+		assertEquals("<link linkend='targetUpper'>content</link>",htmlMarkupSupport.handleMarkup("<a href='code2doc://targetUpper'>content</a>"));
 	}
 	
 	private DocbookHTMLMarkupTypeSupport htmlMarkupSupport;

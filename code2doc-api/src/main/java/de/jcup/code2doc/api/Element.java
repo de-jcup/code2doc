@@ -177,7 +177,15 @@ public abstract class Element {
 	 *
 	 */
 	public static enum CodeType {
-		JAVA
+		JAVA;
+		
+		/**
+		 * Get default code type - {@link CodeType#JAVA}
+		 * @return {@link CodeType#JAVA}
+		 */
+		public static CodeType getDefault(){
+			return JAVA;
+		}
 	}
 
 	/**
@@ -200,7 +208,15 @@ public abstract class Element {
 		 * <li>&ltp&gtcontent&lt/p&gt</li>
 		 * <li>&lta href='...'&gtcontent&lt/a&gt</li>
 		 */
-		HTML
+		HTML;
+	
+		/**
+		 * Default mark up - {@link MarkupType#HTML}
+		 * @return {@link MarkupType#HTML}
+		 */
+		public static MarkupType getDefault(){
+			return HTML;
+		}
 	}
 
 	/**
@@ -211,7 +227,7 @@ public abstract class Element {
 	public interface ContentContainer {
 
 		/**
-		 * Add text in {@linkplain MarkupType#HTML}
+		 * Add text in {@linkplain MarkupType#getDefault()}
 		 * 
 		 * @param text
 		 * @return current container
@@ -231,7 +247,7 @@ public abstract class Element {
 		public ContentContainer addText(MarkupType type, String text);
 
 		/**
-		 * Add style text resource by given path in {@linkplain MarkupType#HTML}
+		 * Add style text resource by given path in {@linkplain MarkupType#getDefault()}
 		 * 
 		 * @param resourcePath
 		 *            - path to a resource file containing text. if resource
@@ -256,7 +272,7 @@ public abstract class Element {
 		public ContentContainer addTextResource(MarkupType type, String resourcePath);
 
 		/**
-		 * Adds code of type {@link CodeType#JAVA}.
+		 * Adds code of type {@link CodeType#getDefault()}.
 		 * 
 		 * @param code
 		 * @return current container
@@ -264,7 +280,7 @@ public abstract class Element {
 		public ContentContainer addCode(String code);
 
 		/**
-		 * Add code from resource of type {@link CodeType#JAVA}.
+		 * Add code from resource of type {@link CodeType#getDefault()}.
 		 * 
 		 * @param resourcePath
 		 *            - if resource path starts not with a / the element package
@@ -479,7 +495,7 @@ public abstract class Element {
 
 		@Override
 		public ContentContainer addCode(String code) {
-			return addCode(CodeType.JAVA, code);
+			return addCode(CodeType.getDefault(), code);
 		}
 
 		@Override
@@ -490,7 +506,7 @@ public abstract class Element {
 
 		@Override
 		public ContentContainer addCodeResource(String resourcePath) {
-			return addCodeResource(CodeType.JAVA, resourcePath);
+			return addCodeResource(CodeType.getDefault(), resourcePath);
 		}
 
 		@Override
@@ -516,7 +532,7 @@ public abstract class Element {
 
 		@Override
 		public ContentContainer addTextResource(String resourcePath) {
-			return addTextResource(MarkupType.HTML, resourcePath);
+			return addTextResource(MarkupType.getDefault(), resourcePath);
 		}
 
 

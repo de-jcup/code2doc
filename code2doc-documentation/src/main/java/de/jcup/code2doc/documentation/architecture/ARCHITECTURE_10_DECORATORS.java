@@ -37,6 +37,7 @@ public class ARCHITECTURE_10_DECORATORS extends Architecture{
 		/* @formatter:on */
 	}
 	
+	@SuppressWarnings("deprecation") // incubating localization feature...
 	private void germanLocale(ArchitectureSetup architectureSetup) {
 		Locale locale = Locale.GERMAN;
 		/* @formatter:off */

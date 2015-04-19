@@ -82,6 +82,7 @@ public class ElementTest {
 	}
 	
 
+	@SuppressWarnings("deprecation") // incubating localization feature...
 	@Test
 	public void test_when_defined_values_are_safed(){
 		/* no locale given */
