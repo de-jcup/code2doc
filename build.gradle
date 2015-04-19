@@ -27,7 +27,7 @@ subprojects {
 	apply plugin: "maven"
 		
 	group = "de.jcup.code2doc" 
-	version = "0.7"	
+	version = "0.8"	
 		
 	/* Setup UTF-8 for compile AND test compilation*/
 	[ compileJava, compileTestJava ]*.options*.encoding = 'UTF-8'
