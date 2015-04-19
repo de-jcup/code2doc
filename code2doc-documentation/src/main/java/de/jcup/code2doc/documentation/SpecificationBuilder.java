@@ -43,7 +43,7 @@ import de.jcup.code2doc.documentation.usecases._3_rendering.UC_900_CREATE_PDF_OU
 import de.jcup.code2doc.documentation.usecases._3_rendering.UC_950_READ_PDF_OUTPUT;
 /**
  * Eat your own dog food... via the uncomfortable and ugly approach (outside).
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public class SpecificationBuilder {

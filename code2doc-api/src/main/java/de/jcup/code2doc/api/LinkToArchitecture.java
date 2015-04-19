@@ -27,7 +27,7 @@ import java.lang.annotation.Target;
 @Target({ TYPE,METHOD })
 /**
  * Link this to given architecture
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public @interface LinkToArchitecture {

@@ -26,7 +26,7 @@ package de.jcup.code2doc.api;
  *   <li>Author</li>
  *   <li>Administrator</li>
  * </ul>
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public abstract class Role extends ContentElement{

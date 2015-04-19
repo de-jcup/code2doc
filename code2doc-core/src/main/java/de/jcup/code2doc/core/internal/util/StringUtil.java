@@ -3,7 +3,7 @@ package de.jcup.code2doc.core.internal.util;
  * To reduce dependencies to an absolute minimum we create our own string util here - with only necessary parts.
  * apache commons lang would be nice instead but many project have different dependencies to different library versions
  * - we want to avoid class path problems here...
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public class StringUtil {

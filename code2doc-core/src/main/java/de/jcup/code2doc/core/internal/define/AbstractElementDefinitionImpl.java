@@ -27,7 +27,7 @@ import de.jcup.code2doc.core.define.TechnicalDefinition;
 
 /**
  * ElementDefinitionImpl
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  * @param <TECH_PARENT> - type of technology info parent
  * @param <ELEMENT> - element type

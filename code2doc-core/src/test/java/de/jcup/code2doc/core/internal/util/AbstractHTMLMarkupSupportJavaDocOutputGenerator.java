@@ -4,7 +4,7 @@ import de.jcup.code2doc.core.internal.util.AbstractHTMLMarkupTypeSupport.XHTMLRe
 
 /**
  * A simple java doc output generator for the lazy developer... - to avoid typeing new elements...
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public class AbstractHTMLMarkupSupportJavaDocOutputGenerator {

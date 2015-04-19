@@ -24,7 +24,7 @@ import de.jcup.code2doc.core.define.Specification;
 import de.jcup.code2doc.renderer.docbook.PDFSpecificationRenderer;
 /**
  * Document builder
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public class DemoDocumentationOutput {

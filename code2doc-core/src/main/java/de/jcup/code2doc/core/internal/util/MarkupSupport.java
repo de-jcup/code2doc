@@ -4,7 +4,7 @@ import de.jcup.code2doc.api.Element.MarkupType;
 
 /**
  * Interface for all kind of support for {@link MarkupType}.
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public interface MarkupSupport {

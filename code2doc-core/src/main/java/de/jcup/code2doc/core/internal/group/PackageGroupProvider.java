@@ -32,7 +32,7 @@ import de.jcup.code2doc.core.internal.define.Group;
  * A package group provider knows all of its groups - so also the child parent
  * relationships.
  * 
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public class PackageGroupProvider {

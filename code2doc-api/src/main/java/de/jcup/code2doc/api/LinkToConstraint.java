@@ -27,7 +27,7 @@ import java.lang.annotation.Target;
 @Target({ METHOD, TYPE, FIELD })
 /**
  * Link this to given constraint
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public @interface LinkToConstraint {

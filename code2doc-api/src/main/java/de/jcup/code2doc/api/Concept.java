@@ -20,7 +20,7 @@ package de.jcup.code2doc.api;
 
 /**
  * A concept
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public abstract class Concept extends ContentElement{
@@ -43,7 +43,7 @@ public abstract class Concept extends ContentElement{
 	/**
 	 * Inner class for setup
 	 * 
-	 * @author de-jcup
+	 * @author Albert Tregnaghi
 	 *
 	 */
 	protected final class ConceptSetup extends ContentSetup<ConceptSetup>{

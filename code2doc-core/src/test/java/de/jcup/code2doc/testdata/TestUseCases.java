@@ -60,7 +60,7 @@ public class TestUseCases {
 	
 	/**
 	 * Special test use case which is NEVER linked - so link collecting negative test possible
-	 * @author de-jcup
+	 * @author Albert Tregnaghi
 	 *
 	 */
 	public static class UC_666_NEVER_LINKED extends UseCase{

@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
 /**
  * Element - used for all parts of API.
  * 
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public abstract class Element {
@@ -162,7 +162,7 @@ public abstract class Element {
 	/**
 	 * Immutable content.
 	 * 
-	 * @author de-jcup
+	 * @author Albert Tregnaghi
 	 *
 	 */
 	public interface Content {
@@ -173,7 +173,7 @@ public abstract class Element {
 	/**
 	 * Supported code types
 	 * 
-	 * @author de-jcup
+	 * @author Albert Tregnaghi
 	 *
 	 */
 	public static enum CodeType {
@@ -191,7 +191,7 @@ public abstract class Element {
 	/**
 	 * Supported markup types
 	 * 
-	 * @author de-jcup
+	 * @author Albert Tregnaghi
 	 *
 	 */
 	public static enum MarkupType {
@@ -222,7 +222,7 @@ public abstract class Element {
 	/**
 	 * Container for content
 	 * 
-	 * @author de-jcup
+	 * @author Albert Tregnaghi
 	 */
 	public interface ContentContainer {
 
@@ -485,7 +485,7 @@ public abstract class Element {
 	/**
 	 * Abstract container implementation
 	 * 
-	 * @author de-jcup
+	 * @author Albert Tregnaghi
 	 *
 	 */
 	class AbstractContentContainer implements Content, ContentContainer {

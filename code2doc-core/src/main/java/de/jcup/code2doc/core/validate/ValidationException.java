@@ -19,7 +19,7 @@ package de.jcup.code2doc.core.validate;
 
 /**
  * Validation exception
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public class ValidationException extends Exception{

@@ -5,7 +5,7 @@ import java.util.Comparator;
 /**
  * ObjectByClassNameComparator is a simple comparator using the full class names to compare.
  * When the object to compare is a class itself no class resolving is done.
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public class ObjectByClassNameComparator implements Comparator<Object> {

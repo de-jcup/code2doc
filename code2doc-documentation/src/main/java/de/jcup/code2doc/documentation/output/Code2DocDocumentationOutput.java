@@ -27,7 +27,7 @@ import de.jcup.code2doc.renderer.docbook.PDFSpecificationRenderer;
  * We use code2doc itself as target project for external approach. We do generate
  * the complete documentation here.
  * 
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public class Code2DocDocumentationOutput {

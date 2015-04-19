@@ -6,7 +6,7 @@ import de.jcup.code2doc.core.internal.define.AbstractElementDefinitionImpl;
 
 /**
  * Compares element definitin impl by the class names of their elements
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public class ElementDefinitionImplByClassNameComparator implements Comparator<AbstractElementDefinitionImpl<?, ?, ?>>{

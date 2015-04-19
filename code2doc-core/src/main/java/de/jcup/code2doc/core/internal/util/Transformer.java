@@ -30,7 +30,7 @@ import de.jcup.code2doc.api.Element;
 
 /**
  * Transformer class handles all kind of transformations done in code2doc
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public class Transformer {

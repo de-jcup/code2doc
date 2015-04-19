@@ -20,7 +20,7 @@ package de.jcup.code2doc.api;
 /**
  * Internal access to API package private parts - NOT for normal use, only for internal usage. It could be removed in later releases!
  * 
- * @author de-jcup
+ * @author Albert Tregnaghi
  * @deprecated - only for internal usage! Could be changed in future.
  */
 public class InternalAccess {

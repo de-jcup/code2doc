@@ -38,7 +38,7 @@ import static de.jcup.code2doc.core.internal.util.StringUtil.*;
  * 
  * TODO de-jcup, 22.03.2015: Think about using a parser (maybe state machine based) instead of heavy usage of regular expressions
  * 
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public abstract class AbstractHTMLMarkupTypeSupport implements MarkupSupport{

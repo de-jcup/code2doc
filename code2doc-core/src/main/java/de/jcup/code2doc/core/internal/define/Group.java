@@ -21,7 +21,7 @@ import java.util.Collection;
 
 /**
  * A Group inside specification model
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public interface Group extends Comparable<Group>{

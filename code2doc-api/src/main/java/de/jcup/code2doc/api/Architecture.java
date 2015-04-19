@@ -39,7 +39,7 @@ public abstract class Architecture extends ContentElement{
 	/**
 	 * Inner class for setup
 	 * 
-	 * @author de-jcup
+	 * @author Albert Tregnaghi
 	 *
 	 */
 	protected final class ArchitectureSetup extends ContentSetup<ArchitectureSetup>{

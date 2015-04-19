@@ -19,7 +19,7 @@ package de.jcup.code2doc.core.extend;
 
 /**
  * ExampleURLExtension
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public interface ExampleURLExtension extends Code2DocExtension{

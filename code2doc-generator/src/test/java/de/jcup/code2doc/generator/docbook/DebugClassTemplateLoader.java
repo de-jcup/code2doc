@@ -24,7 +24,7 @@ import freemarker.cache.ClassTemplateLoader;
 
 /**
  * Test template load - when havin problems of template resolving
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public class DebugClassTemplateLoader extends ClassTemplateLoader{

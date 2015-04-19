@@ -22,7 +22,7 @@ package de.jcup.code2doc.api;
  * 
  * Restricts an {@link UseCase}.
  * 
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public abstract class Constraint extends ContentElement{

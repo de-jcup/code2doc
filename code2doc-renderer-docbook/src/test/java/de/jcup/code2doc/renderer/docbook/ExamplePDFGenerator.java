@@ -34,7 +34,7 @@ import com.google.code.docbook4j.renderer.RTFRenderer;
  * 
  * Dadurch kann einfach ein docbook als Beispiel "gebastelt" werden.
  * https://github.com/bigpuritz/docbook4j
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public class ExamplePDFGenerator {

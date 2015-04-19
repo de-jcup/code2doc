@@ -21,7 +21,7 @@ import java.util.Locale;
 
 /**
  * Content element - gives access to content, has a setup possibility and provides a description
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public abstract class ContentElement extends Element{

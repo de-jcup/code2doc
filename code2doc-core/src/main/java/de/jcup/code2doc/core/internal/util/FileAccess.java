@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * FileAccess - gives simple access to files
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public class FileAccess {

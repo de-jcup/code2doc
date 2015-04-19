@@ -21,7 +21,7 @@ package de.jcup.code2doc.core.define;
 
 /**
  * A technical definition
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  * @param <P>
  */

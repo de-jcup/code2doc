@@ -35,7 +35,7 @@ import java.util.Set;
  * which must be extended. To avoid nerving getter implementations etc. there is
  * only one abstract setup method with a little fluent API.
  * 
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public abstract class UseCase extends ContentElement {
@@ -128,7 +128,7 @@ public abstract class UseCase extends ContentElement {
 	/**
 	 * Inner class for setup
 	 * 
-	 * @author de-jcup
+	 * @author Albert Tregnaghi
 	 *
 	 */
 	protected final class UseCaseSetup extends ContentSetup<UseCaseSetup> {

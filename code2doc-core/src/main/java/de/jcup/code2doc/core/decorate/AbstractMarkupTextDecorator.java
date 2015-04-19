@@ -9,7 +9,7 @@ import de.jcup.code2doc.core.internal.util.Validation;
 
 /**
  * Abstract implementation of a mark up text decorator. Implementation does allow only mark up types supported by registered {@link MarkupSupport} instances
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public abstract class AbstractMarkupTextDecorator implements MarkupTextDecorator{
@@ -26,7 +26,7 @@ public abstract class AbstractMarkupTextDecorator implements MarkupTextDecorator
 	
 	/***
 	 * A special setup for this decorator
-	 * @author de-jcup
+	 * @author Albert Tregnaghi
 	 *
 	 */
 	protected class MarkupTextDecoratorSetup{

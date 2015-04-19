@@ -22,7 +22,7 @@ package de.jcup.code2doc.core.extend;
  * for documented projects to do some specific parts and provide more
  * functionality by own code
  * 
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public interface Code2DocExtension {

@@ -40,7 +40,7 @@ import de.jcup.code2doc.core.internal.define.Group;
  * exist UC2 and UC3 had "de.jcup.code2doc.test.usecases.users" as root group.
  * <br>
  * The root of the children parent ship resolvement is done by the {@linkPlain PackageGroupProvider}
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 class PackageGroupImpl implements Group {

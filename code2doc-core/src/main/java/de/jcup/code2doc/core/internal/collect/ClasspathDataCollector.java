@@ -43,7 +43,7 @@ import de.jcup.code2doc.api.UseCase;
 /**
  * Collector for information about code2doc annotations used in target projects.
  * 
- * @author de-jcup
+ * @author Albert Tregnaghi
  *
  */
 public class ClasspathDataCollector {
