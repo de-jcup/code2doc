@@ -13,13 +13,13 @@ import de.jcup.code2doc.core.internal.util.MarkupSupport;
 public class AbstractMarkupTextDecoratorTest {
 
 	@Rule
-	public ExpectedException expectedExceptino = ExpectedException.none();
+	public ExpectedException expectedException = ExpectedException.none();
 	
 	private AbstractMarkupTextDecorator decorator;
 
 	@Test
 	public void test_already_registered_type_support_throws_exception(){
-		expectedExceptino.expect(IllegalArgumentException.class);
+		expectedException.expect(IllegalArgumentException.class);
 
 		new AbstractMarkupTextDecorator() {
 			
@@ -52,7 +52,7 @@ public class AbstractMarkupTextDecoratorTest {
 	
 	@Test
 	public void test_null_markup_type_throws_exception(){
-		expectedExceptino.expect(IllegalArgumentException.class);
+		expectedException.expect(IllegalArgumentException.class);
 		decorator.decorate(null, "text");
 	}
 	

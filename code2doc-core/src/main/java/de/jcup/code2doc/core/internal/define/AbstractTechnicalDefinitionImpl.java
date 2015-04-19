@@ -26,7 +26,7 @@ import java.util.TreeMap;
 
 import de.jcup.code2doc.core.define.TechnicalDefinition;
 
-public class AbstractTechnicalDefinitionImpl<TECH_PARENT> implements TechnicalDefinition<TECH_PARENT>{
+public abstract class AbstractTechnicalDefinitionImpl<TECH_PARENT> implements TechnicalDefinition<TECH_PARENT>{
 
 	private TECH_PARENT parent;
 	
