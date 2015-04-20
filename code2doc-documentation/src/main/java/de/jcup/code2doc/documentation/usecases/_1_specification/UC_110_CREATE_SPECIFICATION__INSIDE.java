@@ -18,6 +18,7 @@
 package de.jcup.code2doc.documentation.usecases._1_specification;
 
 import static de.jcup.code2doc.api.Element.CodeType.*;
+import static de.jcup.code2doc.api.Element.MarkupType.*;
 import de.jcup.code2doc.api.UseCase;
 import de.jcup.code2doc.documentation.concept.CONCEPT_CODE2DOC;
 import de.jcup.code2doc.documentation.roles.Roles;
@@ -35,7 +36,7 @@ public class UC_110_CREATE_SPECIFICATION__INSIDE extends UseCase {
 			
 			
 			content().
-				addTextResource("UC_110_CREATE_SPECIFICATION_en.html").
+				addTextResource(HTML, "UC_110_CREATE_SPECIFICATION_en.html").
 				addCodeResource(JAVA, "UC_110_CREATE_SPECIFICATION.java.example");
 			
 		setup.addLinkToConcept(CONCEPT_CODE2DOC.class);

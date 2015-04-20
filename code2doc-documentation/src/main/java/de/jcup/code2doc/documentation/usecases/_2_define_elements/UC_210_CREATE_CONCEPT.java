@@ -30,7 +30,8 @@ public class UC_210_CREATE_CONCEPT extends UseCase {
 			setDescription("A developer creates a concept. This is done by "+""
 					+ "creating a class which extends Concept").
 			content().
-				addCodeResource(CodeType.JAVA, "UC_210_CREATE_CONCEPT.java.example");
+				/* no code type given - because java is the default...*/
+				addCodeResource("UC_210_CREATE_CONCEPT.java.example");
 		
 		setup.addRole(Roles.DEVELOPER.class);
 		/*@formatter:on*/
