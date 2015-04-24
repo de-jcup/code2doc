@@ -23,9 +23,26 @@ import de.jcup.code2doc.api.Constraint;
 import de.jcup.code2doc.api.Role;
 import de.jcup.code2doc.api.UseCase;
 
+/**
+ * Implementations are element containers where dedicated elements can be added /defined
+ * @author Albert Tregnaghi
+ *
+ * @param <T>
+ */
 public interface ElementContainer<T> {
 
+	/**
+	 * Add a use case to this container
+	 * @param useCase - use case class
+	 * @return container
+	 */
 	public T addUseCase(Class<? extends UseCase> useCase);
+	
+	/**
+	 * Adds a use case and starts defining use case in detail
+	 * @param useCase
+	 * @return
+	 */
 	public UseCaseDefinition addUseCaseAndDefine(Class<? extends UseCase> useCase);
 	
 	

@@ -18,19 +18,7 @@
 package de.jcup.code2doc.core.define;
 
 
-public interface RoleDefinition extends ChildDefinition<Specification>{
+public interface RoleDefinition extends ChildDefinition<Specification>, TechInfoParent<RoleDefinition>{
 
-	/**
-	 * Adds technological info with element headline as default headline - if already added the existing definition is returned
-	 * @return technological info with element headline as default headline - if already added the existing definition is returned
-	 */
-	public TechnicalDefinition<? extends  RoleDefinition> addTechInfo();
-	
-	/**
-	 * Adds technological info with custom headline instead of default name - if already added the existing definition is returned
-	 * @param headline
-	 * @return technological info with custom headline instead of default name - if already added the existing definition is returned
-	 */
-	public TechnicalDefinition<? extends RoleDefinition> addTechInfo(String headline);
 	
 }

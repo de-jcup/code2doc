@@ -20,10 +20,10 @@ package de.jcup.code2doc.core.define;
 
 
 /**
- * A technical definition
+ * Technical definition
  * @author Albert Tregnaghi
  *
- * @param <P>
+ * @param <P> - parent of technical definition
  */
 public interface TechnicalDefinition<P> extends Comparable<TechnicalDefinition<P>>{
 	
