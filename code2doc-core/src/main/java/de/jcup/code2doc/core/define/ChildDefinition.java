@@ -6,7 +6,7 @@ package de.jcup.code2doc.core.define;
  *
  * @param <P> - parent of this child
  */
-public interface ChildDefinition<P> {
+public interface ChildDefinition<P> extends Definition{
 
 	/**
 	 * End this definition and return to parent

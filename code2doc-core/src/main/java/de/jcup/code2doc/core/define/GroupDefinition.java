@@ -18,6 +18,6 @@
 package de.jcup.code2doc.core.define;
 
 
-public interface GroupDefinition extends ElementContainer<GroupDefinition>, ChildDefinition<Specification>{
+public interface GroupDefinition extends ElementContainerDefinition<GroupDefinition>, ChildDefinition<Specification>{
 
 }

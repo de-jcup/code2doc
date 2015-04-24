@@ -25,7 +25,7 @@ package de.jcup.code2doc.core.define;
  *
  * @param <P> - parent of technical definition
  */
-public interface TechInfoDefinition<P> extends Comparable<TechInfoDefinition<P>>{
+public interface TechInfoDefinition<P> extends Comparable<TechInfoDefinition<P>>, Definition{
 	
 	/**
 	 * Add link to java class

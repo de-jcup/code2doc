@@ -29,7 +29,7 @@ import de.jcup.code2doc.api.UseCase;
  *
  * @param <T>
  */
-public interface ElementContainer<T> {
+public interface ElementContainerDefinition<T> extends Definition{
 
 	/**
 	 * Add a use case to this container

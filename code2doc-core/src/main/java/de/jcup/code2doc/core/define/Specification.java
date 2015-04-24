@@ -19,7 +19,7 @@ package de.jcup.code2doc.core.define;
 
 
 
-public interface Specification extends ElementContainer<Specification>{
+public interface Specification extends ElementContainerDefinition<Specification>{
 	
 	/**
 	 * Set legal notice message
