@@ -18,7 +18,7 @@
 package de.jcup.code2doc.core.define;
 
 
-public interface ArchitectureDefinition {
+public interface ArchitectureDefinition extends ChildDefinition<Specification>{
 
 	/**
 	 * Adds technological info with element headline as default headline - if already added the existing definition is returned
@@ -33,6 +33,5 @@ public interface ArchitectureDefinition {
 	 */
 	public TechnicalDefinition<? extends ArchitectureDefinition> addTechInfo(String headline);
 	
-	public Specification endDefinition();
 	
 }

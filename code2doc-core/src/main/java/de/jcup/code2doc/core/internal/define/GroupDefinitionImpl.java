@@ -135,7 +135,7 @@ public class GroupDefinitionImpl implements GroupDefinition, Comparable<GroupDef
 	}
 
 	@Override
-	public Specification endGroup() {
+	public Specification endDefinition() {
 		return specification;
 	}
 

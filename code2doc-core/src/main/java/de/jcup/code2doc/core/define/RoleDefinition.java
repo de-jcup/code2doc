@@ -18,7 +18,7 @@
 package de.jcup.code2doc.core.define;
 
 
-public interface RoleDefinition {
+public interface RoleDefinition extends ChildDefinition<Specification>{
 
 	/**
 	 * Adds technological info with element headline as default headline - if already added the existing definition is returned
@@ -32,11 +32,5 @@ public interface RoleDefinition {
 	 * @return technological info with custom headline instead of default name - if already added the existing definition is returned
 	 */
 	public TechnicalDefinition<? extends RoleDefinition> addTechInfo(String headline);
-	
-	/**
-	 * End definition and return to group
-	 * @return group def
-	 */
-	public Specification endDefinition();
 	
 }

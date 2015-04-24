@@ -18,7 +18,7 @@
 package de.jcup.code2doc.core.define;
 
 
-public interface ConstraintDefinition {
+public interface ConstraintDefinition extends ChildDefinition<Specification>{
 
 	/**
 	 * Adds technological info with element headline as default headline - if already added the existing definition is returned
@@ -33,10 +33,5 @@ public interface ConstraintDefinition {
 	 */
 	public TechnicalDefinition<? extends ConstraintDefinition> addTechInfo(String headline);
 	
-	/**
-	 * End definition and return to group
-	 * @return group def
-	 */
-	public Specification endDefinition();
 	
 }

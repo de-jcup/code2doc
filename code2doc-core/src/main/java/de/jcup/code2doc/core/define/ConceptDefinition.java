@@ -18,27 +18,6 @@
 package de.jcup.code2doc.core.define;
 
 
-public interface ConceptDefinition {
-	
-	
-	/*
-	 * Currently we do NOT support tech info by the interface - it makes no sense that
-	 * a Concept definition contains tech info
-	 */
-//
-//	/**
-//	 * Adds technological info with element headline as default headline - if already added the existing definition is returned
-//	 * @return technological info with element headline as default headline - if already added the existing definition is returned
-//	 */
-//	public TechnicalDefinition<? extends  ConceptDefinition> addTechInfo();
-//	
-//	/**
-//	 * Adds technological info with custom headline instead of default name - if already added the existing definition is returned
-//	 * @param headline
-//	 * @return technological info with custom headline instead of default name - if already added the existing definition is returned
-//	 */
-//	public TechnicalDefinition<? extends ConceptDefinition> addTechInfo(String headline);
-	
-	public Specification endDefinition();
+public interface ConceptDefinition extends ChildDefinition<Specification>{
 	
 }
