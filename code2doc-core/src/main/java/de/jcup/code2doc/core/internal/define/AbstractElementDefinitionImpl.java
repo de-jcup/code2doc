@@ -23,7 +23,7 @@ import java.util.Collection;
 import java.util.TreeSet;
 
 import de.jcup.code2doc.api.Element;
-import de.jcup.code2doc.core.define.TechnicalDefinition;
+import de.jcup.code2doc.core.define.TechInfoDefinition;
 
 /**
  * ElementDefinitionImpl
@@ -37,7 +37,7 @@ public abstract class AbstractElementDefinitionImpl<TECH_PARENT,ELEMENT extends 
 
 	ELEMENT element;
 	PARENT parent;
-	private Collection<TechnicalDefinition<TECH_PARENT>> technicalDefinitions = new TreeSet<TechnicalDefinition<TECH_PARENT>>();
+	private Collection<TechInfoDefinition<TECH_PARENT>> techInfoDefinitions = new TreeSet<TechInfoDefinition<TECH_PARENT>>();
 
 	AbstractElementDefinitionImpl(PARENT parent, ELEMENT element) {
 		this.element = element;
@@ -62,7 +62,7 @@ public abstract class AbstractElementDefinitionImpl<TECH_PARENT,ELEMENT extends 
 	}
 
 
-	public TechnicalDefinition<TECH_PARENT> addTechInfo() {
+	public TechInfoDefinition<TECH_PARENT> addTechInfo() {
 		return addTechInfo("");
 	}
 	
@@ -73,13 +73,13 @@ public abstract class AbstractElementDefinitionImpl<TECH_PARENT,ELEMENT extends 
 	 * @param group
 	 * @return technical definition
 	 */
-	public TechnicalDefinition<TECH_PARENT> addTechInfo(String group) {
+	public TechInfoDefinition<TECH_PARENT> addTechInfo(String group) {
 		String text = element.getHeadline();
 		if (isNotEmpty(group)){
 			text = text + " ("+group+")";
 		}
 		/* try to resolve technical definition for given group*/
-		for (TechnicalDefinition<TECH_PARENT> techDef: getTechnicalDefinitions()){
+		for (TechInfoDefinition<TECH_PARENT> techDef: getTechnicalDefinitions()){
 			if (!(techDef instanceof AbstractTechnicalDefinitionImpl<?>)){
 				throw new IllegalArgumentException("this kind of tech def is not supported:"+techDef);
 			}
@@ -89,8 +89,8 @@ public abstract class AbstractElementDefinitionImpl<TECH_PARENT,ELEMENT extends 
 			}
 		}
 		/* not found - add new one*/
-		TechnicalDefinition<TECH_PARENT> impl = createNewTechnicalDefinition(text);
-		technicalDefinitions.add(impl);
+		TechInfoDefinition<TECH_PARENT> impl = createNewTechnicalDefinition(text);
+		techInfoDefinitions.add(impl);
 		return impl;
 	}
 
@@ -99,14 +99,14 @@ public abstract class AbstractElementDefinitionImpl<TECH_PARENT,ELEMENT extends 
 	 * @param text
 	 * @return technical definition
 	 */
-	protected abstract TechnicalDefinition<TECH_PARENT> createNewTechnicalDefinition(String text);
+	protected abstract TechInfoDefinition<TECH_PARENT> createNewTechnicalDefinition(String text);
 	
 	/**
 	 * Returns all technical definitions
 	 * @return technical definitions
 	 */
-	public Collection<TechnicalDefinition<TECH_PARENT>> getTechnicalDefinitions() {
-		return technicalDefinitions;
+	public Collection<TechInfoDefinition<TECH_PARENT>> getTechnicalDefinitions() {
+		return techInfoDefinitions;
 	}
 
 }

@@ -20,12 +20,12 @@ package de.jcup.code2doc.core.define;
 
 
 /**
- * Technical definition
+ * Technical information definition
  * @author Albert Tregnaghi
  *
  * @param <P> - parent of technical definition
  */
-public interface TechnicalDefinition<P> extends Comparable<TechnicalDefinition<P>>{
+public interface TechInfoDefinition<P> extends Comparable<TechInfoDefinition<P>>{
 	
 	/**
 	 * Add link to java class
@@ -33,7 +33,7 @@ public interface TechnicalDefinition<P> extends Comparable<TechnicalDefinition<P
 	 * @param clazz - class
 	 * @return definition
 	 */
-	public TechnicalDefinition<P> addLinkToJava(String group, Class<?> ...classes);
+	public TechInfoDefinition<P> addLinkToJava(String group, Class<?> ...classes);
 	
 	/**
 	 * Add link to java linkedMethod
@@ -41,7 +41,7 @@ public interface TechnicalDefinition<P> extends Comparable<TechnicalDefinition<P
 	 * @param clazz - class
 	 * @return definition
 	 */
-	public TechnicalDefinition<P> addLinkToJavaMethod(String group, Class<?> clazz, String methodName);
+	public TechInfoDefinition<P> addLinkToJavaMethod(String group, Class<?> clazz, String methodName);
 	
 	
 	/**
@@ -50,7 +50,7 @@ public interface TechnicalDefinition<P> extends Comparable<TechnicalDefinition<P
 	 * @param clazz - class 
 	 * @return definition
 	 */
-	public TechnicalDefinition<P> addLinkToJavaField(String group, Class<?> clazz, String fieldName);
+	public TechInfoDefinition<P> addLinkToJavaField(String group, Class<?> clazz, String fieldName);
 	
 	/**
 	 * Add link to java enumeration
@@ -58,7 +58,7 @@ public interface TechnicalDefinition<P> extends Comparable<TechnicalDefinition<P
 	 * @param enums - one or more enumerations to add for group
 	 * @return definition
 	 */
-	public <T extends Enum<T>> TechnicalDefinition<P> addLinkToJava(String group, T ... enums);
+	public <T extends Enum<T>> TechInfoDefinition<P> addLinkToJava(String group, T ... enums);
 	
 	/**
 	 * Adds a link to an external URL
@@ -66,7 +66,7 @@ public interface TechnicalDefinition<P> extends Comparable<TechnicalDefinition<P
 	 * @param url - url string 
 	 * @return definition
 	 */
-	public TechnicalDefinition<P> addLinkToURL(String group, String ... urls);
+	public TechInfoDefinition<P> addLinkToURL(String group, String ... urls);
 	
 	/**
 	 * End

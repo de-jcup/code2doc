@@ -17,34 +17,34 @@
 * under the License.*/
 package de.jcup.code2doc.core.internal.define;
 
-import de.jcup.code2doc.core.define.TechnicalDefinition;
+import de.jcup.code2doc.core.define.TechInfoDefinition;
 
-public class DummyTechnicalInfo<P> implements TechnicalDefinition<P>{
+public class DummyTechInfoDefinitionImpl<P> implements TechInfoDefinition<P>{
 
 	private P parent;
 	
-	DummyTechnicalInfo(P parent){
+	DummyTechInfoDefinitionImpl(P parent){
 		this.parent=parent;
 	}
 
 	@Override
-	public TechnicalDefinition<P> addLinkToJava(String id, Class<?>... classes) {
+	public TechInfoDefinition<P> addLinkToJava(String id, Class<?>... classes) {
 		return this;
 	}
 
 	@Override
-	public TechnicalDefinition<P> addLinkToJavaMethod(String id, Class<?> clazz, String methodName) {
+	public TechInfoDefinition<P> addLinkToJavaMethod(String id, Class<?> clazz, String methodName) {
 		return this;
 	}
 
 	@Override
-	public TechnicalDefinition<P> addLinkToJavaField(String id, Class<?> clazz, String fieldName) {
+	public TechInfoDefinition<P> addLinkToJavaField(String id, Class<?> clazz, String fieldName) {
 		return this;
 	}
 
 
 	@Override
-	public TechnicalDefinition<P> addLinkToURL(String id, String... urls) {
+	public TechInfoDefinition<P> addLinkToURL(String id, String... urls) {
 		return this;
 	}
 
@@ -54,13 +54,13 @@ public class DummyTechnicalInfo<P> implements TechnicalDefinition<P>{
 	}
 
 	@Override
-	public <T extends Enum<T>> TechnicalDefinition<P> addLinkToJava(String id, T... enums) {
+	public <T extends Enum<T>> TechInfoDefinition<P> addLinkToJava(String id, T... enums) {
 		return this;
 	}
 
 	@Override
-	public int compareTo(TechnicalDefinition<P> def) {
-		if (def instanceof DummyTechnicalInfo){
+	public int compareTo(TechInfoDefinition<P> def) {
+		if (def instanceof DummyTechInfoDefinitionImpl){
 			return 0; // all same
 		}
 		return -1; // dummies to end...

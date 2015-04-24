@@ -9,11 +9,11 @@ import org.slf4j.LoggerFactory;
 
 import de.jcup.code2doc.api.InternalAccess;
 import de.jcup.code2doc.api.UseCase;
-import de.jcup.code2doc.core.define.TechnicalDefinition;
+import de.jcup.code2doc.core.define.TechInfoDefinition;
 import de.jcup.code2doc.core.extend.ExampleURLExtension;
 import de.jcup.code2doc.core.internal.define.AbstractTechnicalDefinitionImpl;
 import de.jcup.code2doc.core.internal.define.DefinitionType;
-import de.jcup.code2doc.core.internal.define.DummyTechnicalInfo;
+import de.jcup.code2doc.core.internal.define.DummyTechInfoDefinitionImpl;
 import de.jcup.code2doc.core.internal.define.AbstractElementDefinitionImpl;
 import de.jcup.code2doc.core.internal.define.GroupDefinitionImpl;
 import de.jcup.code2doc.core.internal.define.SpecificationImpl;
@@ -40,7 +40,7 @@ public class UseCaseExampleURLDecorator extends AbstractSpecificationImplDecorat
 			for (AbstractElementDefinitionImpl<?, ?, ?> useCaseDef : useCaseDefinitions) {
 				UseCase useCase = (UseCase) useCaseDef.getElement();
 				String exampleURL = null;
-				for (TechnicalDefinition<?> usecaseTechInfo : useCaseDef.getTechnicalDefinitions()) {
+				for (TechInfoDefinition<?> usecaseTechInfo : useCaseDef.getTechnicalDefinitions()) {
 					if (exampleURL != null) {
 						break;
 					}
@@ -62,7 +62,7 @@ public class UseCaseExampleURLDecorator extends AbstractSpecificationImplDecorat
 								}
 							}
 						}
-					} else if (usecaseTechInfo instanceof DummyTechnicalInfo) {
+					} else if (usecaseTechInfo instanceof DummyTechInfoDefinitionImpl) {
 						if (LOG.isDebugEnabled()) {
 							LOG.debug("Dummy tech info found at use case:" + useCase);
 						}

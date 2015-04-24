@@ -30,7 +30,7 @@ import de.jcup.code2doc.api.Constraint;
 import de.jcup.code2doc.api.Element;
 import de.jcup.code2doc.api.Role;
 import de.jcup.code2doc.api.UseCase;
-import de.jcup.code2doc.core.define.TechnicalDefinition;
+import de.jcup.code2doc.core.define.TechInfoDefinition;
 import de.jcup.code2doc.core.internal.collect.ClasspathDataCollector;
 import de.jcup.code2doc.core.internal.collect.TechInfoLinkAnnotationData;
 import de.jcup.code2doc.core.internal.define.AbstractElementDefinitionImpl;
@@ -112,13 +112,13 @@ public class ClasspathDecorator extends AbstractSpecificationImplDecorator {
 		}
 		/* append data to definition */
 		for (TechInfoLinkAnnotationData linkData : linkDataList) {
-			TechnicalDefinition<?> techInfo = element.addTechInfo(linkData.getTechInfoGroup());
+			TechInfoDefinition<?> techInfo = element.addTechInfo(linkData.getTechInfoGroup());
 			append(linkData, techInfo);
 		}
 	}
 
 	@SuppressWarnings(value={"unchecked", "rawtypes"})
-	void  append(TechInfoLinkAnnotationData linkData,  TechnicalDefinition<?> techInfo) {
+	void  append(TechInfoLinkAnnotationData linkData,  TechInfoDefinition<?> techInfo) {
 		String group = linkData.getType();
 		Class<?> clazz = linkData.getLinkedClass();
 		Validation.notNull(clazz, "clazz may not be null");

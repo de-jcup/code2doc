@@ -26,7 +26,7 @@ import java.util.Set;
 import de.jcup.code2doc.api.Concept;
 import de.jcup.code2doc.core.define.ConceptDefinition;
 import de.jcup.code2doc.core.define.Specification;
-import de.jcup.code2doc.core.define.TechnicalDefinition;
+import de.jcup.code2doc.core.define.TechInfoDefinition;
 
 public class ConceptDefinitionImpl extends AbstractElementDefinitionImpl<ConceptDefinition,Concept, Specification> implements ConceptDefinition  {
 
@@ -39,8 +39,8 @@ public class ConceptDefinitionImpl extends AbstractElementDefinitionImpl<Concept
 	}
 
 	@Override
-	protected TechnicalDefinition<ConceptDefinition> createNewTechnicalDefinition(String text) {
-		return new DummyTechnicalInfo<ConceptDefinition>(this);
+	protected TechInfoDefinition<ConceptDefinition> createNewTechnicalDefinition(String text) {
+		return new DummyTechInfoDefinitionImpl<ConceptDefinition>(this);
 	}
 	
 	public GroupDefinitionImpl getGroupDefinition() {

@@ -8,7 +8,7 @@ import java.lang.reflect.Field;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.jcup.code2doc.core.define.TechnicalDefinition;
+import de.jcup.code2doc.core.define.TechInfoDefinition;
 import de.jcup.code2doc.core.internal.collect.TechInfoLinkAnnotationData;
 import de.jcup.code2doc.core.internal.collect.TestTechInfoLinkAnnotationData;
 
@@ -20,10 +20,10 @@ public class ClasspathDecoratorTest {
 	public void test_annotation_data_of_enumetion_is_handled_correctly() {
 		TechInfoLinkAnnotationData techInfoData = new TestTechInfoLinkAnnotationData(InternalTestEnum.class, "group", null, getField(InternalTestEnum.class,
 				InternalTestEnum.Test1.name()), "group");
-		classpathDecorator.append(techInfoData, technicalDefinition);
+		classpathDecorator.append(techInfoData, techInfoDefinition);
 
 		/* there must be the ENUM added */
-		verify(technicalDefinition).addLinkToJava("group", InternalTestEnum.Test1);
+		verify(techInfoDefinition).addLinkToJava("group", InternalTestEnum.Test1);
 	}
 
 	/* -------------------------------- */
@@ -31,14 +31,14 @@ public class ClasspathDecoratorTest {
 	/* -------------------------------- */
 
 	private ClasspathDecorator classpathDecorator;
-	private TechnicalDefinition<Object> technicalDefinition;
+	private TechInfoDefinition<Object> techInfoDefinition;
 
 	@SuppressWarnings("unchecked")
 	@Before
 	public void before() {
 		classpathDecorator = new ClasspathDecorator();
-		technicalDefinition = mock(TechnicalDefinition.class);
-		when(technicalDefinition.addLinkToJava(any(String.class), any(InternalTestEnum.class))).thenReturn(technicalDefinition);
+		techInfoDefinition = mock(TechInfoDefinition.class);
+		when(techInfoDefinition.addLinkToJava(any(String.class), any(InternalTestEnum.class))).thenReturn(techInfoDefinition);
 	}
 
 	private Field getField(Class<?> clazz, String methodName) {

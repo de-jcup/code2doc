@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import de.jcup.code2doc.api.UseCase;
-import de.jcup.code2doc.core.define.TechnicalDefinition;
+import de.jcup.code2doc.core.define.TechInfoDefinition;
 import de.jcup.code2doc.testdata.TestUseCases.UC_1__SHOW_ENTRIES;
 
 public class AbstractElementDefinitionImplTest {
@@ -21,10 +21,10 @@ public class AbstractElementDefinitionImplTest {
 		elementDefinition.addTechInfo("group1");
 		elementDefinition.addTechInfo("group5");
 
-		Collection<TechnicalDefinition<Object>> techInfos = elementDefinition.getTechnicalDefinitions();
+		Collection<TechInfoDefinition<Object>> techInfos = elementDefinition.getTechnicalDefinitions();
 		assertEquals(4, techInfos.size());
 
-		Iterator<TechnicalDefinition<Object>> it = techInfos.iterator();
+		Iterator<TechInfoDefinition<Object>> it = techInfos.iterator();
 		assertNextElementHasHeadline(it, null);
 		assertNextElementHasHeadline(it, "group1");
 		assertNextElementHasHeadline(it, "group2");
@@ -43,8 +43,8 @@ public class AbstractElementDefinitionImplTest {
 		elementDefinition = new TestElementDefinitionImpl();
 	}
 
-	private void assertNextElementHasHeadline(Iterator<TechnicalDefinition<Object>> it, String group) {
-		TechnicalDefinition<Object> def = it.next();
+	private void assertNextElementHasHeadline(Iterator<TechInfoDefinition<Object>> it, String group) {
+		TechInfoDefinition<Object> def = it.next();
 		if (!(def instanceof AbstractTechnicalDefinitionImpl)) {
 			throw new IllegalArgumentException("test wrong implmeented");
 		}
@@ -74,7 +74,7 @@ public class AbstractElementDefinitionImplTest {
 		}
 
 		@Override
-		protected TechnicalDefinition<Object> createNewTechnicalDefinition(String text) {
+		protected TechInfoDefinition<Object> createNewTechnicalDefinition(String text) {
 			return new AbstractTechnicalDefinitionImpl<Object>(this, text) {
 			};
 		}

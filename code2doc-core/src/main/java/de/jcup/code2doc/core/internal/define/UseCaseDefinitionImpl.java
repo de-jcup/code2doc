@@ -19,7 +19,7 @@ package de.jcup.code2doc.core.internal.define;
 
 import de.jcup.code2doc.api.UseCase;
 import de.jcup.code2doc.core.define.Specification;
-import de.jcup.code2doc.core.define.TechnicalDefinition;
+import de.jcup.code2doc.core.define.TechInfoDefinition;
 import de.jcup.code2doc.core.define.UseCaseDefinition;
 
 public class UseCaseDefinitionImpl extends AbstractElementDefinitionImpl<UseCaseDefinition,UseCase,Specification> implements UseCaseDefinition, Comparable<UseCaseDefinitionImpl> {
@@ -30,7 +30,7 @@ public class UseCaseDefinitionImpl extends AbstractElementDefinitionImpl<UseCase
 	}
 
 	@Override
-	protected TechnicalDefinition<UseCaseDefinition> createNewTechnicalDefinition(String text) {
+	protected TechInfoDefinition<UseCaseDefinition> createNewTechnicalDefinition(String text) {
 		UseCaseTechnicalDefinitionImpl impl = new UseCaseTechnicalDefinitionImpl(this,text);
 		return impl;
 	}

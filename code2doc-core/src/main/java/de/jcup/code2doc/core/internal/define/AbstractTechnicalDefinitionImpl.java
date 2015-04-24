@@ -24,9 +24,9 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.TreeMap;
 
-import de.jcup.code2doc.core.define.TechnicalDefinition;
+import de.jcup.code2doc.core.define.TechInfoDefinition;
 
-public abstract class AbstractTechnicalDefinitionImpl<TECH_PARENT> implements TechnicalDefinition<TECH_PARENT>{
+public abstract class AbstractTechnicalDefinitionImpl<TECH_PARENT> implements TechInfoDefinition<TECH_PARENT>{
 
 	private TECH_PARENT parent;
 	
@@ -58,7 +58,7 @@ public abstract class AbstractTechnicalDefinitionImpl<TECH_PARENT> implements Te
 	
 
 	@Override
-	public TechnicalDefinition<TECH_PARENT> addLinkToJava(String id, Class<?> ... classes) {
+	public TechInfoDefinition<TECH_PARENT> addLinkToJava(String id, Class<?> ... classes) {
 		if (isEmpty(id)){
 			id="classes";
 		}
@@ -70,7 +70,7 @@ public abstract class AbstractTechnicalDefinitionImpl<TECH_PARENT> implements Te
 	}
 	
 	@Override
-	public TechnicalDefinition<TECH_PARENT> addLinkToJavaField(String id, Class<?> clazz, String fieldName) {
+	public TechInfoDefinition<TECH_PARENT> addLinkToJavaField(String id, Class<?> clazz, String fieldName) {
 		if (isEmpty(id)){
 			id="fields";
 		}
@@ -79,7 +79,7 @@ public abstract class AbstractTechnicalDefinitionImpl<TECH_PARENT> implements Te
 	}
 
 	@Override
-	public TechnicalDefinition<TECH_PARENT> addLinkToJavaMethod(String id, Class<?> clazz, String methodName) {
+	public TechInfoDefinition<TECH_PARENT> addLinkToJavaMethod(String id, Class<?> clazz, String methodName) {
 		if (isEmpty(id)){
 			id="methods";
 		}
@@ -88,7 +88,7 @@ public abstract class AbstractTechnicalDefinitionImpl<TECH_PARENT> implements Te
 	}
 
 	@Override
-	public <T extends Enum<T>> TechnicalDefinition<TECH_PARENT> addLinkToJava(String id, T... enums) {
+	public <T extends Enum<T>> TechInfoDefinition<TECH_PARENT> addLinkToJava(String id, T... enums) {
 		if (isEmpty(id)){
 			id="enums";
 		}
@@ -101,7 +101,7 @@ public abstract class AbstractTechnicalDefinitionImpl<TECH_PARENT> implements Te
 	
 
 	@Override
-	public TechnicalDefinition<TECH_PARENT> addLinkToURL(String id, String ...urls) {
+	public TechInfoDefinition<TECH_PARENT> addLinkToURL(String id, String ...urls) {
 		Collection<String> x = ensuredCollection(linkToURLs, id);
 		for (String url: urls){
 			x.add(url);
@@ -119,7 +119,7 @@ public abstract class AbstractTechnicalDefinitionImpl<TECH_PARENT> implements Te
 
 
 	@Override
-	public int compareTo(TechnicalDefinition<TECH_PARENT> other) {
+	public int compareTo(TechInfoDefinition<TECH_PARENT> other) {
 		if (other==null){
 			return 1;
 		}
