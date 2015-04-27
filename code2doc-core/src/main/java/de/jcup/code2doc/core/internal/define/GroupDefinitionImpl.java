@@ -41,6 +41,7 @@ import de.jcup.code2doc.core.define.RoleDefinition;
 import de.jcup.code2doc.core.define.Specification;
 import de.jcup.code2doc.core.define.UseCaseDefinition;
 import de.jcup.code2doc.core.internal.sort.ElementDefinitionImplByClassNameComparator;
+import de.jcup.code2doc.core.internal.util.Validation;
 
 
 public class GroupDefinitionImpl implements GroupDefinition, Comparable<GroupDefinitionImpl> {
@@ -144,10 +145,12 @@ public class GroupDefinitionImpl implements GroupDefinition, Comparable<GroupDef
 	 * @param definitionType
 	 * @return collection with all element definitions
 	 * @throws IllegalArgumentException when definition type not supported on not in enum 
+	 * @throws IllegalArgumentException when definition type is null
 	 */
-	public List<? extends AbstractElementDefinitionImpl<?,?,?>> getDefinitionsSorted(String definitionType) {
-		DefinitionType type = DefinitionType.valueOf(definitionType);
-		List<? extends AbstractElementDefinitionImpl<?, ?, ?>> list = getDefinitions(type);
+	public Collection<? extends AbstractElementDefinitionImpl<?,?,?>> getDefinitionsSorted(String definitionType) {
+		Validation.notNull(definitionType, "Definition may not be null");
+		DefinitionType resolvedDefinitionType = DefinitionType.valueOf(definitionType);
+		List<? extends AbstractElementDefinitionImpl<?, ?, ?>> list = internalFindCorrectList(resolvedDefinitionType);
 		return createSortedList(list);
 	}
 	
@@ -156,45 +159,39 @@ public class GroupDefinitionImpl implements GroupDefinition, Comparable<GroupDef
 	 * @param definitionType - must be one of the names defined in {@link DefinitionType}
 	 * @return collection with all element definitions 
 	 * @throws IllegalArgumentException when definition type not supported on not in enum
+	 * @throws IllegalArgumentException when definition type is null
 	 */
-	public List<? extends AbstractElementDefinitionImpl<?,?,?>> getDefinitions(String definitionType) {
+	public Collection<? extends AbstractElementDefinitionImpl<?,?,?>> getDefinitions(String definitionType) {
+		Validation.notNull(definitionType, "Definition may not be null");
 		DefinitionType type = DefinitionType.valueOf(definitionType);
 		return getDefinitions(type);
 	}
 	
 	/**
-	 * Get all definitions - not sorted
-	 * @param definitionType
-	 * @return list for given definition type - never null
+	 * Get all element definitions - for every definition type
+	 * @return unmodifiable list of all element definitions
+	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public List<? extends AbstractElementDefinitionImpl<?, ?, ?>> getDefinitions(){
+		/* simply add every definition type to fetch all */
+		List<? extends AbstractElementDefinitionImpl<?, ?, ?>> result = new ArrayList<AbstractElementDefinitionImpl<?,?,?>>();
+		for (DefinitionType type: DefinitionType.values()){
+			List<? extends AbstractElementDefinitionImpl<?, ?, ?>> allOfType = internalFindCorrectList(type);
+			result.addAll((Collection)(allOfType)); /* without cast to raw type not working ... */
+		}
+		return Collections.unmodifiableList(result);
+	}
+	
+	/**
+	 * Get all definitions for given definition type - not sorted
+	 * @param definitionType - may not be null
+	 * @return unmodifiable list for given definition type - never null
 	 * @throws IllegalArgumentException when unsupported definition type
 	 */
 	public List<? extends AbstractElementDefinitionImpl<?,?,?>> getDefinitions(DefinitionType definitionType) {
-		List<? extends AbstractElementDefinitionImpl<?,?,?>> list = null;
-		if (definitionType==DefinitionType.USECASE){
-			list= useCaseDefinitions;
-		}else if (definitionType==DefinitionType.ARCHITECTURE){
-			list= architectureDefinitions;
-		}else if (definitionType==DefinitionType.CONCEPT){
-			list= conceptDefinitions;
-		}else if (definitionType==DefinitionType.ROLE){
-			list= roleDefinitions;
-		}else if (definitionType==DefinitionType.CONSTRAINT){
-			list= constraintDefinitions;
-		}
-		assertListAvailable(definitionType, list);
-		return list;
-	}
-
-	private void assertListAvailable(DefinitionType definitionType, List<? extends AbstractElementDefinitionImpl<?, ?, ?>> list) {
-		if (list==null){
-			throw new IllegalArgumentException("definition type unsupported - no list found for::"+definitionType);
-		}
-	}
-	
-	List<? extends AbstractElementDefinitionImpl<?,?,?>> createSortedList(List<? extends AbstractElementDefinitionImpl<?,?,?>>list ){
-		List<? extends AbstractElementDefinitionImpl<?,?,?>> sortedList = new ArrayList<AbstractElementDefinitionImpl<?,?,?>>(list);
-		Collections.sort(sortedList,SHARED_COMPARATOR);
-		return sortedList;
+		Validation.notNull(definitionType,  "Defintion type must be set - or use getDefinitions() instead!");
+		List<? extends AbstractElementDefinitionImpl<?, ?, ?>> list = internalFindCorrectList(definitionType);
+		return Collections.unmodifiableList(list);
 	}
 
 	public Group getGroup() {
@@ -248,6 +245,39 @@ public class GroupDefinitionImpl implements GroupDefinition, Comparable<GroupDef
 	
 	/* @formatter:on*/
 	
+	List<? extends AbstractElementDefinitionImpl<?,?,?>> createSortedList(List<? extends AbstractElementDefinitionImpl<?,?,?>>list ){
+		List<? extends AbstractElementDefinitionImpl<?,?,?>> sortedList = new ArrayList<AbstractElementDefinitionImpl<?,?,?>>(list);
+		Collections.sort(sortedList,SHARED_COMPARATOR);
+		return sortedList;
+	}
+
+	/*
+	 * Internal method to fetch correct list - will return the real list - public caller methods should always return a unmodifiable version...
+	 * 
+	 */
+	private List<? extends AbstractElementDefinitionImpl<?, ?, ?>> internalFindCorrectList(DefinitionType definitionType) {
+		List<? extends AbstractElementDefinitionImpl<?,?,?>> list = null;
+		if (definitionType==DefinitionType.USECASE){
+			list= useCaseDefinitions;
+		}else if (definitionType==DefinitionType.ARCHITECTURE){
+			list= architectureDefinitions;
+		}else if (definitionType==DefinitionType.CONCEPT){
+			list= conceptDefinitions;
+		}else if (definitionType==DefinitionType.ROLE){
+			list= roleDefinitions;
+		}else if (definitionType==DefinitionType.CONSTRAINT){
+			list= constraintDefinitions;
+		}
+		assertListAvailable(definitionType, list);
+		return list;
+	}
+
+	private void assertListAvailable(DefinitionType definitionType, List<? extends AbstractElementDefinitionImpl<?, ?, ?>> list) {
+		if (list==null){
+			throw new IllegalArgumentException("definition type unsupported - no list found for::"+definitionType);
+		}
+	}
+
 	/* hmm... currently no generics are used here - but we know what we do here. so normally not necessary. effort with generic approach too great */
 	@SuppressWarnings({"unchecked","rawtypes"})
 	/* @formatter:off*/
@@ -256,7 +286,7 @@ public class GroupDefinitionImpl implements GroupDefinition, Comparable<GroupDef
 				ElementDefinitionCreator definitionCreator, 
 				GroupDefinitionImpl parentContainer) {
 		DefinitionType defType = definitionCreator.getType();
-		List list = (List) getDefinitions(defType);
+		List list = (List) internalFindCorrectList(defType);
 		if (elementToelementDefininitionMap.containsKey(elementClazz))	{
 			LOG.debug("key already exists. So reuse it.");
 			return elementToelementDefininitionMap.get(elementClazz);

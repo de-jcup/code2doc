@@ -19,6 +19,7 @@ package de.jcup.code2doc.documentation.output;
 
 import java.io.File;
 
+import de.jcup.code2doc.core.Factory;
 import de.jcup.code2doc.core.define.Specification;
 import de.jcup.code2doc.documentation.SpecificationBuilder;
 import de.jcup.code2doc.renderer.docbook.PDFSpecificationRenderer;
@@ -41,6 +42,7 @@ public class Code2DocDocumentationOutput {
 			System.setProperty("code2doc.renderer.docbook.keep_temporary_files", "true");
 		}
 		Specification spec = new SpecificationBuilder().start();
+		Factory.createDefaultValidator().validate(spec);
 		
 		PDFSpecificationRenderer renderer = new PDFSpecificationRenderer(spec, new File("build","code2doc-documentation.pdf"));
 		File file = renderer.render();

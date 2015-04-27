@@ -107,6 +107,7 @@ public abstract class Element {
 	 * Gets defined LOCALES - means locale the document has done a setup
 	 * 
 	 * @return defined LOCALES
+	 * @deprecated - incubating feature 
 	 */
 	public final Set<Locale> getDefinedLocales() {
 		return Collections.unmodifiableSet(mapLocaleToBaseContainer.keySet());
@@ -167,6 +168,10 @@ public abstract class Element {
 	 */
 	public interface Content {
 
+		/**
+		 * Returns children
+		 * @return list of children or an empty list - never null
+		 */
 		public List<Content> getChildren();
 	}
 

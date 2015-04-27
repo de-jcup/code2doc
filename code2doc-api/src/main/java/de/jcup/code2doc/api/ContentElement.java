@@ -64,6 +64,7 @@ public abstract class ContentElement extends Element{
 	 * Returns content - for given locale
 	 * @param locale content
 	 * @return content for given locale
+	 * @deprecated - incubating feature
 	 */
 	public final Content getContent(Locale locale){
 		return getBaseContent(locale);

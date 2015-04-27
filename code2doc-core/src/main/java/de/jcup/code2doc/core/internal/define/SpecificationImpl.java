@@ -28,6 +28,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,6 +48,7 @@ import de.jcup.code2doc.core.define.UseCaseDefinition;
 import de.jcup.code2doc.core.internal.I18n;
 import de.jcup.code2doc.core.internal.group.PackageGroupProvider;
 import de.jcup.code2doc.core.internal.util.Transformer;
+import de.jcup.code2doc.core.internal.util.Validation;
 
 public class SpecificationImpl implements Specification {
 	private static final Logger LOG = LoggerFactory.getLogger(SpecificationImpl.class);
@@ -88,31 +90,29 @@ public class SpecificationImpl implements Specification {
 		return sortedGroups;
 	}
 
+	public Collection<AbstractElementDefinitionImpl<?, ?, ?>> getAllElementDefinitions(){
+		Set<AbstractElementDefinitionImpl<?, ?, ?>> result = new TreeSet<AbstractElementDefinitionImpl<?,?,?>>();
+		for (GroupDefinitionImpl groupDef : getGroupDefinitions()){
+			Collection<? extends de.jcup.code2doc.core.internal.define.AbstractElementDefinitionImpl<?, ?, ?>> definitions = groupDef.getDefinitions();
+			result.addAll(definitions);
+		}
+		
+		return result;
+	}
+	
 	/**
-	 * Return a element definition for given element clazz
+	 * Return a element definition for EXACT given element clazz
 	 * 
 	 * @param clazz - the exact class of the element definition.
-	 * @return
+	 * @return element or <code>null</code>
 	 */
 	@SuppressWarnings("unchecked")
 	public <T extends Element> AbstractElementDefinitionImpl<?, T, ?> getDefinition(Class<T> clazz) {
 		if (clazz == null){
 			throw new IllegalArgumentException("cant get a definition for NULL element!");
 		}
-		DefinitionType definitionType = null;
-		if (UseCase.class.isAssignableFrom(clazz)) {
-			definitionType = DefinitionType.USECASE;
-		} else if (Architecture.class.isAssignableFrom(clazz)) {
-			definitionType = DefinitionType.ARCHITECTURE;
-		} else if (Concept.class.isAssignableFrom(clazz)) {
-			definitionType = DefinitionType.CONCEPT;
-		} else if (Role.class.isAssignableFrom(clazz)) {
-			definitionType = DefinitionType.ROLE;
-		} else if (Constraint.class.isAssignableFrom(clazz)) {
-			definitionType = DefinitionType.CONSTRAINT;
-		} else {
-			throw new IllegalArgumentException("def type not reasolveable for " + clazz);
-		}
+		/* resolve definition type - to find correct list.... */
+		DefinitionType definitionType = resolveDefinitionTypeOrFail(clazz);
 
 		for (GroupDefinitionImpl groupdef : getGroupDefinitions()) {
 			Collection<? extends de.jcup.code2doc.core.internal.define.AbstractElementDefinitionImpl<?, ?, ?>> definitions = groupdef.getDefinitions(definitionType);
@@ -127,6 +127,57 @@ public class SpecificationImpl implements Specification {
 		}
 		/* not found*/
 		return null;
+	}
+
+	/**
+	 * Returns all definitions for given type 
+	 * @param type - definition type
+	 * @return unmodifiable collection of definitions
+	 */
+	public <T extends Element> Collection<AbstractElementDefinitionImpl<?, T, ?>> getDefinitions(DefinitionType type) {
+		Validation.notNull(type, "Definition may not be null!");
+		Collection<AbstractElementDefinitionImpl<?, T, ?>> result = internalFindAll(type);
+		return Collections.unmodifiableCollection(result);
+	}
+	
+	/**
+	 * Returns all definitions
+	 * @return unmodifiable collection of definitions
+	 */
+	public <T extends Element> Collection<AbstractElementDefinitionImpl<?, T, ?>> getDefinitions() {
+		Collection<AbstractElementDefinitionImpl<?, T, ?>> result = internalFindAll(null);
+		return Collections.unmodifiableCollection(result);
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private <T extends Element> Collection<AbstractElementDefinitionImpl<?, T, ?>> internalFindAll(DefinitionType type) {
+		Collection<AbstractElementDefinitionImpl<?, T, ?>> result = new ArrayList<AbstractElementDefinitionImpl<?,T,?>>();
+		for (GroupDefinitionImpl groupdef : getGroupDefinitions()) {
+			if (type==null){
+				result.addAll((Collection)groupdef.getDefinitions());
+			}else{
+				result.addAll((Collection)groupdef.getDefinitions(type));
+			}
+		}
+		return result;
+	}
+
+	private <T extends Element> DefinitionType resolveDefinitionTypeOrFail(Class<T> clazz) {
+		DefinitionType definitionType = null;
+		if (UseCase.class.isAssignableFrom(clazz)) {
+			definitionType = DefinitionType.USECASE;
+		} else if (Architecture.class.isAssignableFrom(clazz)) {
+			definitionType = DefinitionType.ARCHITECTURE;
+		} else if (Concept.class.isAssignableFrom(clazz)) {
+			definitionType = DefinitionType.CONCEPT;
+		} else if (Role.class.isAssignableFrom(clazz)) {
+			definitionType = DefinitionType.ROLE;
+		} else if (Constraint.class.isAssignableFrom(clazz)) {
+			definitionType = DefinitionType.CONSTRAINT;
+		} else {
+			throw new IllegalArgumentException("def type not reasolveable for " + clazz);
+		}
+		return definitionType;
 	}
 
 	public Specification setAuthor(String firstName, String lastName) {

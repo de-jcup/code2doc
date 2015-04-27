@@ -88,7 +88,7 @@ public interface ElementContainerDefinition<T> extends Definition{
 	public ConstraintDefinition addConstraintAndDefine(Class<? extends Constraint> concept);
 	
 	/**
-	 * Add a constraint to this container - if already added the add will be ignored
+	 * Add a role to this container - if already added the add will be ignored
 	 * @param concept - concept class
 	 * @return container 
 	 */

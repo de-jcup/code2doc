@@ -24,6 +24,7 @@ import java.util.TreeSet;
 
 import de.jcup.code2doc.api.Element;
 import de.jcup.code2doc.core.define.TechInfoDefinition;
+import de.jcup.code2doc.core.provider.DefinitionTypeProvider;
 
 /**
  * ElementDefinitionImpl
@@ -33,7 +34,7 @@ import de.jcup.code2doc.core.define.TechInfoDefinition;
  * @param <ELEMENT> - element type
  * @param <PARENT> - parent type
  */
-public abstract class AbstractElementDefinitionImpl<TECH_PARENT,ELEMENT extends Element,PARENT> {
+public abstract class AbstractElementDefinitionImpl<TECH_PARENT,ELEMENT extends Element,PARENT> implements DefinitionTypeProvider {
 
 	ELEMENT element;
 	PARENT parent;
@@ -66,7 +67,6 @@ public abstract class AbstractElementDefinitionImpl<TECH_PARENT,ELEMENT extends 
 		return addTechInfo("");
 	}
 	
-	public abstract DefinitionType getDefinitionType();
 	
 	/**
 	 * Adds a tech info

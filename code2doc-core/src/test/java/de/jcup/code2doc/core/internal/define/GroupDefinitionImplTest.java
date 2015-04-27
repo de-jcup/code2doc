@@ -21,7 +21,6 @@ import static org.junit.Assert.*;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 
 import org.junit.Test;
 
@@ -75,7 +74,7 @@ public class GroupDefinitionImplTest {
 		impl.addUseCase(TestUseCases.UC_2__DELETE_ENTRY.class);
 		
 		/* fetch sorted*/
-		List<? extends AbstractElementDefinitionImpl<?, ?, ?>> sortedDefinitions = impl.getDefinitionsSorted(DefinitionType.USECASE.name());
+		Collection<? extends AbstractElementDefinitionImpl<?, ?, ?>> sortedDefinitions = impl.getDefinitionsSorted(DefinitionType.USECASE.name());
 		
 		Iterator<? extends AbstractElementDefinitionImpl<?, ?, ?>> it = sortedDefinitions.iterator();
 		/* test sorting */
