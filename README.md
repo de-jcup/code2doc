@@ -26,11 +26,14 @@ A **documentation project** must be created. All documentation elements are defi
 ### Generate a system documentation
 When a system documentation shall be generated an additionally **documentation _output_ project** has to be created which has documented projects and other code2doc libraries as dependencies. This output project is not part of the real project release but necessary for documentation creation/generation only. Code2Doc libraries provide a tool chain to generate documentation out of the box from the output project.
 
-## Demo showcase
+## Showcases
 There is a demo showcase available, containing of three projects: 
 - https://github.com/de-jcup/code2doc/tree/master/code2doc-demo-documentation
 - https://github.com/de-jcup/code2doc/tree/master/code2doc-demo
 - https://github.com/de-jcup/code2doc/tree/master/code2doc-demo-documentation-output
+
+Also code2doc itself is described by code2doc (but without annotations):
+- https://github.com/de-jcup/code2doc/tree/master/code2doc-documentation
 
 
 ## Advantages:
