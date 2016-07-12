@@ -2,3 +2,9 @@
 # Simply build and test by https://travis-ci.org
 #
 language: java
+
+jdk:
+- oraclejdk8
+
+after_success:
+- ./gradlew jacocoTestReport coveralls

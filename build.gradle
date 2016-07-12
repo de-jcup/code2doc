@@ -27,7 +27,10 @@ allprojects{
 subprojects {
     apply plugin: 'java'
 	apply plugin: 'eclipse'
-	apply plugin: "maven"
+	apply plugin: 'maven'
+	apply plugin: 'jacoco'
+	apply plugin: 'com.github.kt3k.coveralls' version '2.6.3'
+	
 		
 	group = "de.jcup.code2doc" 
 	version = "0.8"	
@@ -129,4 +132,10 @@ task testReportAll(type: TestReport) {
     reportOn subprojects*.test
 }
 
+jacocoTestReport {
+    reports {
+        xml.enabled = true // coveralls plugin depends on xml format report
+        html.enabled = true
+    }
+}
 
