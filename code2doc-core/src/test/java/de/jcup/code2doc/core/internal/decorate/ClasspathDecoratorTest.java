@@ -1,6 +1,7 @@
 package de.jcup.code2doc.core.internal.decorate;
 
 import static org.junit.Assert.*;
+import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.*;
 
 import java.lang.reflect.Field;

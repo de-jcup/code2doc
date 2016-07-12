@@ -17,10 +17,11 @@
 * under the License.*/
 package de.jcup.code2doc.core.internal.validate;
 
+import static de.jcup.code2doc.core.internal.util.StringUtil.*;
+
 import java.io.File;
 import java.util.Collection;
 
-import static de.jcup.code2doc.core.internal.util.StringUtil.*;
 import de.jcup.code2doc.api.UseCase;
 import de.jcup.code2doc.core.internal.define.DefinitionType;
 import de.jcup.code2doc.core.internal.define.GroupDefinitionImpl;

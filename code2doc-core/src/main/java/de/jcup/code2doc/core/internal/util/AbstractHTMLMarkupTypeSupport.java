@@ -17,10 +17,11 @@
 * under the License.*/
 package de.jcup.code2doc.core.internal.util;
 
+import static de.jcup.code2doc.core.internal.util.StringUtil.*;
+
 import java.util.regex.Pattern;
 
 import de.jcup.code2doc.api.Element.MarkupType;
-import static de.jcup.code2doc.core.internal.util.StringUtil.*;
 
 /**
  * Text style. This class supports simple html style mechanism.<br/>

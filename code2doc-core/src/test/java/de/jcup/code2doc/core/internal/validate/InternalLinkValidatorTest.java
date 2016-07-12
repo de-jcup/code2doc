@@ -1,5 +1,6 @@
 package de.jcup.code2doc.core.internal.validate;
 
+import static de.jcup.code2doc.core.internal.validate.InternalLinksValidator.*;
 import static org.junit.Assert.*;
 
 import java.util.Collection;
@@ -11,7 +12,6 @@ import de.jcup.code2doc.api.UseCase;
 import de.jcup.code2doc.core.Factory;
 import de.jcup.code2doc.core.define.Specification;
 import de.jcup.code2doc.core.validate.ValidationException;
-import static de.jcup.code2doc.core.internal.validate.InternalLinksValidator.*;
 public class InternalLinkValidatorTest {
 
 	@Test
@@ -85,11 +85,21 @@ public class InternalLinkValidatorTest {
 		validator = new InternalLinksValidator();
 	}
 	
+	public static class LinkTargetUseCase1 extends UseCase{
+
+		@Override
+		protected void doSetup(UseCaseSetup setup) {
+			setup.content().addText("Just a correct link target...");
+		}
+		
+	}
+	
 	public static class InternalTestUseCaseWithInternalLinkCorrect1 extends UseCase{
 
 		@Override
 		protected void doSetup(UseCaseSetup setup) {
-			setup.content().addText("Link to a <a href='code2doc://de.jcup.code2doc.core.internal.validate.InternalLinksAreCorrectValidatorTest.InternalTestUseCaseWithInternalLinkCorrect1'> existing part </a>)");
+			// we simply link to the class itself
+			setup.content().addText("Link to a <a href='code2doc://de.jcup.code2doc.core.internal.validate.InternalLinkValidatorTest.LinkTargetUseCase1'> existing part </a>)");
 		}
 		
 	}

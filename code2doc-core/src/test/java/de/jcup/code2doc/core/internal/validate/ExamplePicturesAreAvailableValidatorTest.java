@@ -24,7 +24,6 @@ import org.junit.Test;
 
 import de.jcup.code2doc.api.UseCase;
 import de.jcup.code2doc.core.internal.define.SpecificationImpl;
-import de.jcup.code2doc.core.internal.validate.ExamplePicturesAreAvailableValidator;
 import de.jcup.code2doc.core.validate.ValidationException;
 
 public class ExamplePicturesAreAvailableValidatorTest {

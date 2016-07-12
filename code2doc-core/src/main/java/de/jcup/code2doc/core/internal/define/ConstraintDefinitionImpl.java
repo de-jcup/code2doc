@@ -18,9 +18,9 @@
 package de.jcup.code2doc.core.internal.define;
 
 import de.jcup.code2doc.api.Constraint;
+import de.jcup.code2doc.core.define.ConstraintDefinition;
 import de.jcup.code2doc.core.define.Specification;
 import de.jcup.code2doc.core.define.TechInfoDefinition;
-import de.jcup.code2doc.core.define.ConstraintDefinition;
 
 public class ConstraintDefinitionImpl extends AbstractElementDefinitionImpl<ConstraintDefinition,Constraint,Specification> implements ConstraintDefinition, Comparable<ConstraintDefinitionImpl> {
 	

@@ -22,7 +22,6 @@ import static de.jcup.code2doc.testdata.TestPermission.*;
 import org.junit.Test;
 
 import de.jcup.code2doc.core.Factory;
-import de.jcup.code2doc.core.define.Specification;
 import de.jcup.code2doc.testdata.TestQuery;
 import de.jcup.code2doc.testdata.TestUseCases.UC_1__SHOW_ENTRIES;
 import de.jcup.code2doc.testdata.TestUseCases.UC_2__DELETE_ENTRY;

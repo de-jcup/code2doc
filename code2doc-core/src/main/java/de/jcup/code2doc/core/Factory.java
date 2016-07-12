@@ -24,7 +24,6 @@ import de.jcup.code2doc.core.internal.decorate.ClasspathDecorator;
 import de.jcup.code2doc.core.internal.decorate.UseCaseExampleURLDecorator;
 import de.jcup.code2doc.core.internal.define.SpecificationImpl;
 import de.jcup.code2doc.core.internal.validate.ExamplePicturesAreAvailableValidator;
-import de.jcup.code2doc.core.internal.validate.InternalLinkValidatorTest;
 import de.jcup.code2doc.core.internal.validate.InternalLinksValidator;
 import de.jcup.code2doc.core.validate.MultiValidator;
 import de.jcup.code2doc.core.validate.Validator;

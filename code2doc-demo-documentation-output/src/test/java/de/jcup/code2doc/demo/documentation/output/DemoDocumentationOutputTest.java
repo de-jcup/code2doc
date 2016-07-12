@@ -19,8 +19,6 @@ package de.jcup.code2doc.demo.documentation.output;
 
 import org.junit.Test;
 
-import de.jcup.code2doc.demo.documentation.output.DemoDocumentationOutput;
-
 public class DemoDocumentationOutputTest {
 
 	@Test

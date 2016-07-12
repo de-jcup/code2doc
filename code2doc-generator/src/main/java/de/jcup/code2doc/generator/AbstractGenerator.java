@@ -17,11 +17,12 @@
 * under the License.*/
 package de.jcup.code2doc.generator;
 
+import static de.jcup.code2doc.core.internal.util.StringUtil.*;
+
 import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
 
-import static de.jcup.code2doc.core.internal.util.StringUtil.*;
 import de.jcup.code2doc.core.filter.Filter;
 import de.jcup.code2doc.core.generator.Generator;
 import de.jcup.code2doc.core.internal.util.Transformer;

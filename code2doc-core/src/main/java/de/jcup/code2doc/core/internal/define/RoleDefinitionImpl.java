@@ -18,9 +18,9 @@
 package de.jcup.code2doc.core.internal.define;
 
 import de.jcup.code2doc.api.Role;
+import de.jcup.code2doc.core.define.RoleDefinition;
 import de.jcup.code2doc.core.define.Specification;
 import de.jcup.code2doc.core.define.TechInfoDefinition;
-import de.jcup.code2doc.core.define.RoleDefinition;
 
 public class RoleDefinitionImpl extends AbstractElementDefinitionImpl<RoleDefinition,Role,Specification> implements RoleDefinition, Comparable<RoleDefinitionImpl> {
 	
