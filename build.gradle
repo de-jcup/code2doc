@@ -29,8 +29,6 @@ subprojects {
 	apply plugin: 'eclipse'
 	apply plugin: 'maven'
 	apply plugin: 'jacoco'
-	apply plugin: 'com.github.kt3k.coveralls' version '2.6.3'
-	
 		
 	group = "de.jcup.code2doc" 
 	version = "0.8"	
