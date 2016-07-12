@@ -1,4 +1,4 @@
 #
-# Simply build and test 
+# Simply build and test by https://travis-ci.org
 #
 language: java
