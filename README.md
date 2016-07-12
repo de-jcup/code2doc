@@ -1,4 +1,5 @@
 # code2doc project
+![Status of master build:](https://travis-ci.org/de-jcup/code2doc.svg?branch=master)
 
 ## In a nutshell:
 
