@@ -1,5 +1,5 @@
 # code2doc project
-![Status of master build:](https://travis-ci.org/de-jcup/code2doc.svg?branch=master)
+[![Build statusd:](https://travis-ci.org/de-jcup/code2doc.svg?branch=master)](https://travis-ci.org/de-jcup/code2doc)
 [![Coverage Status](https://coveralls.io/repos/github/de-jcup/code2doc/badge.svg?branch=master)](https://coveralls.io/github/de-jcup/code2doc?branch=master)
 
 ## In a nutshell:
