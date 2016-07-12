@@ -1,1 +1,3 @@
-code2doc-documentation is also a use case for EXTERNAL usage of code2doc
+This is the documentation output project of demo showcase. 
+
+It is used only to generate a system specification of project "code2doc-demo".
