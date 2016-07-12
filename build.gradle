@@ -7,8 +7,9 @@ allprojects{
 		mavenLocal()
 		mavenCentral()
 		maven{
-			/* google code repository for docbook4j */
-			url "http://docbook4j.googlecode.com/svn/m2-repo/releases/" 
+			/* code repository for docbook4j */
+			//url "http://docbook4j.googlecode.com/svn/m2-repo/releases/" 
+			url "https://github.com/bigpuritz/docbook4j/releases/"
 		}
     }
 	
