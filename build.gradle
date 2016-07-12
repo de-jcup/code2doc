@@ -11,7 +11,7 @@ allprojects{
 			   currently not available and no more available at google code. 
 			   So for temporary workaround until available in maven central we use temp-m2-repo*/
 			//url "http://docbook4j.googlecode.com/svn/m2-repo/releases/" 
-			url "https://github.com/de-jcup/temp-m2-repo/blob/master/"
+			url "https://raw.githubusercontent.com/de-jcup/temp-m2-repo/master/"
 		}
     }
 	
