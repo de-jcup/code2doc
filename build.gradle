@@ -13,7 +13,15 @@ allprojects{
 			//url "http://docbook4j.googlecode.com/svn/m2-repo/releases/" 
 			url "https://raw.githubusercontent.com/de-jcup/temp-m2-repo/master/"
 		}
-    }
+        }
+	
+	/* with java 8 - doclint was introduced and errors in javadoc (e.g. <br> is an error...) will fail the build - so currently we turn off */
+	if (JavaVersion.current().isJava8Compatible()) {
+         	tasks.withType(Javadoc) {
+        		options.addStringOption('Xdoclint:none', '-quiet')
+      		}
+    	}
+  
 	
 	/* Custimization part - e.g. when you got special repositories
 	 * or an enterprise repo like artifactory or nexus */	 
